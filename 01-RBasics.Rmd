@@ -1,0 +1,818 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# (PART\*) Session I {.unnumbered}
+
+# Introduction to R and RStudio
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
+```
+
+The next two chapters will provide you with a hands on opportunity to
+learn R and RStudio. While R is a big topic and we will not be able to
+cover everything, by the end of this session we hope that you will feel
+comfortable starting to use R on your own.
+
+## Learning Objectives
+
+-   Understand the value of learning R
+-   Navigate RStudio
+-   Define terms: object, function, argument, package, vector, data
+    frame.
+-   Use help documentation in RStudio.
+
+## Why learn R?
+
+-   **R is free, open-source, and cross-platform.** Anyone can inspect
+    the source code to see how R works. Because of this transparency,
+    there is less chance for mistakes, and if you (or someone else) find
+    some, you can report and fix bugs. Because R is open source and is
+    supported by a large community of developers and users, there is a
+    very large selection of third-party add-on packages which are freely
+    available to extend R's native capabilities.
+
+-   **R code is great for reproducibility**. Reproducibility is when
+    someone else (including your future self) can obtain the same
+    results from the same dataset when using the same analysis. R
+    integrates with other tools to generate manuscripts from your code.
+    If you collect more data, or fix a mistake in your dataset, the
+    figures and the statistical tests in your manuscript are updated
+    automatically.
+
+-   **R relies on a series of written commands, not on remembering a
+    succession of pointing and clicking.** If you want to redo your
+    analysis because you collected more data, you don't have to remember
+    which button you clicked in which order to obtain your results; you
+    just have to run your script again.
+
+-   **R is interdisciplinary and extensible** With 10,000+ packages that
+    can be installed to extend its capabilities, R provides a framework
+    that allows you to combine statistical approaches from many
+    scientific disciplines to best suit the analytical framework you
+    need to analyze your data. For instance, R has packages for image
+    analysis, GIS, time series, population genetics, and a lot more.
+
+-   **R works on data of all shapes and sizes.** The skills you learn
+    with R scale easily with the size of your dataset. Whether your
+    dataset has hundreds or millions of lines, it won't make much
+    difference to you. R is designed for data analysis. It comes with
+    special data structures and data types that make handling of missing
+    data and statistical factors convenient. R can connect to
+    spreadsheets, databases, and many other data formats, on your
+    computer or on the web.
+
+-   **R produces high-quality graphics.** The plotting functionalities
+    in R are endless, and allow you to adjust any aspect of your graph
+    to convey most effectively the message from your data.
+
+-   **R has a large and welcoming community.** Thousands of people use R
+    daily. Many of them are willing to help you through mailing lists
+    and websites such as [Stack Overflow](https://stackoverflow.com/),
+    or on the [RStudio community](https://community.rstudio.com/).
+    Questions which are backed up with [short, reproducible code
+    snippets](https://www.tidyverse.org/help/) are more likely to
+    attract knowledgeable responses.
+
+## Starting out in R
+
+[R](https://cran.rstudio.com/) is both a programming language and an
+interactive environment for data exploration and statistics.
+
+Working with R is primarily text-based. The basic mode of use for R is
+that the user provides commands in the R language and then R computes
+and displays the result.
+
+### Downloading, Installing and Running R
+
+**Download**\
+R can be downloaded from [CRAN (The Comprehensive R Archive
+Network)](https://cran.rstudio.com/index.html) for Windows, Linux, or
+Mac.
+
+**Install**\
+Installation of R is like most software packages and you will be guided.
+Should you have any issues or need help you can refer to [R Installation
+and
+Administration](https://cran.r-project.org/doc/manuals/r-release/R-admin.html)
+
+**Running**\
+R can be launched from your software or applications launcher or When
+working at a command line on UNIX or Windows, the command `R` can be
+used for starting the main R program in the form `R`
+
+You will see a console similar to this appear:
+
+```{r echo=F}
+knitr::include_graphics("images/console.png")
+```
+
+While it is possible to work solely through the console or using a
+command line interface, the ideal environment to work in R is RStudio.
+
+### RStudio
+
+We will be working in
+[RStudio](https://www.rstudio.com/products/rstudio/download/). The
+easiest way to get started is to go to [RStudio
+Cloud](https://rstudio.cloud/) and create a new project.
+
+The main way of working with R is the *console*, where you enter
+commands and view results. RStudio surrounds this with various
+conveniences. In addition to the console panel, RStudio provides panels
+containing:
+
+Studio is divided into four "panes". The placement of these panes and
+their content can be customized (see menu, Tools -\> Global Options -\>
+Pane Layout).
+
+The Default Layout is:
+
+-   Top Left - **Source**: your scripts and documents
+-   Bottom Left - **Console**: what R would look and be like without
+    RStudio
+-   Top Right - **Environment/History**: look here to see what you have
+    done
+-   Bottom Right - **Files** and more: see the contents of the
+    project/working directory here, like your Script.R file
+
+```{r echo=F}
+knitr::include_graphics("images/rstudio.png")
+```
+
+### RStudio Cloud
+
+RStudio Cloud is a browser-based version of RStudio. It will allow you
+to use RStudio without needing to download anything to your computer.
+You can also easily share your R projects with others. While we
+recommend downloading RStudio for regular use, we will be using RStudio
+Cloud for these workshops so we can easily share files and packages with
+you.
+
+## Using this book
+
+**For these instructions code will appear in the gray box as follows:**
+
+    fake code
+
+To run the code you can copy and paste the code and run it in your
+RStudio session console at the prompt `>` which looks like a greater
+than symbol.
+
+    > fake code
+
+The code can also be added to an R Script to be run.
+
+When the code is run in RStudio the console prints out results like so:
+
+    [1] Result
+
+In this tutorial results from code will appear like so:
+
+    ## [1] Result
+
+## Working in the Console
+
+The console is an interactive environment for RStudio, click on the
+"Console" pane, type `3 + 3` and press enter. R displays the result of
+the calculation.
+
+```{r class.source = "source", class.output = "output"}
+3 + 3
+```
+
+`+` is called an operator. R has the operators you would expect for for
+basic mathematics:
+
+**Arithmetic operators**<br>
+
+| operator | meaning    |
+|:---------|:-----------|
+| \+       | plus       |
+| \-       | minus      |
+| \*       | times      |
+| /        | divided by |
+| \^       | exponent   |
+
+**Logical Operators**<br>
+
+| operator | meaning                  |
+|:---------|:-------------------------|
+| ==       | exactly equal            |
+| !=       | not equal to             |
+| \<       | less than                |
+| \<=      | less than or equal to    |
+| \>       | greater than             |
+| \>=      | greater than or equal to |
+| x\|y     | x or y                   |
+| x&y      | x and y                  |
+| !x       | not x                    |
+
+Spaces can be used to make code easier to read.
+
+```{r}
+2 * 2 == 4
+```
+
+## Objects
+
+### Creating Objects
+
+When you have certain values, data, plots, etc that you want to work
+with You can create objects (make assignments) in R with the assignment
+operator `<-`:
+
+All R statements where you create objects, assignment statements, have
+the same form:
+
+    object_name <- value
+
+When reading that code say "object name gets value" in your head.
+
+```{r}
+x <- 3 * 4
+
+x
+```
+
+Once you have an object you can do other calculations with it.
+
+```{r}
+x * x
+```
+
+::: {.shaded .tip data-latex=""}
+**Objects vs. Variables**<br> What are known as objects in R are known
+as variables in many other programming languages. Depending on the
+context, object and variable can have drastically different meanings.
+However, in this lesson, the two words are used synonymously. For more
+information see:
+<https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects>
+:::
+
+That last example was kind of abstract. So let's look at a more
+practical example.
+
+Let's do some calculations with the population of Maryland. First we can
+save the population number to an object. We will call it `md_pop`
+because that is short, descriptive, and easy to remember.
+
+```{r}
+md_pop <- 6165129
+```
+
+What percentage of the Maryland population is over 18? According to the
+Census Bureau, 78% of the Maryland population is over 18. We can use
+that to calculate the number of adults in Maryland.
+
+```{r}
+md_adult_pop <- .78 * md_pop
+```
+
+Next, maybe we are interested in how many adults in Maryland have been
+fully vaccinated for COVID-19. As of late June 2022 that number is 4.04
+million. While 4.67 million of all ages have been vaccinated in
+Maryland. So let's create two more objects:
+
+```{r}
+md_adult_vax_pop <- 4040413 
+md_vax_pop <- 4674111
+
+```
+
+Now we can calculate the percentage of the Maryland population that is
+vaccinated.
+
+```{r}
+percent_adult_vax <- (md_adult_vax_pop / md_adult_pop) * 100
+percent_adult_vax
+
+percent_vax <- (md_vax_pop / md_pop) * 100
+percent_vax
+```
+
+As more people get vaccinated this can be updated. Let's say later in
+year we have 4.9 million Marylanders who are fully vaccinated. We can
+re-assign the value of `md_vax_pop`
+
+```{r}
+md_vax_pop <- 4900000
+```
+
+Then recalculate `percent_vax`
+
+```{r}
+percent_vax <- (md_vax_pop / md_pop) * 100
+percent_vax
+```
+
+You will make lots of assignments and `<-` is a pain to type. Avoid the
+temptation to use `=`: it will work, but it will cause confusion later.
+Instead, use RStudio's keyboard shortcut: <kbd>`Alt + -`</kbd> (the
+minus sign).
+
+Notice that RStudio automagically surrounds `<-` with spaces, which is a
+good code formatting practice. Code is miserable to read on a good day,
+so giveyoureyesabreak and use spaces.
+
+::: {.shaded .important data-latex=""}
+**Naming Objects** <br>
+
+The name for objects must start with a letter, and can only contain
+letters, numbers, underscores (`_`)and periods (`.`). The name of the
+object should describe what is being assigned so they typically will be
+multiple words. One convention used is **snake_case** where lowercase
+words are separated with `_`. Another popular style is **camelCase**
+where compound words or phrases are written so that each word or
+abbreviation in the middle of the phrase begins with a capital letter,
+with no intervening spaces or punctuation and the first letter is
+lowercase.
+
+    thisIsCamelCase
+    some_use_snake_case
+    others.use.periods                  #avoid
+    Others_pRefer.to_RENOUNCEconvention #avoid
+:::
+
+## Saving code in an R script
+
+It might seem like you could just as easily calculate the percentage of
+vaccinated Marylanders by hand. But what if you had to do it again and
+again, multiple times a day, for days on end? What if you had to make
+sure multiple people on your team could perform the same task?
+
+This is where the real strength of R as a programming language comes in.
+You can save all the steps of your analysis to a *script*. This is
+especially powerful if you have long and complicated analyses. It is how
+R contributes to reproducible and open science.
+
+Open the file vax_count.R. Here we have recorded the steps we just took.
+So let's say you were training a new employee to run this very important
+analysis. Now all they have to do is input the new vaccination number,
+and run the script.
+
+The usual workflow is to save your code in an R script (".R file"). Go
+to "File/New File/R Script" to create a new R script. Code in your R
+script can be sent to the console by selecting it or placing the cursor
+on the correct line, and then pressing **Control-Enter**
+(**Command-Enter** on a Mac).
+
+::: {.shaded .tip data-latex=""}
+**Tip**<br> Add comments to code, using lines starting with the `#`
+character. This makes it easier for others to follow what the code is
+doing (and also for us the next time we come back to it).
+:::
+
+### Setting your Working Directory
+
+The working directory is the location within which R points to the files
+system. RStudio sets up a default working directory, typically the home
+directory of the computer, which can be changed in the global options
+setting in RStudio.
+
+In the code samples provided the data files are located in the R working
+directory, which can be found with the function `getwd`.
+
+    getwd() # get current working directory
+
+You can select a different working directory with the function
+`setwd()`, and thus avoid entering the full path of the data files.
+
+    setwd("<new path>")   # set working directory
+
+Note that the forward slash should be used as the path separator even on
+Windows platform.
+
+    setwd("C:/MyDoc")
+
+Alternatively you can go to the working directory and set the working
+directory using the files panel and clicking the gear wheel for "more"
+within RStudio.
+
+```{r echo=F}
+knitr::include_graphics("images/workingDir01.png")
+```
+
+Or by selecting the drop down list found in Tools(Windows) or
+Session(Mac) in the menu at the top of the RStudio window.
+
+```{r echo=F}
+knitr::include_graphics("images/workingDir02.png")
+```
+
+## Functions and their arguments
+
+Functions are "canned scripts" that automate more complicated sets of
+commands including operations assignments, etc. Many functions are
+predefined, or can be made available by importing R *packages* (more on
+that later). A function usually gets one or more inputs called
+*arguments*. Functions often (but not always) return a *value*.
+
+A typical example would be the function `round()`. The input (the
+argument) must be a number, and the return value (in fact, the output)
+is that number rounded to the nearest whole number. Executing a function
+('running it') is called *calling* the function. You can save the output
+of a function to an object. The format would look like:
+
+```{r, eval=FALSE, purl=FALSE}
+b <- round(a)
+```
+
+Here, the value of `a` is given to the `round()` function, the `round()`
+function rounds the number, and returns the value which is then assigned
+to the object `b`.
+
+The return 'value' of a function need not be numerical (like that of
+`sqrt()`), and it also does not need to be a single item: it can be a
+set of things, or even a dataset. We'll see that when we read data files
+into R.
+
+Arguments can be anything, not only numbers or filenames, but also other
+objects. Exactly what each argument means differs per function, and must
+be looked up in the documentation (see below). Some functions take
+arguments which may either be specified by the user, or, if left out,
+take on a *default* value: these are called *options*. Options are
+typically used to alter the way the function operates, such as whether
+it ignores 'bad values', or what symbol to use in a plot. However, if
+you want something specific, you can specify a value of your choice
+which will be used instead of the default.
+
+`round()` only needs one argument, a number, or object that is storing a
+numerical value.
+
+```{r, results='show', purl=FALSE}
+round(percent_vax)
+```
+
+Here, we've called `round()` on our percent_vax object and it returned `r round(percent_vax)`. That's because the default action of the function is to round to the
+nearest whole number. If we want more digits we can see how to do that
+by getting information about the `round` function. We can use
+`args(round)` or look at the help for this function using `?round`.
+
+```{r, results='show', purl=FALSE}
+args(round)
+```
+
+We see that if we want a different number of digits, we can type
+`digits=2` or however many we want.
+
+```{r, results='show', purl=FALSE}
+round(percent_vax, digits = 2)
+```
+
+If you provide the arguments in the exact same order as they are defined
+you don't have to name them:
+
+```{r, results='show', purl=FALSE}
+round(percent_vax, 2)
+```
+
+And if you do name the arguments, you can switch their order:
+
+```{r, results='show', purl=FALSE}
+round(digits = 2, x = percent_vax)
+```
+
+It's good practice to put the non-optional arguments (like the number
+you're rounding) first in your function call, and to specify the names
+of all optional arguments. If you don't, someone reading your code might
+have to look up the definition of a function with unfamiliar arguments
+to understand what you're doing.
+
+### Getting Help
+
+In the previous example we looked up the arguments to `round()` using `args(round)` alternatively we couldve looked at the help page for `round()` to find this out with `?round`. 
+To get help about a particular package or function you can access the help pane in RStudio and type its name in the search box.
+
+```{r echo=F,out.width="80%"}
+knitr::include_graphics("images/help.png")
+```
+
+The `help()` function and `?` help operator in R provide access to the
+documentation pages for R functions, data sets, and other objects, both
+for packages in the standard R distribution and for contributed
+packages. To do so type as follows
+
+    help({function})
+    help(package = {package name})
+
+    ?{function}
+    ?"{package name}"
+
+### Challenge: using functions
+
+::: {.shaded .question data-latex=""}
+**Questions** <br>
+
+Look at the documentation for the `seq` function. What does `seq` do?
+Give an example of using `seq` with either the `by` or `length.out`
+argument.
+:::
+
+## Packages
+
+While you can write your own functions, most functions you use will be
+part of a package. In R, the fundamental unit of shareable code is the
+package. A package bundles together code, data, documentation, and
+tests, and is easy to share with others. As of July 2018, there were
+over 14,000 packages available on the Comprehensive R Archive Network,
+or CRAN, the public clearing house for R packages. This huge variety of
+packages is one of the reasons that R is so successful.
+
+Installing a package using RStudio requires selecting the Install
+Packages Button in the Files, Plots, Packages Pane
+
+```{r echo=F, out.width="75%"}
+knitr::include_graphics("images/installPackages.png")
+```
+
+In the pop up box that results simply type the name of the package and
+check "install dependencies" and click Install
+
+```{r echo=F,out.width="100%"}
+knitr::include_graphics("images/packagesDialog.png")
+```
+
+Its also possible for you to install and load packages from the console.
+Always make sure to put the package name in quotes when installing and
+setting `dependencies = True`
+
+```{r eval=FALSE}
+install.packages("tidyverse", dependencies = TRUE)    
+library(tidyverse)
+
+```
+
+You only need to install a package once, but you need to reload it every
+time you start a new session.
+
+## Vectors
+
+A *vector* is a collection of values. "Vector" means different things in
+different fields (mathematics, geometry, biology), but in R it is a
+fancy name for a collection of values. We call the individual values
+*elements* of the vector. It is one of the most common data structures
+you will work with in R.
+
+We can make vectors with the function `c( )`, for example `c(1,2,3)`. c
+means "combine". R is obsessed with vectors, in R even single numbers
+are vectors of length one. Many things that can be done with a single
+number can also be done with a vector. For example arithmetic can be
+done on vectors as it can be on single numbers.
+
+Let's say that we have a group of patients in our clinic. We can store
+their names in a vector.
+
+```{r create-vector}
+    patients <- c("Maria", "John", "Ali", "Luis", "Mei" )
+
+    patients
+```
+
+If we later wanted to add a name, it's easy to do so
+
+```{r}
+patients <- c(patients, "Emma")
+
+patients
+```
+
+Maybe we also want to store the weights of these patients. Since these
+are their weights in pounds, we will call our object `weight_lb`
+
+```{r}
+weight_lb <- c(122, 320, 217, 142, 174, 252)
+
+weight_lb
+```
+
+So far, we have created vectors of two different *data types*: character
+and numeric.
+
+You can do arithmatic with numeric vectors. For example, let's convert
+the weight of our patients in lbs to the the weight in kilograms by
+multiplying each weight in lbs by 2.2.
+
+We could do this one by one:
+
+```{r}
+122 / 2.2
+320 / 2.2
+217 / 2.2
+```
+
+etc.
+
+But that would be a long and tedious process, especially if you had more
+than 6 patients.
+
+Instead, let's divide the vector by 2.2 and save that to a new object.
+We will call this object `weight_kg`
+
+```{r math-vector}
+weight_kg <- weight_lb / 2.2
+
+#you could also round the weight
+weight_kg <- round((weight_lb / 2.2), digits = 2)
+
+weight_kg
+```
+
+We could use the `mean()` function to find out the mean weight of
+patients at our clinic.
+
+```{r}
+mean(weight_lb)
+```
+
+You can not do this with character vectors. Remember we used `c()` to
+add a value to our character vector.
+
+```{r error=TRUE}
+patients + "Sue"
+```
+
+You can combine two vectors together
+
+::: {.shaded .important data-latex=""}
+**Data Types** <br> There are numerous data types. Some of the other
+most common data types you will encounter are numeric data, character
+data and logical data. Vectors of one data type only are called **atomic
+vectors**. Read more about vectors and data types in the book [R for
+Data Science](https://r4ds.had.co.nz/vectors.html)
+:::
+
+Another common data type is logical data. Logical data is the
+values`TRUE`, `FALSE`, or `NA`
+
+We want to record if our patients have been fully vaccinated. We will
+record this as TRUE if they have been, FALSE if they have not been, and
+NA if we do not have this information.
+
+```{r logic-vec}
+vax_status <- c(TRUE, TRUE, FALSE, NA, TRUE, FALSE)
+
+vax_status
+```
+
+All vector types have a length property which you can determine with the
+`length()` function.
+
+```{r vec-length}
+    length(patients)
+```
+
+Its helpful to think of the length of a vector as the number of elements
+in the vector.
+
+You can always find out the data type of your vector with the `class()`
+function.
+
+```{r}
+class(patients)
+class(weight_lb)
+class(vax_status)
+```
+
+### Missing Data
+
+R also has many tools to help with missing data, a very common
+occurrence.
+
+Suppose you tried to calculate the mean of a vector with some missing
+values (represented here with the logical `NA`. For example, what if we
+had failed to capture the weight of some of the patients at our clinic,
+so our weight vector looks as follows:
+
+```{r missing, warning=TRUE, message=TRUE}
+missing_wgt <- c(122, NA, 217, NA, 174, 252)
+
+mean(missing_wgt)
+```
+
+The missing values cause an error, and the mean cannot be correctly
+calculated.
+
+To get around this, you can use the argument `na.rm = TRUE`. This says
+to remove the NA values before attempting to perform the calculation.
+
+```{r}
+mean(missing_wgt, na.rm = TRUE)
+```
+
+For more on how to work with missing data, check out this [Data
+Carpentry
+lesson](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html#Missing_data)
+
+::: {.shaded .tip data-latex=""}
+**Factors**<br> Another important type of vector is a **factor**.
+Factors are a way that R stores categorical variables. In a factor, the
+levels of a categorical value are mapped onto an vector of integers,
+much like if you were coding responses to a survey. So, it is important
+to be careful because factors look like character data, but need to be
+treated like numeric data. For more on factors check out the Software
+Carpentry [lesson on
+R](https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors/index.html)
+:::
+
+### Mixing types
+
+We said above that vectors are supposed to have only one data type, but
+what happens if we mix multiple data types in one vector?
+
+Sometimes the best way to understand R is to try some examples and see
+what it does.
+
+::: {.shaded .question data-latex=""}
+**Questions**<br>
+
+Create a vector with some patient names and weights together. What
+happens? What if you combine names and vax status? All three?
+:::
+
+Because vectors can only contain one type of thing, R chooses a lowest
+common denominator type of vector, a type that can contain everything we
+are trying to put in it. A different language might stop with an error,
+but R tries to soldier on as best it can. A number can be represented as
+a character string, but a character string can not be represented as a
+number, so when we try to put both in the same vector R converts
+everything to a character string.
+
+### Indexing and Subsetting vectors
+
+Access elements of a vector with `[ ]`, for example
+
+```{r}
+    patients[1]
+```
+
+```{r}
+    patients[4]
+```
+
+You can also assign to a specific element of a vector.
+
+```{r}
+    patients[2] <- "Jon"
+    patients
+```
+
+Can we use a vector to index another vector? Yes! 
+
+Lets say we want to know which of our patients have been vaccinated. We know the vaccination status because we have a vector named `vax_status`  lets look at it
+```{r}
+vax_status
+```
+
+Looking at the output we see the index of vaccinated people is elements `1, 2, and 5`. or where `vax_status` is `TRUE` in the output. We can use this numerical index to subset another from our vector `patients` which will give us a result that we'll assign to a new object `vax_patients`.
+
+```{r}
+    vaxInd <- c(1,2,5)
+    patients[vaxInd] # this line is saying patients[c(1,2,5)]
+    vax_patients <- patients[vaxInd]
+    vax_patients
+```
+
+That was great! The problem with this approach is that if we're in the real world and have a patient population of 1000 it will be really hard to go through our vax_status and see who has `vax_status` is `TRUE`. Fortunately there is a way to deal with this! Using conditional subsetting We could equivalently have written:
+
+```{r}
+    patients[vax_status == TRUE]
+```
+
+This output keeps the NA's in there and that is not helpful since we only want to know who is vaccinated. Instead we can add a second condition! This condition is awesome because we can now show off our skills of working with missing data!
+
+```{r}
+    patients[vax_status == TRUE & !is.na(vax_status)]
+```
+
+### Data frames and tibbles
+
+The other main data structure you are likely to work with is the data
+frame. Vectors are one dimensional data structures. A data frame is two
+dimensional (often called tabular or rectangular data). This is similar
+to data as you might be used to seeing it in a spreadsheet. You can
+think of a data frame as consisting of columns of vectors. As
+vectors,each column in a data frame is of one data type, but the data
+frame over all can hold multiple data types.
+
+```{r echo=F, }
+knitr::include_graphics("images/data-frame.png")
+```
+
+A tibble is a particular class of data frame which is common in the
+**`tidyverse`** family of packages. Tibbles are useful for their
+printing properties and because they are less likely try to change the
+data type of columns on import (e.g. from character to factor).
+
+Since vectors form the columns of data frames, we can take the vectors
+we created for our patient data and combine them together in a data
+frame.
+
+```{r}
+patient_data <- data.frame(patients, weight_lb, weight_kg, vax_status)
+
+patient_data
+```

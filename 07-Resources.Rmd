@@ -1,0 +1,35 @@
+# (APPENDIX) Appendix {-}
+
+# Further Resources
+
+## Installing R and RStudio
+
+**Comprehensive R Archive Network (CRAN)**:  https://cran.r-project.org/
+
+**RStudio**: https://www.rstudio.com/products/rstudio/download/
+
+## The Tidyverse
+**Tidyverse homepage**: https://www.tidyverse.org/ 
+
+**R for Data Science**: https://r4ds.had.co.nz/ 
+
+## Graphing in R
+
+**R Graph Gallery**: https://www.r-graph-gallery.com/ 
+
+**STHDA R DataViz QuickStart Guides**: http://www.sthda.com/english/wiki/data-visualization 
+
+**R Graphics Cookbook**: https://r-graphics.org/
+
+## R Based Technologies
+
+**R Markdown**: https://rmarkdown.rstudio.com/
+
+**R Markdown Cookbook**: https://bookdown.org/yihui/rmarkdown-cookbook/
+
+
+**Bookdown**: https://bookdown.org/
+
+**Authoring Books and Technical Documents with R Markdown**: https://bookdown.org/yihui/bookdown/ 
+
+**Shiny**: https://shiny.rstudio.com/ 

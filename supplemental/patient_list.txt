@@ -1,0 +1,26 @@
+1. Patient: Maria
+- weight(lbs): 122
+- vaccinated: yes
+
+2. Patient: John
+- weight(lbs): 320
+- vaccinated: no
+
+3. Patient: Ali
+- weight(lbs): 217
+- vaccinated: no
+
+4. Patient: Luis
+- weight(lbs): 142
+- vaccinated: not recorded
+
+5. Patient: Mei
+-weight(lbs): 174
+-vaccinated: Yes
+
+6. Patient: Emma
+-weight(lbs): 252
+-vaccinated: No
+
+
+   

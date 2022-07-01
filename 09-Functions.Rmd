@@ -1,0 +1,22 @@
+# Packages and Functions Used
+
+**`readr`**
+
+- `read_csv()`: import data from csv files
+
+**`dplyr`**
+
+- `glimpse()`: look at list of columns in data frame
+- `select()`: picks variables (columns) based on their names
+- `mutate()`: create new variables (columns) based on existing variables (columns)
+- `count()`: count unique values of one or more values
+- `filter()`: Subset rows using column values
+- `group_by()`: group data by one or more variables
+- `summarize()` or `summarise()`: summarize each group to fewer rows. Creates new data frame.
+
+**`ggplot2`**
+
+- `ggplot()`: initializes a ggplot object
+- `geom_line()`: connects variables in order of variable on x axis. Used to create a line graph
+- `geom_point()`: used to create scatterplot, or add points to data on graph
+- `scale_x_continous()`: adjusts scale of continous variables on x axis.
