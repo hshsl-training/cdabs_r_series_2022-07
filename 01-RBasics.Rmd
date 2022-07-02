@@ -788,10 +788,9 @@ This output keeps the NA's in there and that is not helpful since we only want t
     patients[vax_status == TRUE & !is.na(vax_status)]
 ```
 
-### Data frames and tibbles
+## Data frames, Tibbles and Exploring Data
 
-The other main data structure you are likely to work with is the data
-frame. Vectors are one dimensional data structures. A data frame is two
+Data frames are another VIP data structure in R. Vectors are one dimensional data structures. A data frame is two
 dimensional (often called tabular or rectangular data). This is similar
 to data as you might be used to seeing it in a spreadsheet. You can
 think of a data frame as consisting of columns of vectors. As

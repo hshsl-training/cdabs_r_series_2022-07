@@ -89,3 +89,4 @@ graphing-in-r
 r-based-technologies
 selected-glossary-of-r-terminology
 packages-and-functions-used
+data-frames-tibbles-and-exploring-data
