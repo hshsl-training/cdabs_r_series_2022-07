@@ -23,6 +23,7 @@ missing-data
 mixing-types
 indexing-and-subsetting-vectors
 data-frames-tibbles-and-exploring-data
+creating-data-frames
 welcome-to-the-tidyverse
 install
 the-data

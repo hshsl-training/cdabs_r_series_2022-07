@@ -174,7 +174,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mixing-types"><i class="fa fa-check"></i><b>2.10.2</b> Mixing types</a></li>
 <li class="chapter" data-level="2.10.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.10.3</b> Indexing and Subsetting vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-frames-tibbles-and-exploring-data"><i class="fa fa-check"></i><b>2.11</b> Data frames, Tibbles and Exploring Data</a></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-frames-tibbles-and-exploring-data"><i class="fa fa-check"></i><b>2.11</b> Data frames, Tibbles and Exploring Data</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#creating-data-frames"><i class="fa fa-check"></i><b>2.11.1</b> Creating data frames</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>Session II</b></span></li>
 <li class="chapter" data-level="3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Welcome to the Tidyverse</a>
@@ -559,8 +562,8 @@ because that is short, descriptive, and easy to remember.</p>
 Census Bureau <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, 78% of the Maryland population is over 18. We can use
 that to calculate the number of adults in Maryland.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-r-and-rstudio.html#cb16-1" aria-hidden="true" tabindex="-1"></a>md_adult_pop <span class="ot">&lt;-</span> .<span class="dv">78</span> <span class="sc">*</span> md_pop</span></code></pre></div>
-<p>Next, we want to know what percentage of people in Maryland have been fully vaccinated for COVID-19. As of late June 2022 4.68 million people of all ages have been vaccinated in
-Maryland. So let’s create another object:</p>
+<p>Next, we want to know what percentage of people in Maryland have been fully vaccinated for COVID-19. As of early July 2022 4.68 million people of all ages have been vaccinated in
+Maryland <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. So let’s create another object:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-r-and-rstudio.html#cb17-1" aria-hidden="true" tabindex="-1"></a>md_vax_pop <span class="ot">&lt;-</span> <span class="dv">4682799</span></span></code></pre></div>
 <p>Now we can calculate the percentage of the Maryland population that is
 vaccinated.</p>
@@ -945,8 +948,10 @@ frame over all can hold multiple data types.</p>
 <strong><code>tidyverse</code></strong> family of packages. Tibbles are useful for their
 printing properties and because they are less likely try to change the
 data type of columns on import (e.g. from character to factor).</p>
-<p>Since vectors form the columns of data frames, we can take the vectors
-we created for our patient data and combine them together in a data
+<div id="creating-data-frames" class="section level3 hasAnchor" number="2.11.1">
+<h3><span class="header-section-number">2.11.1</span> Creating data frames<a href="introduction-to-r-and-rstudio.html#creating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data frames are usually created by reading in a dataset using the <code>read.table()</code> or <code>read.csv()</code> which we will cover in our next session. However, data frames can also be created explicitly with the <code>data.frame()</code> function or they can be coerced from other types of objects like lists.
+Now that we know vectors form the columns of data frames, we can take the vectors we created for our patient data and combine them together in a data
 frame.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="introduction-to-r-and-rstudio.html#cb90-1" aria-hidden="true" tabindex="-1"></a>patient_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(patients, weight_lb, weight_kg, vax_status)</span>
 <span id="cb90-2"><a href="introduction-to-r-and-rstudio.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -961,6 +966,7 @@ frame.</p>
 
 </div>
 </div>
+</div>
 
 
 
@@ -968,7 +974,8 @@ frame.</p>
 <hr />
 <ol start="1">
 <li id="fn1"><p>Population data from <a href="https://www.census.gov/quickfacts/MD" class="uri">https://www.census.gov/quickfacts/MD</a><a href="introduction-to-r-and-rstudio.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>ibid<a href="introduction-to-r-and-rstudio.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Population data from <a href="https://www.census.gov/quickfacts/MD" class="uri">https://www.census.gov/quickfacts/MD</a><a href="introduction-to-r-and-rstudio.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Vaccination information from <a href="https://coronavirus.maryland.gov/#Vaccine" class="uri">https://coronavirus.maryland.gov/#Vaccine</a><a href="introduction-to-r-and-rstudio.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
