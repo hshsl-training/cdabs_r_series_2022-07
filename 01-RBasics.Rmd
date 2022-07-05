@@ -152,6 +152,8 @@ recommend downloading RStudio for regular use, we will be using RStudio
 Cloud for these workshops so we can easily share files and packages with
 you.
 
+Create your free RStudio Cloud account at https://rstudio.cloud/plans/free.
+
 ## Using this book
 
 **For these instructions code will appear in the gray box as follows:**
