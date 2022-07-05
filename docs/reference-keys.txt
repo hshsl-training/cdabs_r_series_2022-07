@@ -22,7 +22,7 @@ vectors
 missing-data
 mixing-types
 indexing-and-subsetting-vectors
-data-frames-and-tibbles
+data-frames-tibbles-and-exploring-data
 welcome-to-the-tidyverse
 install
 the-data
@@ -89,4 +89,3 @@ graphing-in-r
 r-based-technologies
 selected-glossary-of-r-terminology
 packages-and-functions-used
-data-frames-tibbles-and-exploring-data

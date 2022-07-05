@@ -772,11 +772,15 @@ Looking at the output we see the index of vaccinated people is elements `1, 2, a
 ```{r}
     vaxInd <- c(1,2,5)
     patients[vaxInd] # this line is saying patients[c(1,2,5)]
+```
+
+Now we can assign this vector to an object `vax_patients` to quickly look at our vaccinated patients.
+```{r}
     vax_patients <- patients[vaxInd]
     vax_patients
 ```
 
-That was great! The problem with this approach is that if we're in the real world and have a patient population of 1000 it will be really hard to go through our vax_status and see who has `vax_status` is `TRUE`. Fortunately there is a way to deal with this! Using conditional subsetting We could equivalently have written:
+That was great! The problem with this approach is that if we're in the real world and have a patient population of 1000 it will be really hard to go through our vax_status vector and see who has `vax_status` is `TRUE`. Fortunately there is a way to deal with this! Using conditional subsetting We could equivalently have written:
 
 ```{r}
     patients[vax_status == TRUE]
@@ -785,12 +789,21 @@ That was great! The problem with this approach is that if we're in the real worl
 This output keeps the NA's in there and that is not helpful since we only want to know who is vaccinated. Instead we can add a second condition! This condition is awesome because we can now show off our skills of working with missing data!
 
 ```{r}
-    patients[vax_status == TRUE & !is.na(vax_status)]
+patients[vax_status == TRUE & !is.na(vax_status)]
+```
+
+Another thing we can do is to assign our logical expression to an object so we can index our vector using it but also index other data structures like data frames which we are about to learn about. To do this would be like this:
+
+```{r}
+# assign logical expression to an object
+are_vaccinated <- vax_status == TRUE & !is.na(vax_status)
+# subset the vector according to the logical expression via using the object.
+patients[are_vaccinated]
 ```
 
 ## Data frames, Tibbles and Exploring Data
 
-Data frames are another VIP data structure in R. Vectors are one dimensional data structures. A data frame is two
+Data frames are another VIP data structure in R. While vectors are one dimensional data structures. Data frames are two
 dimensional (often called tabular or rectangular data). This is similar
 to data as you might be used to seeing it in a spreadsheet. You can
 think of a data frame as consisting of columns of vectors. As
