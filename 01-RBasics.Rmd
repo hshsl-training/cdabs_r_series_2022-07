@@ -814,8 +814,9 @@ A tibble is a particular class of data frame which is common in the
 printing properties and because they are less likely try to change the
 data type of columns on import (e.g. from character to factor).
 
-Since vectors form the columns of data frames, we can take the vectors
-we created for our patient data and combine them together in a data
+### Creating data frames
+Data frames are usually created by reading in a dataset using the `read.table()` or `read.csv()` which we will cover in our next session. However, data frames can also be created explicitly with the `data.frame()` function or they can be coerced from other types of objects like lists.
+Now that we know vectors form the columns of data frames, we can take the vectors we created for our patient data and combine them together in a data
 frame.
 
 ```{r}
