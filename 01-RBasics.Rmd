@@ -152,6 +152,8 @@ recommend downloading RStudio for regular use, we will be using RStudio
 Cloud for these workshops so we can easily share files and packages with
 you.
 
+To sign up visit https://rstudio.cloud/plans/free.
+
 ## Using this book
 
 **For these instructions code will appear in the gray box as follows:**
@@ -257,7 +259,7 @@ That last example was kind of abstract. So let's look at a more
 practical example.
 
 Let's do some calculations with the population of Maryland. First we can
-save the population number to an object. We will call it `md_pop`
+save the population number ^[Population data from https://www.census.gov/quickfacts/MD] to an object. We will call it `md_pop`
 because that is short, descriptive, and easy to remember.
 
 ```{r}
