@@ -258,7 +258,7 @@ information see:
 That last example was kind of abstract. So let's look at a more
 practical example.
 
-Let's do some calculations with the population of Maryland. First we can
+Let's do some calculations with the population of Maryland ^[Population data from https://www.census.gov/quickfacts/MD]. First we can
 save the population number to an object. We will call it `md_pop`
 because that is short, descriptive, and easy to remember.
 
@@ -267,22 +267,18 @@ md_pop <- 6165129
 ```
 
 What percentage of the Maryland population is over 18? According to the
-Census Bureau, 78% of the Maryland population is over 18. We can use
+Census Bureau ^[ibid], 78% of the Maryland population is over 18. We can use
 that to calculate the number of adults in Maryland.
 
 ```{r}
 md_adult_pop <- .78 * md_pop
 ```
 
-Next, maybe we are interested in how many adults in Maryland have been
-fully vaccinated for COVID-19. As of late June 2022 that number is 4.04
-million. While 4.67 million of all ages have been vaccinated in
-Maryland. So let's create two more objects:
+Next, we want to know what percentage of people in Maryland have been fully vaccinated for COVID-19. As of late June 2022 4.68 million people of all ages have been vaccinated in
+Maryland. So let's create another object:
 
 ```{r}
-md_adult_vax_pop <- 4040413 
 md_vax_pop <- 4674111
-
 ```
 
 Now we can calculate the percentage of the Maryland population that is
