@@ -267,15 +267,15 @@ md_pop <- 6165129
 ```
 
 What percentage of the Maryland population is over 18? According to the
-Census Bureau ^[ibid], 78% of the Maryland population is over 18. We can use
+Census Bureau ^[Population data from https://www.census.gov/quickfacts/MD], 78% of the Maryland population is over 18. We can use
 that to calculate the number of adults in Maryland.
 
 ```{r}
 md_adult_pop <- .78 * md_pop
 ```
 
-Next, we want to know what percentage of people in Maryland have been fully vaccinated for COVID-19. As of late June 2022 4.68 million people of all ages have been vaccinated in
-Maryland. So let's create another object:
+Next, we want to know what percentage of people in Maryland have been fully vaccinated for COVID-19. As of early July 2022 4.68 million people of all ages have been vaccinated in
+Maryland ^[Vaccination information from https://coronavirus.maryland.gov/#Vaccine]. So let's create another object:
 
 ```{r}
 md_vax_pop <- 4682799
