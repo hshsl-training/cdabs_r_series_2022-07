@@ -278,16 +278,13 @@ Next, we want to know what percentage of people in Maryland have been fully vacc
 Maryland. So let's create another object:
 
 ```{r}
-md_vax_pop <- 4674111
+md_vax_pop <- 4682799
 ```
 
 Now we can calculate the percentage of the Maryland population that is
 vaccinated.
 
 ```{r}
-percent_adult_vax <- (md_adult_vax_pop / md_adult_pop) * 100
-percent_adult_vax
-
 percent_vax <- (md_vax_pop / md_pop) * 100
 percent_vax
 ```
