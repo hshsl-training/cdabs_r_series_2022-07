@@ -267,32 +267,27 @@ md_pop <- 6165129
 ```
 
 What percentage of the Maryland population is over 18? According to the
-Census Bureau, 78% of the Maryland population is over 18. We can use
+Census Bureau ^[ibid.], 78% of the Maryland population is over 18. We can use
 that to calculate the number of adults in Maryland.
 
 ```{r}
 md_adult_pop <- .78 * md_pop
 ```
 
-Next, maybe we are interested in how many adults in Maryland have been
-fully vaccinated for COVID-19. As of late June 2022 that number is 4.04
-million. While 4.67 million of all ages have been vaccinated in
-Maryland. So let's create two more objects:
+Next, we want to know what percentage of people in Maryland been
+fully vaccinated for COVID-19. As of late July 2022, 4.68 million people of all ages have been fully vaccinated in
+Maryland ^[Vaccination data from https://coronavirus.maryland.gov/#Vaccine]. Let's save that number in an object.
 
 ```{r}
-md_adult_vax_pop <- 4040413 
-md_vax_pop <- 4674111
-
+md_vax_pop <- 4682799
 ```
 
 Now we can calculate the percentage of the Maryland population that is
 vaccinated.
 
 ```{r}
-percent_adult_vax <- (md_adult_vax_pop / md_adult_pop) * 100
-percent_adult_vax
-
 percent_vax <- (md_vax_pop / md_pop) * 100
+
 percent_vax
 ```
 
@@ -569,7 +564,7 @@ Let's say that we have a group of patients in our clinic. We can store
 their names in a vector.
 
 ```{r create-vector}
-    patients <- c("Maria", "John", "Ali", "Luis", "Mei" )
+    patients <- c("Maria", "Jon", "Ali", "Luis", "Mei" )
 
     patients
 ```
@@ -585,16 +580,15 @@ patients
 Maybe we also want to store the weights of these patients. Since these
 are their weights in pounds, we will call our object `weight_lb`
 
-```{r}
+```{r create-numeric-vector}
 weight_lb <- c(122, 320, 217, 142, 174, 252)
 
 weight_lb
 ```
 
-So far, we have created vectors of two different *data types*: character
-and numeric.
+So far, we have created vectors of two different *data types*: character and numeric.
 
-You can do arithmatic with numeric vectors. For example, let's convert
+You can do arithmetic with numeric vectors. For example, let's convert
 the weight of our patients in lbs to the the weight in kilograms by
 multiplying each weight in lbs by 2.2.
 
@@ -755,10 +749,10 @@ Access elements of a vector with `[ ]`, for example
     patients[4]
 ```
 
-You can also assign to a specific element of a vector.
+You can also assign to a specific element of a vector. Looking over our list, we realize we mispelled John's name. Let's fix that now.
 
 ```{r}
-    patients[2] <- "Jon"
+    patients[2] <- "John"
     patients
 ```
 
