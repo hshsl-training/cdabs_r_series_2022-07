@@ -12,6 +12,9 @@ using-this-book
 working-in-the-console
 objects
 creating-objects
+working-with-objects
+naming-objects
+challenge
 saving-code-in-an-r-script
 setting-your-working-directory
 functions-and-their-arguments
@@ -19,11 +22,15 @@ getting-help
 challenge-using-functions
 packages
 vectors
+what-is-a-vector
+working-with-vectors
 missing-data
-mixing-types
+mixing-data-types
 indexing-and-subsetting-vectors
 data-frames-tibbles-and-exploring-data
 creating-data-frames
+exploring-data-frames
+exercises
 welcome-to-the-tidyverse
 install
 the-data
