@@ -115,17 +115,9 @@ command line interface, the ideal environment to work in R is RStudio.
 
 ### RStudio
 
-We will be working in
-[RStudio](https://www.rstudio.com/products/rstudio/download/). The
-easiest way to get started is to go to [RStudio
-Cloud](https://rstudio.cloud/) and create a new project.
+[RStudio](https://www.rstudio.com/products/rstudio/download/) is a user interface for working with R. It is called an Integrated Development Environment (IDE): a piece of software that provides tools to make programming easier. RStudio acts as a sort of wrapper around the R language. You can use R without RStudio, but it’s much more limiting. RStudio makes it easier to import datasets, create and write scripts, and makes using R much more effective. RStudio is also free and open source. To function correctly, RStudio needs R and therefore both need to be installed on your computer. But for this class we'll be using a browser based version called RStudio Cloud (see directions in the [RStudio Cloud] section below.)
 
-The main way of working with R is the *console*, where you enter
-commands and view results. RStudio surrounds this with various
-conveniences. In addition to the console panel, RStudio provides panels
-containing:
-
-Studio is divided into four "panes". The placement of these panes and
+RStudio is divided into four "panes". The placement of these panes and
 their content can be customized (see menu, Tools -\> Global Options -\>
 Pane Layout).
 
@@ -152,7 +144,13 @@ recommend downloading RStudio for regular use, we will be using RStudio
 Cloud for these workshops so we can easily share files and packages with
 you.
 
-Create your free RStudio Cloud account at https://rstudio.cloud/plans/free.
+Get Started:
+
+1.  Create your free RStudio Cloud account at
+    <https://rstudio.cloud/plans/free>.
+2.  Go to the class project <https://rstudio.cloud/content/4241048>
+3.  Note the text that marks this as a Temporary Copy. Select the
+    `Save a Permanent Copy` button to begin working!
 
 ## Using this book
 
@@ -255,27 +253,40 @@ information see:
 <https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects>
 :::
 
+### Working with Objects
+
 That last example was kind of abstract. So let's look at a more
 practical example.
 
-Let's do some calculations with the population of Maryland ^[Population data from https://www.census.gov/quickfacts/MD]. First we can
-save the population number to an object. We will call it `md_pop`
-because that is short, descriptive, and easy to remember.
+Let's do some calculations with the population of Maryland [^rbasics-1].
+First we can save the population number to an object. We will call it
+`md_pop` because that is short, descriptive, and easy to remember.
+
+[^rbasics-1]: Population data from
+    <https://www.census.gov/quickfacts/MD>
 
 ```{r}
 md_pop <- 6165129
 ```
 
 What percentage of the Maryland population is over 18? According to the
-Census Bureau ^[Population data from https://www.census.gov/quickfacts/MD], 78% of the Maryland population is over 18. We can use
-that to calculate the number of adults in Maryland.
+Census Bureau [^rbasics-2], 78% of the Maryland population is over 18.
+We can use that to calculate the number of adults in Maryland.
+
+[^rbasics-2]: Population data from
+    <https://www.census.gov/quickfacts/MD>
 
 ```{r}
 md_adult_pop <- .78 * md_pop
 ```
 
-Next, we want to know what percentage of people in Maryland have been fully vaccinated for COVID-19. As of early July 2022 4.68 million people of all ages have been vaccinated in
-Maryland ^[Vaccination information from https://coronavirus.maryland.gov/#Vaccine]. So let's create another object:
+Next, we want to know what percentage of people in Maryland have been
+fully vaccinated for COVID-19. As of early July 2022 4.68 million people
+of all ages have been vaccinated in Maryland [^rbasics-3]. So let's
+create another object:
+
+[^rbasics-3]: Vaccination information from
+    <https://coronavirus.maryland.gov/#Vaccine>
 
 ```{r}
 md_vax_pop <- 4682799
@@ -304,17 +315,18 @@ percent_vax <- (md_vax_pop / md_pop) * 100
 percent_vax
 ```
 
-You will make lots of assignments and `<-` is a pain to type. Avoid the
-temptation to use `=`: it will work, but it will cause confusion later.
-Instead, use RStudio's keyboard shortcut: <kbd>`Alt + -`</kbd> (the
-minus sign).
+::: {.shaded .tip data-latex=""}
+**Tip**<br> You will make lots of assignments and `<-` is a pain to
+type. Avoid the temptation to use `=`: it will work, but it will cause
+confusion later. Instead, use RStudio's keyboard shortcut:
+<kbd>`Alt + -`</kbd> (the minus sign).
 
 Notice that RStudio automagically surrounds `<-` with spaces, which is a
 good code formatting practice. Code is miserable to read on a good day,
 so giveyoureyesabreak and use spaces.
+:::
 
-::: {.shaded .important data-latex=""}
-**Naming Objects** <br>
+### Naming Objects
 
 The name for objects must start with a letter, and can only contain
 letters, numbers, underscores (`_`)and periods (`.`). The name of the
@@ -326,10 +338,28 @@ abbreviation in the middle of the phrase begins with a capital letter,
 with no intervening spaces or punctuation and the first letter is
 lowercase.
 
+```
     thisIsCamelCase
     some_use_snake_case
     others.use.periods                  #avoid
     Others_pRefer.to_RENOUNCEconvention #avoid
+
+```
+
+### Challenge
+
+::: {.shaded .question data-latex=""}
+**Question** <br> Earlier you created an object called `md_adult_pop`
+which used Census data to calculate the number of adults living in
+Maryland. According to the CDC^[Centers for Disease Control and Prevention. COVID Data Tracker. Atlanta, GA: US Department of Health and Human Services, CDC; 2022, July 06. https://covid.cdc.gov/covid-data-tracker], 4040544 adults in Maryland have been
+fully vaccinated against COVID-19.
+
+1. Assign the number of fully
+vaccinated adults in Maryland to a new object. 
+2. Use the new object
+together with `md_adult_pop` to calculate the percentage of adults in
+Maryland who are fully vaccinated. Save this to an object called
+`md_adult_percent_vax`.
 :::
 
 ## Saving code in an R script
@@ -361,7 +391,7 @@ character. This makes it easier for others to follow what the code is
 doing (and also for us the next time we come back to it).
 :::
 
-### Setting your Working Directory
+## Setting your Working Directory
 
 The working directory is the location within which R points to the files
 system. RStudio sets up a default working directory, typically the home
@@ -442,10 +472,12 @@ numerical value.
 round(percent_vax)
 ```
 
-Here, we've called `round()` on our percent_vax object and it returned `r round(percent_vax)`. That's because the default action of the function is to round to the
-nearest whole number. If we want more digits we can see how to do that
-by getting information about the `round` function. We can use
-`args(round)` or look at the help for this function using `?round`.
+Here, we've called `round()` on our percent_vax object and it returned
+`r round(percent_vax)`. That's because the default action of the
+function is to round to the nearest whole number. If we want more digits
+we can see how to do that by getting information about the `round`
+function. We can use `args(round)` or look at the help for this function
+using `?round`.
 
 ```{r, results='show', purl=FALSE}
 args(round)
@@ -479,8 +511,11 @@ to understand what you're doing.
 
 ### Getting Help
 
-In the previous example we looked up the arguments to `round()` using `args(round)` alternatively we couldve looked at the help page for `round()` to find this out with `?round`. 
-To get help about a particular package or function you can access the help pane in RStudio and type its name in the search box.
+In the previous example we looked up the arguments to `round()` using
+`args(round)` alternatively we couldve looked at the help page for
+`round()` to find this out with `?round`. To get help about a particular
+package or function you can access the help pane in RStudio and type its
+name in the search box.
 
 ```{r echo=F,out.width="80%"}
 knitr::include_graphics("images/help.png")
@@ -546,7 +581,8 @@ time you start a new session.
 
 ## Vectors
 
-A *vector* is a collection of values. "Vector" means different things in
+### What is a Vector?
+**"Vector"** means different things in
 different fields (mathematics, geometry, biology), but in R it is a
 fancy name for a collection of values. We call the individual values
 *elements* of the vector. It is one of the most common data structures
@@ -558,11 +594,12 @@ are vectors of length one. Many things that can be done with a single
 number can also be done with a vector. For example arithmetic can be
 done on vectors as it can be on single numbers.
 
-Let's say that we have a group of patients in our clinic. We can store
+### Working with Vectors
+Let's say that we have a group of patients in our clinic. (See info in patients_list.txt in  your project folder, or [download the file](https://osf.io/download/j2gv7/).) We can store
 their names in a vector.
 
 ```{r create-vector}
-    patients <- c("Maria", "John", "Ali", "Luis", "Mei" )
+    patients <- c("Maria", "Jon", "Ali", "Luis", "Mei" )
 
     patients
 ```
@@ -587,7 +624,7 @@ weight_lb
 So far, we have created vectors of two different *data types*: character
 and numeric.
 
-You can do arithmatic with numeric vectors. For example, let's convert
+You can do arithmetic with numeric vectors. For example, let's convert
 the weight of our patients in lbs to the the weight in kilograms by
 multiplying each weight in lbs by 2.2.
 
@@ -623,14 +660,13 @@ patients at our clinic.
 mean(weight_lb)
 ```
 
-You can not do this with character vectors. Remember we used `c()` to
-add a value to our character vector.
+You will not be able to perform calculations with character vectors. 
 
 ```{r error=TRUE}
 patients + "Sue"
 ```
-
-You can combine two vectors together
+Remember we used `c()` to
+add a value to our character vector.
 
 ::: {.shaded .important data-latex=""}
 **Data Types** <br> There are numerous data types. Some of the other
@@ -640,7 +676,7 @@ vectors**. Read more about vectors and data types in the book [R for
 Data Science](https://r4ds.had.co.nz/vectors.html)
 :::
 
-Another common data type is logical data. Logical data is the
+Now let's try working with some logical data. Logical data is the
 values`TRUE`, `FALSE`, or `NA`
 
 We want to record if our patients have been fully vaccinated. We will
@@ -702,18 +738,8 @@ For more on how to work with missing data, check out this [Data
 Carpentry
 lesson](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html#Missing_data)
 
-::: {.shaded .tip data-latex=""}
-**Factors**<br> Another important type of vector is a **factor**.
-Factors are a way that R stores categorical variables. In a factor, the
-levels of a categorical value are mapped onto an vector of integers,
-much like if you were coding responses to a survey. So, it is important
-to be careful because factors look like character data, but need to be
-treated like numeric data. For more on factors check out the Software
-Carpentry [lesson on
-R](https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors/index.html)
-:::
 
-### Mixing types
+### Mixing Data Types
 
 We said above that vectors are supposed to have only one data type, but
 what happens if we mix multiple data types in one vector?
@@ -723,12 +749,16 @@ what it does.
 
 ::: {.shaded .question data-latex=""}
 **Questions**<br>
+What will happen in each of these examples? Try running this code to see! 
 
-Create a vector with some patient names and weights together. What
-happens? What if you combine names and vax status? All three?
+1. `patient <- c("Maria", 122, TRUE)`
+2. `name_weight <- c("John", 320, 145)`
+3. `weight_status <- c(217, 99, FALSE)`
+
+Why do you think this happens?
 :::
 
-Because vectors can only contain one type of thing, R chooses a lowest
+Because vectors can only contain one type of data, R chooses a lowest
 common denominator type of vector, a type that can contain everything we
 are trying to put in it. A different language might stop with an error,
 but R tries to soldier on as best it can. A number can be represented as
@@ -748,46 +778,66 @@ Access elements of a vector with `[ ]`, for example
     patients[4]
 ```
 
-You can also assign to a specific element of a vector.
+You can also assign to a specific element of a vector. We realize that
+we misspelled the name of our patient John, so we can overwrite our old
+value by assigning a new name to that element in our vector.
 
 ```{r}
-    patients[2] <- "Jon"
+    patients[2] <- "John"
     patients
 ```
 
-Can we use a vector to index another vector? Yes! 
+Can we use a vector to index another vector? Yes!
 
-Lets say we want to know which of our patients have been vaccinated. We know the vaccination status because we have a vector named `vax_status`  lets look at it
+Lets say we want to know which of our patients have been vaccinated. We
+know the vaccination status because we have a vector named `vax_status`
+lets look at it
+
 ```{r}
 vax_status
 ```
 
-Looking at the output we see the index of vaccinated people is elements `1, 2, and 5`. or where `vax_status` is `TRUE` in the output. We can use this numerical index to subset another from our vector `patients` which will give us a result that we'll assign to a new object `vax_patients`.
+Looking at the output we see the index of vaccinated people is elements
+`1, 2, and 5`. or where `vax_status` is `TRUE` in the output. We can use
+this numerical index to subset another from our vector `patients` which
+will give us a result that we'll assign to a new object `vax_patients`.
 
 ```{r}
     vaxInd <- c(1,2,5)
     patients[vaxInd] # this line is saying patients[c(1,2,5)]
 ```
 
-Now we can assign this vector to an object `vax_patients` to quickly look at our vaccinated patients.
+Now we can assign this vector to an object `vax_patients` to quickly
+look at our vaccinated patients.
+
 ```{r}
     vax_patients <- patients[vaxInd]
     vax_patients
 ```
 
-That was great! The problem with this approach is that if we're in the real world and have a patient population of 1000 it will be really hard to go through our vax_status vector and see who has `vax_status` is `TRUE`. Fortunately there is a way to deal with this! Using conditional subsetting We could equivalently have written:
+That was great! The problem with this approach is that if we're in the
+real world and have a patient population of 1000 it will be really hard
+to go through our vax_status vector and see who has `vax_status` is
+`TRUE`. Fortunately there is a way to deal with this! Using conditional
+subsetting We could equivalently have written:
 
 ```{r}
     patients[vax_status == TRUE]
 ```
 
-This output keeps the NA's in there and that is not helpful since we only want to know who is vaccinated. Instead we can add a second condition! This condition is awesome because we can now show off our skills of working with missing data!
+This output keeps the NA's in there and that is not helpful since we
+only want to know who is vaccinated. Instead we can add a second
+condition! This condition is awesome because we can now show off our
+skills of working with missing data!
 
 ```{r}
 patients[vax_status == TRUE & !is.na(vax_status)]
 ```
 
-Another thing we can do is to assign our logical expression to an object so we can index our vector using it but also index other data structures like data frames which we are about to learn about. To do this would be like this:
+Another thing we can do is to assign our logical expression to an object
+so we can index our vector using it but also index other data structures
+like data frames which we are about to learn about. To do this would be
+like this:
 
 ```{r}
 # assign logical expression to an object
@@ -798,12 +848,13 @@ patients[are_vaccinated]
 
 ## Data frames, Tibbles, and Exploring Data
 
-Data frames are another VIP data structure in R. While vectors are one dimensional data structures. Data frames are two
-dimensional (often called tabular or rectangular data). This is similar
-to data as you might be used to seeing it in a spreadsheet. You can
-think of a data frame as consisting of columns of vectors. As
-vectors,each column in a data frame is of one data type, but the data
-frame over all can hold multiple data types.
+Data frames are another VIP data structure in R. While vectors are one
+dimensional data structures. Data frames are two dimensional (often
+called tabular or rectangular data). This is similar to data as you
+might be used to seeing it in a spreadsheet. You can think of a data
+frame as consisting of columns of vectors. As vectors,each column in a
+data frame is of one data type, but the data frame over all can hold
+multiple data types.
 
 ```{r echo=F, }
 knitr::include_graphics("images/data-frame.png")
@@ -815,9 +866,14 @@ printing properties and because they are less likely try to change the
 data type of columns on import (e.g. from character to factor).
 
 ### Creating data frames
-Data frames are usually created by reading in a dataset using the `read.table()` or `read.csv()` which we will cover in our next session. However, data frames can also be created explicitly with the `data.frame()` function or they can be coerced from other types of objects like lists.
-Now that we know vectors form the columns of data frames, we can take the vectors we created for our patient data and combine them together in a data
-frame.
+
+Data frames are usually created by reading in a dataset using the
+`read.table()` or `read.csv()` which we will cover in our next session.
+However, data frames can also be created explicitly with the
+`data.frame()` function or they can be coerced from other types of
+objects like lists. Now that we know vectors form the columns of data
+frames, we can take the vectors we created for our patient data and
+combine them together in a data frame.
 
 ```{r}
 patient_data <- data.frame(patients, weight_lb, weight_kg, vax_status)
@@ -967,3 +1023,23 @@ subset_variants_low_qual <- subset_variants[low_qual_idX, ]
 head(subset_variants_low_qual)
 ```
 
+## Exercises
+
+1. Open a new R script. Save it to your project folder. Use this script to record the answers to the exercises
+2. Use a comment to indicate the exercise number you are answering.
+3. Create an object with the value of your name.
+4. Create an object with the value of your age. 
+5. Determine the data type of each of the two objects you created above with the `class()` function.
+6. Use one of the strategies you learned in [Getting Help] to look up what the `rm()` function does. How would you use this on the objects you created in Questions 3 and 4?
+7. Create a vector of the following names: Marcia, Jan, Cindy. Assign this to an object called `brady_girls`. 
+8. Create another vector of the following names: Greg, Peter, Bobby. Assign this to an object called `brady_boys`.
+9. Combine the `brady_girls` and `brady_boys` vectors together and assign to an object called `brady_bunch`.
+10. How would you subset the 4th element in the `brady_bunch` vector?
+11. Use the `library()` function to load the package called `datasets`. This package contains a number of example datasets you can use for practice. 
+12. Use `head()` to look at the beginning of the dataset called `ToothGrowth`.
+13. How would you find the number of columns and rows in `ToothGrowth`? How would you find summary information about this dataset?
+14. Use bracket notation to select the item in the 5th row and 2nd column of `ToothGrowth`.
+15. Use bracket notation to select the 5th through 10th rows of `ToothGrowth`.
+16. Use dollar sign notation to look at the `len` column of `ToothGrowth`. 
+17. Find the mean of the `len` column.
+18. Use logical subsetting to save all the rows where the value in the `supp` column is `OJ`. Assign this to a new object.
