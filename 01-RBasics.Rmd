@@ -846,7 +846,7 @@ are_vaccinated <- vax_status == TRUE & !is.na(vax_status)
 patients[are_vaccinated]
 ```
 
-## Data frames, Tibbles and Exploring Data
+## Data frames, Tibbles, and Exploring Data
 
 Data frames are another VIP data structure in R. While vectors are one
 dimensional data structures. Data frames are two dimensional (often
@@ -879,6 +879,148 @@ combine them together in a data frame.
 patient_data <- data.frame(patients, weight_lb, weight_kg, vax_status)
 
 patient_data
+```
+
+### Exploring data frames
+
+```{r read_variants_file, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+variants <- readr::read_csv("https://osf.io/download/a325n/")
+```
+
+Now we will look at ways to explore the contents of a data frame. For this part of the lesson we will use an object `variants`, which is a data frame, that has been pre-loaded in your RStudio Cloud project. To access this object locate `/cloud/project/data/variants.rds` in the file viewer and click on it. In the dialog box that pops up select "OK" In the next session you will learn how to load data in to R but for now we have done this for you so you can focus on learning about exploring data frames. 
+
+The `variants` object is a dataset that comes from a real world experiment in E. Coli, you can find out more about the study in the (Tenaillon et al 2016)[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/] paper ^[Tenaillon O, Barrick JE, Ribeck N, Deatherage DE, Blanchard JL, Dasgupta A, Wu GC, Wielgoss S, Cruveiller S, Médigue C, Schneider D, Lenski RE. Tempo and mode of genome evolution in a 50,000-generation experiment (2016) Nature. 536(7615): 165–170. Paper, Supplemental materials Data on NCBI SRA: https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP064605 Data on EMBL-EBI ENA: https://www.ebi.ac.uk/ena/data/view/PRJNA295606]. The `variants` object is tabular version of a specialized genomics file type called a VCF file. VCF files are the output of a bioinformatics pipeline that starts with FASTQ files that come from a sequencer and ends with a VCF File. This pipeline typically happens outside of R and RStudio.
+
+Your initial instinct with working with this object is to want to see it in a familiar spreadsheet form. The `View()` function gives us a spreadsheet-like view of the data frame.
+
+```{r view_variants, eval=FALSE}
+View(variants)
+```
+
+Using the `summary()` function  and, we can learn a lot about the `variants` data frame including some summary statistics. Let’s examine what this function can tell us:
+```{r}
+## get summary statistics on a data frame
+
+summary(variants)
+```
+
+The original dataset had 29 variables, so we get 29 fields that summarize the data for each variable. The `QUAL`, `IMF`, and `VDB` variables (and several others) are numerical data and so you get summary statistics on the min and max values for these columns, as well as mean, median, and interquartile ranges. Many of the other variables (e.g. `sample_id`) are treated as characters data (more on this in a bit).
+
+Running the name `variants` of the data frame in the console alone shows the first 10 rows, `print()` with the `n` argument can be used to show more than the first 10 rows on the console. Keep in mind this allows you to only see the number of variables that fit in the width of your console. So wider console window allows to see more variables.
+```{r print_variants, eval=FALSE}
+print(variants, n = 25)
+```
+
+If its the variable names you're after you can do that with `names()` or `colnames()`
+```{r}
+colnames(variants) # you could also use names()
+```
+
+You have access to details about the number of columns and rows also:
+```{r}
+# number of rows in variants
+nrow(variants)
+
+# number of columns in variants
+ncol(variants)
+```
+
+**Subsetting data frames**
+Similar to subsetting vectors using bracket syntax `[]`, data frames can be subset using `[row,column]`. You can provide single dimensions to `row` and `column` or variations.
+
+```{r}
+variants[4, 5]
+```
+
+While the output of this subset is a single value the output is considered a data frame. This is typical of tibbles. 
+
+You can use a column name (in quotes and literally the name of the variable) to subset instead of a number (numerical index):
+
+```{r}
+variants[4, "REF"]
+```
+
+The column or row may be omitted to retrieve the entire row or column.
+```{r}
+variants[4,]
+
+variants[, "REF"]
+```
+
+You can use a vector to retrieve specific rows or columns you may want. This vector can be a named object or created on the spot and passed as an argument in the subsetting.
+
+```{r}
+# subset a range of rows using `colon :`
+variants[35:45, ]
+```
+
+```{r}
+columns_desired <- c(1:3,6:7, 9)
+variants[, columns_desired] # same as variants[,c(1:3,6:7, 9)]
+```
+
+You might be interested in working with a new object that is just your subset from the main data frame. You can do this!
+```{r}
+# put the first three columns, column 6, column 7 and column 9 of variants into a new data frame called subset_variants
+
+subset_variants <- variants[,c(1:3,6:7, 9)]
+```
+
+Lets use `str()` to explore a bit more in depth how data frames work by looking at the "structure" of `subset_variants`.
+
+```{r}
+str(subset_variants)
+```
+
+Ok, thats a lot to unpack! Some things to notice.
+
+In the output of `str()` we see the object type `tibble (S3: tbl_df/tbl/data.frame)` is displayed in the first row along with its dimensions `[801 × 6]`, in this case 801 observations (rows) and 6 variables (columns). Each variable (column) has a name (e.g. `sample_id`). This is followed by the object mode (e.g. `chr`, `num`, etc.). Notice that before each variable name there is a `$` - lets look at this a little more since this is another way we can subset.
+
+So far we have used numbers to retrieve columns from our data frames however you might prefer using the column name. To use a name we can use `$` to retrieve columns. Occasionally it is also useful to use `[[ ]]` to retrieve columns, for example if the column name we want is stored in a variable.
+
+```{r}
+# extract the "ALT" column to a new object
+
+alt_alleles <- subset_variants$ALT
+```
+
+Lets look at the first few rows of `alt_alleles` using `head()`
+```{r}
+head(alt_alleles)
+```
+
+This could have also been written using the double bracket notation
+
+```{r}
+double_bracket_ALT <- subset_variants[["ALT"]]
+# look at the first fiew rows of it
+head(double_bracket_ALT)
+```
+
+To get the `ALT` value for row `4` we could use a mix of `$` and bracket `[]` subsetting.
+```{r}
+subset_variants$ALT[4]
+```
+(you may notice at this point were using bracket notation on a vector because the output of a `$` subsetting is a vector, data frames are made up of columns of vectors!!!)
+
+**Logical Subsetting(Indexing)**
+We have already used logical indexing for subsetting a vector. Lets briefly look at an example of doing this with a data frame. Imagine that you want to have a data frame `subset_variants_low_qual` that is records from  `subset_variants` that have very low quality scores.
+```{r logical_index_DF}
+low_qual_idX <- subset_variants$QUAL < 139
+
+# take a peak at the head of this
+head(low_qual_idX)
+# how many are TRUE?
+sum(low_qual_idX)
+```
+
+`sum` treats `TRUE` as 1 and `FALSE` as 0, so it tells us the number of TRUE elements in the vector (`low_qual_idx`).
+
+We can use this logical vector to get the subset data frame `subset_variants_low_qual` that is only variants below the threshold we set.
+```{r}
+subset_variants_low_qual <- subset_variants[low_qual_idX, ]
+# take a look at the subset confirming with the first few values that they are below the threshold
+head(subset_variants_low_qual)
 ```
 
 ## Exercises
