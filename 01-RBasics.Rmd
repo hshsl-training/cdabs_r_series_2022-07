@@ -1067,7 +1067,6 @@ This isn’t a particularly pretty example of a plot but it works!
 If you recall, factors are ordered alphabetically. That might make sense, but categories (e.g., “red”, “blue”, “green”) often do not have an intrinsic order. What if we wanted to order our plot according to the numerical value (i.e., in order of SNP frequency)? We can enforce an order on our factors and plot again!:
 ```{r}
 snps_variants$ordered_factor_snps <- factor(snps_variants$ALT, levels = names(sort(table(snps_variants$ALT))))
-plot(snps_variants$ordered_factor_snps)
 
 ```
 Let’s deconstruct this from the inside out (you can try each of these commands to see why this works):

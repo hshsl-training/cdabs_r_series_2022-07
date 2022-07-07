@@ -30,6 +30,7 @@ indexing-and-subsetting-vectors
 data-frames-tibbles-and-exploring-data
 creating-data-frames
 exploring-data-frames
+quickly-exploring-data-with-plots
 exercises
 welcome-to-the-tidyverse
 install
