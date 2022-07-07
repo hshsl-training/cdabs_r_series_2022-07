@@ -1026,7 +1026,7 @@ combine them together in a data frame.</p>
 </div>
 <div id="exploring-data-frames" class="section level3 hasAnchor" number="2.12.2">
 <h3><span class="header-section-number">2.12.2</span> Exploring data frames<a href="introduction-to-r-and-rstudio.html#exploring-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now we will look at ways to explore the contents of a data frame. For this part of the lesson we will use an object <code>variants</code>, which is a data frame, that has been pre-loaded in your RStudio Cloud project. To access this object locate <code>/cloud/project/data/variants.rds</code> in the file viewer and click on it. In the dialog box that pops up select “OK” In the next session you will learn how to load data in to R but for now we have done this for you so you can focus on learning about exploring data frames.</p>
+<p>Now we will look at ways to explore the contents of a data frame. For this part of the lesson we will use an object <code>variants</code>, a data frame, that has been pre-loaded in your RStudio Cloud project as a <code>.rds</code> object, this is a binary Rdata file. To access this object locate <code>/cloud/project/data/variants.rds</code> in the file viewer and click on it. In the dialog box that pops up select “OK” In the next session you will learn how to load data in to R but for now we have done this for you so you can focus on learning about exploring data frames.</p>
 <p>The <code>variants</code> object is a dataset that comes from a real world experiment in E. Coli, you can find out more about the study in the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/">Tenaillon et al 2016</a> paper <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. The <code>variants</code> object is tabular version of a specialized genomics file type called a VCF file. VCF files are the output of a bioinformatics pipeline that starts with FASTQ files that come from a sequencer and ends with a VCF File. This pipeline typically happens outside of R and RStudio.</p>
 <p>Your initial instinct with working with this object is to want to see it in a familiar spreadsheet form. The <code>View()</code> function gives us a spreadsheet-like view of the data frame.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="introduction-to-r-and-rstudio.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(variants)</span></code></pre></div>
@@ -1090,7 +1090,7 @@ combine them together in a data frame.</p>
 ##                     3rd Qu.:  2550   3rd Qu.:1                     
 ##                     Max.   :255156   Max.   :1                     
 ## </code></pre>
-<p>The original dataset had 29 variables, so we get 29 fields that summarize the data for each variable. The <code>QUAL</code>, <code>IMF</code>, and <code>VDB</code> variables (and several others) are numerical data and so you get summary statistics on the min and max values for these columns, as well as mean, median, and interquartile ranges. Many of the other variables (e.g. <code>sample_id</code>) are treated as characters data (more on this in a bit).</p>
+<p>The original dataset had 29 variables, so we get 29 fields to look at in the <code>summary()</code> output that summarize the data for each variable. The <code>QUAL</code>, <code>IMF</code>, and <code>VDB</code> variables (and several others) are numerical data and so you get summary statistics on the min and max values for these columns, as well as mean, median, and interquartile ranges. Many of the other variables (e.g. <code>sample_id</code>) are treated as characters data (more on this in a bit).</p>
 <p>Running the name <code>variants</code> of the data frame in the console alone shows the first 10 rows, <code>print()</code> with the <code>n</code> argument can be used to show more than the first 10 rows on the console. Keep in mind this allows you to only see the number of variables that fit in the width of your console. So wider console window allows to see more variables.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="introduction-to-r-and-rstudio.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(variants, <span class="at">n =</span> <span class="dv">25</span>)</span></code></pre></div>
 <p>If its the variable names you’re after you can do that with <code>names()</code> or <code>colnames()</code></p>
@@ -1205,7 +1205,7 @@ Similar to subsetting vectors using bracket syntax <code>[]</code>, data frames 
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="introduction-to-r-and-rstudio.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the &quot;ALT&quot; column to a new object</span></span>
 <span id="cb117-2"><a href="introduction-to-r-and-rstudio.html#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb117-3"><a href="introduction-to-r-and-rstudio.html#cb117-3" aria-hidden="true" tabindex="-1"></a>alt_alleles <span class="ot">&lt;-</span> subset_variants<span class="sc">$</span>ALT</span></code></pre></div>
-<p>Lets look at the first few rows of <code>alt_alleles</code> using <code>head()</code></p>
+<p>Lets look at the first few elements of <code>alt_alleles</code> using <code>head()</code></p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="introduction-to-r-and-rstudio.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(alt_alleles)</span></code></pre></div>
 <pre><code>## [1] &quot;G&quot;         &quot;T&quot;         &quot;T&quot;         &quot;CTTTTTTTT&quot; &quot;CCGCGC&quot;    &quot;T&quot;</code></pre>
 <p>This could have also been written using the double bracket notation</p>
@@ -1263,123 +1263,13 @@ Factors are the final major data type we will introduce in this R lessons. Facto
 ## [14] &quot;T&quot;                                                       
 ## [15] &quot;A&quot;</code></pre>
 <p>There are 801 alleles (one for each row). To simplify, lets look at just the single-nuleotide alleles (SNPs). Before doing so we can confirm that SNPs are the most abundant using <code>table()</code>, we will also sort the output decreasing</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="introduction-to-r-and-rstudio.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(subset_variants<span class="sc">$</span>ALT), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="introduction-to-r-and-rstudio.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(subset_variants<span class="sc">$</span>ALT), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## 
-##                                                        A 
-##                                                      211 
-##                                                        T 
-##                                                      203 
-##                                                        G 
-##                                                      154 
-##                                                        C 
-##                                                      139 
-##                                                  GCCCCCC 
-##                                                        6 
-##                                                 GCCCCCCC 
-##                                                        6 
-##                                                 CAAAAAAA 
-##                                                        4 
-##                                                 TCCCCCCC 
-##                                                        4 
-##                                                CAAAAAAAA 
-##                                                        3 
-##                                                 TGGGGGGG 
-##                                                        3 
-##                                                TGGGGGGGG 
-##                                                        3 
-##                                                       AC 
-##                                                        2 
-##                                                   ACCCCC 
-##                                                        2 
-##                                                ACCCCCCCC 
-##                                                        2 
-##                                                   AGGGGG 
-##                                                        2 
-##                                                  AGGGGGG 
-##                                                        2 
-##                                                 AGGGGGGG 
-##                                                        2 
-##                                                      ATT 
-##                                                        2 
-##                                                 ATTTTTTT 
-##                                                        2 
-##                                                   CCGCGC 
-##                                                        2 
-##                                                 CGGGGGGG 
-##                                                        2 
-##                                                  CTTTTTT 
-##                                                        2 
-##                                                CTTTTTTTT 
-##                                                        2 
-##                                                       GA 
-##                                                        2 
-##                                                 GAAAAAAA 
-##                                                        2 
-##                                                GCCCCCCCC 
-##                                                        2 
-##                                                     GTTT 
-##                                                        2 
-##                                                GTTTTTTTT 
-##                                                        2 
-##                                                  TCCCCCC 
-##                                                        2 
-##                                               TCCCCCCCCC 
-##                                                        2 
-##                     ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAG 
-##                                                        1 
-## ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCCAG 
-##                                                        1 
-##                                               AGCGCGCGCG 
-##                                                        1 
-##                                                      AGG 
-##                                                        1 
-##                                                AGGGGGGGG 
-##                                                        1 
-##                                               AGGGGGGGGG 
-##                                                        1 
-##                                                       AT 
-##                                                        1 
-##                                                ATTTTTTTT 
-##                                                        1 
-##                                                       CA 
-##                                                        1 
-##                                                   CAAAAA 
-##                                                        1 
-##                                              CAAAAAAAAAA 
-##                                                        1 
-##                                             CATGATGATGAT 
-##                                                        1 
-##                                                  CGGGGGG 
-##                                                        1 
-##                                               CTTTTTTTTT 
-##                                                        1 
-##                                                   GCCCCC 
-##                                                        1 
-##                                               GTTCTTCTTC 
-##                                                        1 
-##                                                 GTTTCGCT 
-##                                                        1 
-##                                                  GTTTTTT 
-##                                                        1 
-##                                                 GTTTTTTT 
-##                                                        1 
-##                                               GTTTTTTTTT 
-##                                                        1 
-##                                              GTTTTTTTTTT 
-##                                                        1 
-##                                                     TAAA 
-##                                                        1 
-##                                                   TAAAAA 
-##                                                        1 
-##                                                TAAAAAAAA 
-##                                                        1 
-##                                              TCCCCCCCCCC 
-##                                                        1 
-##                                                  TGGGGGG 
-##                                                        1 
-##                                               TGGGGGGGGG 
-##                                                        1</code></pre>
-<p>We can create a object <code>snps_variants</code> using a new type of subsetting with <code>%in%</code> that keeps rows corresponding to a vector of values in our case the values “A”, “C”, “G”, “T”.</p>
+##         A         T         G         C   GCCCCCC  GCCCCCCC  CAAAAAAA  TCCCCCCC 
+##       211       203       154       139         6         6         4         4 
+## CAAAAAAAA  TGGGGGGG 
+##         3         3</code></pre>
+<p>We can create a object <code>snps_variants</code> using another logical subsetting operator <code>%in%</code> that keeps rows corresponding to a vector of values in our case the values “A”, “C”, “G”, “T”.</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="introduction-to-r-and-rstudio.html#cb136-1" aria-hidden="true" tabindex="-1"></a>snps_variants <span class="ot">&lt;-</span> subset_variants[subset_variants<span class="sc">$</span>ALT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>) ,]</span></code></pre></div>
 <p>When we look at <code>str()</code> did this make our object a factor?</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="introduction-to-r-and-rstudio.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(snps_variants<span class="sc">$</span>ALT)</span></code></pre></div>
@@ -1393,7 +1283,6 @@ Factors are the final major data type we will introduce in this R lessons. Facto
 <div id="quickly-exploring-data-with-plots" class="section level3 hasAnchor" number="2.12.3">
 <h3><span class="header-section-number">2.12.3</span> Quickly exploring data with plots<a href="introduction-to-r-and-rstudio.html#quickly-exploring-data-with-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For very quick exploration of data, it’s sometimes useful to use the plotting functions in base R. These are installed by default with R and do not require any additional packages to be installed. They’re quick to type, straightforward to use in simple cases, and run very quickly.</p>
-<p>If you want to do anything beyond very simple plots, though, it’s generally better to switch to ggplot2 which you will learn in Session 3 of the CDABS summeR workshops.</p>
 <p>We will pick up with factors with our first example. One of the most common uses for factors will be when you plot categorical values. For example, suppose we want to know how many of our <code>snp_variants</code> had each possible SNP we could generate a plot:</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="introduction-to-r-and-rstudio.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(snps_variants<span class="sc">$</span>ALT)</span></code></pre></div>
 <p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-65-1.png" width="576" style="display: block; margin: auto;" />
@@ -1411,6 +1300,15 @@ This isn’t a particularly pretty example of a plot but it works!</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="introduction-to-r-and-rstudio.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(snps_variants<span class="sc">$</span>ordered_factor_snps)</span></code></pre></div>
 <p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-67-1.png" width="576" style="display: block; margin: auto;" />
 Wow! Adenine is the most frequent SNP in this data</p>
+<p>If you want to make a quick histogram you can pass a vector of values to <code>hist()</code>. To specify an approximate number of bins instead of the default you can add a <code>breaks</code> argument.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="introduction-to-r-and-rstudio.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(variants<span class="sc">$</span>QUAL)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-68-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="introduction-to-r-and-rstudio.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a clearer picture of the QUAL variable with more bins using `breaks=`</span></span>
+<span id="cb145-2"><a href="introduction-to-r-and-rstudio.html#cb145-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-3"><a href="introduction-to-r-and-rstudio.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(variants<span class="sc">$</span>QUAL, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-68-2.png" width="576" style="display: block; margin: auto;" /></p>
+<p>We have only covered 2 of the plots you can use to explore a dataset using Base R, we like these because they allow for quick checks of variables in the data. If you want to do anything beyond very simple plots, though, it’s generally better to switch to ggplot2 which you will learn in Session 3 of the CDABS summeR workshops!</p>
+<p>At this point you can review the material or continue to some exercises we have put together for you. Congratulations you made it to the end!</p>
 </div>
 </div>
 <div id="exercises" class="section level2 hasAnchor" number="2.13">
@@ -1426,7 +1324,7 @@ Wow! Adenine is the most frequent SNP in this data</p>
 <li>Create another vector of the following names: Greg, Peter, Bobby. Assign this to an object called <code>brady_boys</code>.</li>
 <li>Combine the <code>brady_girls</code> and <code>brady_boys</code> vectors together and assign to an object called <code>brady_bunch</code>.</li>
 <li>How would you subset the 4th element in the <code>brady_bunch</code> vector?</li>
-<li>Use the <code>library()</code> function to load the package called <code>datasets</code>. This package contains a number of example datasets you can use for practice.</li>
+<li>Call <code>library(help = "datasets")</code> to explore the various datasets contained in the <code>datasets</code> package. This package contains a number of example datasets you can use for practice.</li>
 <li>Use <code>head()</code> to look at the beginning of the dataset called <code>ToothGrowth</code>.</li>
 <li>How would you find the number of columns and rows in <code>ToothGrowth</code>? How would you find summary information about this dataset?</li>
 <li>Use bracket notation to select the item in the 5th row and 2nd column of <code>ToothGrowth</code>.</li>

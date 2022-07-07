@@ -313,13 +313,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.2</span> Create an empty Shiny app<a href="shiny-apps.html#create-an-empty-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>All Shiny apps follow the same template:</p>
 <p><img src="images/session3/shiny_anatomy.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="shiny-apps.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb242-2"><a href="shiny-apps.html#cb242-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb242-3"><a href="shiny-apps.html#cb242-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Hello, world!&quot;</span></span>
-<span id="cb242-4"><a href="shiny-apps.html#cb242-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb242-5"><a href="shiny-apps.html#cb242-5" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb242-6"><a href="shiny-apps.html#cb242-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb242-7"><a href="shiny-apps.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="shiny-apps.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb244-2"><a href="shiny-apps.html#cb244-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb244-3"><a href="shiny-apps.html#cb244-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Hello, world!&quot;</span></span>
+<span id="cb244-4"><a href="shiny-apps.html#cb244-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb244-5"><a href="shiny-apps.html#cb244-5" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb244-6"><a href="shiny-apps.html#cb244-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb244-7"><a href="shiny-apps.html#cb244-7" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
 <p>This template is by itself a working minimal Shiny app that doesn’t do much. It calls <code>library(shiny)</code> to load the shiny package, initializes a UI containing the words “Hello, world!” and then specifies the behavior of our app by defining a server function, this server is empty so it doesnt do anything, and runs an app using <code>shinyApp(ui, server)</code> using the parts from <code>UI</code> and <code>server</code>.</p>
 <p>Copy the above template into a new file named <code>app.R</code> in a new folder. It is <strong>very important</strong> that the name of the file is <code>app.R</code>, otherwise it would not be recognized as a Shiny app. It is also <strong>very important</strong> that you place this app in its own folder, and not in a folder that already has other R scripts or files, unless those other files are used by your app.</p>
 <p>After saving the file, RStudio should recognize that this is a Shiny app, and you should see the usual <em>Run</em> button at the top change to <em>Run App</em>.</p>
@@ -345,24 +345,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.3</span> An example Shiny App<a href="shiny-apps.html#an-example-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that you have the basics, add the following code, run the app and check out the results:</p>
 <p>Replace your <code>UI</code> code with this:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="shiny-apps.html#cb243-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb243-2"><a href="shiny-apps.html#cb243-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;dataset&quot;</span>, <span class="at">label =</span> <span class="st">&quot;Dataset&quot;</span>, <span class="at">choices =</span> <span class="fu">ls</span>(<span class="st">&quot;package:datasets&quot;</span>)),</span>
-<span id="cb243-3"><a href="shiny-apps.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">&quot;summary&quot;</span>),</span>
-<span id="cb243-4"><a href="shiny-apps.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tableOutput</span>(<span class="st">&quot;table&quot;</span>)</span>
-<span id="cb243-5"><a href="shiny-apps.html#cb243-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="shiny-apps.html#cb245-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb245-2"><a href="shiny-apps.html#cb245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;dataset&quot;</span>, <span class="at">label =</span> <span class="st">&quot;Dataset&quot;</span>, <span class="at">choices =</span> <span class="fu">ls</span>(<span class="st">&quot;package:datasets&quot;</span>)),</span>
+<span id="cb245-3"><a href="shiny-apps.html#cb245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">&quot;summary&quot;</span>),</span>
+<span id="cb245-4"><a href="shiny-apps.html#cb245-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tableOutput</span>(<span class="st">&quot;table&quot;</span>)</span>
+<span id="cb245-5"><a href="shiny-apps.html#cb245-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Here youre providing a layout function with <code>fluidPage()</code> to set up the visual structure of the page, an input control for user interaction with <code>selectInput()</code>, <code>verbatimTextOutput()</code> and <code>tableOutput()</code> are output controls that tell Shiny where to put rendered output. Spend some time poking around to see how each of these functions operate under the hood.</p>
 <p>Replace your <code>server</code> code with this:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="shiny-apps.html#cb244-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb244-2"><a href="shiny-apps.html#cb244-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
-<span id="cb244-3"><a href="shiny-apps.html#cb244-3" aria-hidden="true" tabindex="-1"></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
-<span id="cb244-4"><a href="shiny-apps.html#cb244-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(dataset)</span>
-<span id="cb244-5"><a href="shiny-apps.html#cb244-5" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb244-6"><a href="shiny-apps.html#cb244-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb244-7"><a href="shiny-apps.html#cb244-7" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb244-8"><a href="shiny-apps.html#cb244-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
-<span id="cb244-9"><a href="shiny-apps.html#cb244-9" aria-hidden="true" tabindex="-1"></a>    dataset</span>
-<span id="cb244-10"><a href="shiny-apps.html#cb244-10" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb244-11"><a href="shiny-apps.html#cb244-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="shiny-apps.html#cb246-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb246-2"><a href="shiny-apps.html#cb246-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb246-3"><a href="shiny-apps.html#cb246-3" aria-hidden="true" tabindex="-1"></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
+<span id="cb246-4"><a href="shiny-apps.html#cb246-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(dataset)</span>
+<span id="cb246-5"><a href="shiny-apps.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb246-6"><a href="shiny-apps.html#cb246-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb246-7"><a href="shiny-apps.html#cb246-7" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb246-8"><a href="shiny-apps.html#cb246-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
+<span id="cb246-9"><a href="shiny-apps.html#cb246-9" aria-hidden="true" tabindex="-1"></a>    dataset</span>
+<span id="cb246-10"><a href="shiny-apps.html#cb246-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb246-11"><a href="shiny-apps.html#cb246-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Defining the server function is like putting a brain in the app. Now it can receive signals and tell the app what to do. The left-hand side of the assignment operator (<code>&lt;-</code>), <code>output$ID</code>, indicates that you’re providing the recipe for the Shiny output with that ID. The right-hand side of the assignment uses a specific render function to wrap some code that you provide. Each <code>render{Type}</code> function is designed to produce a particular type of output (e.g. text, tables, and plots), and is often paired with a <code>{type}Output function</code>. For example, in this app, <code>renderPrint()</code> is paired with <code>verbatimTextOutput()</code> to display a statistical summary with fixed-width (verbatim) text, and <code>renderTable()</code> is paired with <code>tableOutput()</code> to show the input data in a table.</p>
 <p>Run the app now and see what happens when you change the input! You will joyfully notice that the summary and table update whenever you change the input data from the dropdown menu. This dependency is created implicitly because we’ve referred to <code>input$dataset</code> within the output functions. <code>input$dataset</code> is populated with the current value of the UI component with id <code>dataset</code>, and will cause the outputs to automatically update whenever that value changes. This is a fundamental concept in Shiny known as <strong>reactivity</strong>, outputs automatically react when their inputs change. There is much to learn about this!</p>
 </div>

@@ -887,7 +887,7 @@ patient_data
 variants <- readr::read_csv("https://osf.io/download/a325n/")
 ```
 
-Now we will look at ways to explore the contents of a data frame. For this part of the lesson we will use an object `variants`, which is a data frame, that has been pre-loaded in your RStudio Cloud project. To access this object locate `/cloud/project/data/variants.rds` in the file viewer and click on it. In the dialog box that pops up select "OK" In the next session you will learn how to load data in to R but for now we have done this for you so you can focus on learning about exploring data frames. 
+Now we will look at ways to explore the contents of a data frame. For this part of the lesson we will use an object `variants`, a data frame, that has been pre-loaded in your RStudio Cloud project as a `.rds` object, this is a binary Rdata file. To access this object locate `/cloud/project/data/variants.rds` in the file viewer and click on it. In the dialog box that pops up select "OK" In the next session you will learn how to load data in to R but for now we have done this for you so you can focus on learning about exploring data frames. 
 
 The `variants` object is a dataset that comes from a real world experiment in E. Coli, you can find out more about the study in the [Tenaillon et al 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/) paper ^[Tenaillon O, Barrick JE, Ribeck N, Deatherage DE, Blanchard JL, Dasgupta A, Wu GC, Wielgoss S, Cruveiller S, Médigue C, Schneider D, Lenski RE. Tempo and mode of genome evolution in a 50,000-generation experiment (2016) Nature. 536(7615): 165–170. Paper, Supplemental materials Data on NCBI SRA: https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP064605 Data on EMBL-EBI ENA: https://www.ebi.ac.uk/ena/data/view/PRJNA295606]. The `variants` object is tabular version of a specialized genomics file type called a VCF file. VCF files are the output of a bioinformatics pipeline that starts with FASTQ files that come from a sequencer and ends with a VCF File. This pipeline typically happens outside of R and RStudio.
 
@@ -904,7 +904,7 @@ Using the `summary()` function  and, we can learn a lot about the `variants` dat
 summary(variants)
 ```
 
-The original dataset had 29 variables, so we get 29 fields that summarize the data for each variable. The `QUAL`, `IMF`, and `VDB` variables (and several others) are numerical data and so you get summary statistics on the min and max values for these columns, as well as mean, median, and interquartile ranges. Many of the other variables (e.g. `sample_id`) are treated as characters data (more on this in a bit).
+The original dataset had 29 variables, so we get 29 fields to look at in the `summary()` output that summarize the data for each variable. The `QUAL`, `IMF`, and `VDB` variables (and several others) are numerical data and so you get summary statistics on the min and max values for these columns, as well as mean, median, and interquartile ranges. Many of the other variables (e.g. `sample_id`) are treated as characters data (more on this in a bit).
 
 Running the name `variants` of the data frame in the console alone shows the first 10 rows, `print()` with the `n` argument can be used to show more than the first 10 rows on the console. Keep in mind this allows you to only see the number of variables that fit in the width of your console. So wider console window allows to see more variables.
 ```{r print_variants, eval=FALSE}
@@ -984,7 +984,7 @@ So far we have used numbers to retrieve columns from our data frames however you
 alt_alleles <- subset_variants$ALT
 ```
 
-Lets look at the first few rows of `alt_alleles` using `head()`
+Lets look at the first few elements of `alt_alleles` using `head()`
 ```{r}
 head(alt_alleles)
 ```
@@ -1033,10 +1033,10 @@ head(subset_variants$ALT, n = 15)
 ```
 There are 801 alleles (one for each row). To simplify, lets look at just the single-nuleotide alleles (SNPs). Before doing so we can confirm that SNPs are the most abundant using `table()`, we will also sort the output decreasing
 ```{r}
-sort(table(subset_variants$ALT), decreasing = TRUE)
+sort(table(subset_variants$ALT), decreasing = TRUE)[1:10]
 ```
 
-We can create a object `snps_variants` using a new type of subsetting with `%in%` that keeps rows corresponding to a vector of values in our case the values "A", "C", "G", "T".
+We can create a object `snps_variants` using another logical subsetting operator `%in%` that keeps rows corresponding to a vector of values in our case the values "A", "C", "G", "T".
 
 ```{r}
 snps_variants <- subset_variants[subset_variants$ALT %in% c("A", "C", "G", "T") ,]
@@ -1055,8 +1055,6 @@ What we get back are the categories (“A”,”C”,”G”,”T”) in our fac
 ### Quickly exploring data with plots
 
 For very quick exploration of data, it’s sometimes useful to use the plotting functions in base R. These are installed by default with R and do not require any additional packages to be installed. They’re quick to type, straightforward to use in simple cases, and run very quickly.
-
-If you want to do anything beyond very simple plots, though, it’s generally better to switch to ggplot2 which you will learn in Session 3 of the CDABS summeR workshops.
 
 We will pick up with factors with our first example. One of the most common uses for factors will be when you plot categorical values. For example, suppose we want to know how many of our `snp_variants` had each possible SNP we could generate a plot: 
 ```{r}
@@ -1082,6 +1080,21 @@ plot(snps_variants$ordered_factor_snps)
 ```
 Wow! Adenine is the most frequent SNP in this data
 
+If you want to make a quick histogram you can pass a vector of values to `hist()`. To specify an approximate number of bins instead of the default you can add a `breaks` argument.
+
+```{r}
+hist(variants$QUAL)
+
+# get a clearer picture of the QUAL variable with more bins using `breaks=`
+
+hist(variants$QUAL, breaks = 20)
+
+```
+
+
+We have only covered 2 of the plots you can use to explore a dataset using Base R, we like these because they allow for quick checks of variables in the data. If you want to do anything beyond very simple plots, though, it’s generally better to switch to ggplot2 which you will learn in Session 3 of the CDABS summeR workshops!
+
+At this point you can review the material or continue to some exercises we have put together for you. Congratulations you made it to the end!
 
 ## Exercises
 
@@ -1095,7 +1108,7 @@ Wow! Adenine is the most frequent SNP in this data
 8. Create another vector of the following names: Greg, Peter, Bobby. Assign this to an object called `brady_boys`.
 9. Combine the `brady_girls` and `brady_boys` vectors together and assign to an object called `brady_bunch`.
 10. How would you subset the 4th element in the `brady_bunch` vector?
-11. Use the `library()` function to load the package called `datasets`. This package contains a number of example datasets you can use for practice. 
+11. Call `library(help = "datasets")` to explore the various datasets contained in the `datasets` package. This package contains a number of example datasets you can use for practice. 
 12. Use `head()` to look at the beginning of the dataset called `ToothGrowth`.
 13. How would you find the number of columns and rows in `ToothGrowth`? How would you find summary information about this dataset?
 14. Use bracket notation to select the item in the 5th row and 2nd column of `ToothGrowth`.
