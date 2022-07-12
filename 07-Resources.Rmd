@@ -8,7 +8,12 @@
 
 **RStudio**: https://www.rstudio.com/products/rstudio/download/
 
+## Using RStudio
+
+**Rstudio Cheatsheets**: https://www.rstudio.com/resources/cheatsheets/
+
 ## The Tidyverse
+
 **Tidyverse homepage**: https://www.tidyverse.org/ 
 
 **R for Data Science**: https://r4ds.had.co.nz/ 
@@ -27,9 +32,24 @@
 
 **R Markdown Cookbook**: https://bookdown.org/yihui/rmarkdown-cookbook/
 
-
 **Bookdown**: https://bookdown.org/
 
 **Authoring Books and Technical Documents with R Markdown**: https://bookdown.org/yihui/bookdown/ 
 
 **Shiny**: https://shiny.rstudio.com/ 
+
+## Git & Github
+
+**Happy Git and GitHub for the useR** https://happygitwithr.com/
+
+**GitHub** https://github.com/
+
+**GitHub Cheat Sheet** https://github.github.com/training-kit/
+
+**Git Reference Manual** http://git-scm.com/docs
+
+**Pro Git book** http://git-scm.com/book
+
+**Git Documentation Website** http://git-scm.com/doc
+
+
