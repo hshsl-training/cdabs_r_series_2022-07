@@ -2,17 +2,29 @@
 
 # Welcome to the Tidyverse
 
-In this lesson we will be using a group of packages which are part of what is known as the **`tidyverse`**. These packages include : 
+In this lesson and the next, we will be using a group of packages which are part of what is known as the **`tidyverse`** - "an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures."^[https://www.tidyverse.org/], developed by Hadley Wickham.
+
+These packages include : 
 
 - **`readr`** for importing data into R
 - **`dplyr`** for handling common data wrangling tasks for tabular data
 - **`tidyr`** which enables you to swiftly convert between different data formats (long vs. wide) for plotting and analysis
 - **`lubridate`** for working with dates
-- **`ggplot2`** for visualizing data. 
+- **`ggplot2`** for visualizing data (we'll explore this package in the next chapter).
 
 
 For the full list of tidyverse packages and documentation visit [tidyverse.org](https://www.tidyverse.org/)
 You can install these packages individually, or you can install the entire tidyverse in one go.
+
+## What is Tidy Data?
+Data is considered "tidy" if it follows three rules:
+
+1. Each column is a variable
+2. Each row is an observation
+3. Each cell is a single value^[read more about tidy data https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html]
+
+Data "in the wild" often isn't tidy, but the tidyverse packages can help you create and analyze tidy datasets.
+
 
 ## Install
 First we are going to use `install.packages()` to install **`tidyverse`**. Then we are going to load **`tidyverse`** with the `library()` function. You only need to install a package once, but you will load it each time you start a new r session. To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
@@ -28,13 +40,7 @@ library(tidyverse)
 ## The Data
 For this lesson we will be using data which comes from [Project Tycho](https://www.tycho.pitt.edu/) - an open data project from the University of Pittsburgh which provides standardized datasets on numerous diseases to aid global health research. 
 
-Throughout this lesson, we will be using a dataset from Project Tycho featuring historical counts of measles cases in the U.S.. We want to clean and present this data in a way that makes it easy to see how measles cases fluctuated over time. 
-
-Our end result will be this graph:
-
-```{r echo=F}
-knitr::include_graphics("images/yearlyMeasles.png")
-```
+Throughout this lesson, we will be using a dataset from Project Tycho featuring historical counts of measles cases in the U.S.. We want to clean and present this data in a way that makes it easy to see how measles cases fluctuated over time. In the next lesson, we'll start visualizing this cleaned up data.
 
 A useful feature of Project Tycho data is their use of a common set of variables. Read more about their [data format]("https://osf.io/paefw/").
 
@@ -42,7 +48,7 @@ A useful feature of Project Tycho data is their use of a common set of variables
 
 Now let's import the data we'll be working with. You can import data with code, or you can use RStudio's GUI. Let's look at both.
 
-In the environment pane, select the button that says `Import Dataset` and choose the option `From text (readr)`. This means we are going to be using the **`reader`** package, which is part of the **`tidyverse`** to read a file.  
+In the environment pane, select the button that says `Import Dataset` and choose the option `From text (readr)`. This means we are going to be using the **`readr`** package, which is part of the **`tidyverse`** to read a file.  
 
 ```{r echo=F}
 knitr::include_graphics("images/import_data.png")
@@ -67,7 +73,7 @@ RStudio will use the file name as the default name for your dataset, but you cou
 
 RStudio will also try to guess the data type of your columns. It will mostly get it right, but it is not unusual that you will manually need to tell it what data type certain columns are. 
 
-For example, let's look at the columns `PeriodStartDate` and `PeriodEndDate`. These columns contain dates, but RStudio wants to read them as character data. This is very common when importing data. Let's change these columns to the date data type, by using the drop down menu to select date data. 
+For example, let's look at the columns `PeriodStartDate` and `PeriodEndDate`. These columns contain dates, but RStudio wants to read them as character data. This is very common when importing data. Let's change the first column `PeriodStartDate` to the date data type, by using the drop down menu to select date data. We'll learn another way to change data types later in this lesson and take care of `PeriodEndDate` then.
 
 ```{r echo=F}
 knitr::include_graphics("images/data_dropdown.PNG")
@@ -86,7 +92,9 @@ Now our data is ready to import. Your import screen should look like:
 knitr::include_graphics("images/import_data_after.png")
 ```
 
-We can select the import button. But as you may have noticed, the code behind this import dialog box is also being generated. Use the clipboard icon to copy the code. 
+We can select the import button. But as you may have noticed, the code behind this import dialog box is also being generated. 
+
+We can find the codeUse the clipboard icon to copy the code. 
 
 Let's paste that into our `script.R` file.
 
@@ -94,20 +102,15 @@ So what does all this code actually mean?
 
 We are using a function from the **`readr`** package called `read_csv()`. This function takes as an argument the path to where the file is located. This can take the form of an absolute path, a relative path to the working directory, or a url. The `col_types` argument lets you specify the data type by column name, and the `na` argument lets you specify the value that should be read as `NA` in your data set.
 
-:::{.shaded .important data-latex=""}
-Remember to make sure you set your working directory before trying to import data!
-:::
 
 ```{r read_csv, echo=TRUE}
 library(readr)
 measles_us <- read_csv(
   "data/measles_us.csv",
   col_types = cols(
-    PeriodStartDate = col_date(format = "%m/%d/%Y"),
-    PeriodEndDate = col_date(format = "%m/%d/%Y")),
+    PeriodStartDate = col_date(format = "%m/%d/%Y")),
     na = "NA"
 )
-
 ```
 
 ```{r view_data, eval=FALSE, echo=TRUE}
