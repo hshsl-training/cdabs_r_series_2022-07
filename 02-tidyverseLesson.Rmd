@@ -25,9 +25,23 @@ Data is considered "tidy" if it follows three rules:
 
 Data "in the wild" often isn't tidy, but the tidyverse packages can help you create and analyze tidy datasets.
 
+## Getting set up
+
+1. Sign in to RStudio Cloud (Or, if you haven't already, sign up for a free account at RStudio Cloud https://rstudio.cloud/plans/free)
+2. Go to the RStudio Cloud class project for this session https://rstudio.cloud/project/4260029
+3. 3.  Note the text that marks this as a Temporary Copy. Select the
+    `Save a Permanent Copy` button to begin working!
+4. Create a new script called `measles_script.R`
+
+**Reminder:** You can open a new R script in the following ways:
+1. Go to the menu bar `File > New File > R Script`
+2. In the toolbar below the menu bar, select the new blank file icon, and then R Script from the menu bar.
+3. In the Files pane, select the New Blank File Icon, and then R Script
+4. Use the keyboard shortcut `Ctrl+Shift+N` (PC) or `Shift+Command+N`(Mac)
+
 
 ## Install
-First we are going to use `install.packages()` to install **`tidyverse`**. Then we are going to load **`tidyverse`** with the `library()` function. You only need to install a package once, but you will load it each time you start a new r session. To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+First we are going to use `install.packages()` to install **`tidyverse`**, if you haven't already. Then we are going to load **`tidyverse`** with the `library()` function. You only need to install a package once, but you will load it each time you start a new r session. To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
 
 ```{r tidyverse}
 #install tidyverse if you haven't yet
@@ -85,22 +99,15 @@ You will be asked to confirm that the input format of the date is `%m/%d/%Y` whi
 knitr::include_graphics("images/data_dropdown_confirm.PNG")
 ```
 
-Now our data is ready to import. Your import screen should look like:
+Now our data is ready to import. We can select the import button. As you may have noticed, the code behind this import dialog box is also being generated. 
+
+We can find the code in our History pane. Highlight the line of code and use the `To Source` button to add it to the script.
 
 
-```{r echo=F}
-knitr::include_graphics("images/import_data_after.png")
-```
-
-We can select the import button. But as you may have noticed, the code behind this import dialog box is also being generated. 
-
-We can find the codeUse the clipboard icon to copy the code. 
-
-Let's paste that into our `script.R` file.
 
 So what does all this code actually mean?
 
-We are using a function from the **`readr`** package called `read_csv()`. This function takes as an argument the path to where the file is located. This can take the form of an absolute path, a relative path to the working directory, or a url. The `col_types` argument lets you specify the data type by column name, and the `na` argument lets you specify the value that should be read as `NA` in your data set.
+We are using a function from the **`readr`** package called `read_csv()`. This function takes as an argument the path to where the file is located. This can take the form of an absolute path, a relative path to the working directory, or a url. The `col_types` argument lets you specify the data type by column name.
 
 
 ```{r read_csv, echo=TRUE}
@@ -108,302 +115,333 @@ library(readr)
 measles_us <- read_csv(
   "data/measles_us.csv",
   col_types = cols(
-    PeriodStartDate = col_date(format = "%m/%d/%Y")),
-    na = "NA"
-)
+    PeriodStartDate = col_date(format = "%m/%d/%Y")))
 ```
+## Exploring Data
+
+After reading the data, you will typically want to start exploring it. There are several ways of doing this. Let's review some ways of exploring data that we learned in the last chapter. `View()` opens the data as a file in your documents pane. 
 
 ```{r view_data, eval=FALSE, echo=TRUE}
 View(measles_us)
 ```
 
-After reading the data, you will typically want to inspect it and make sure everything looks okay. There are several ways of doing this. In your script above, `View()` opens the data as a file in your documents pane. 
+Use `summary()` to look at each column
 
-The most basic way is to call the name of the object as we did in the last lesson with vectors. Since we used `read_csv()`, the object will print as a tibble. The problem with this, is that it will only show as many columns as can fit in your window. So it's good to know a few other ways to look at your data.
-
-```{r inspect}
-measles_us
+```{r measles_summary}
+summary(measles_us)
 ```
 
-The `glimpse()` function lets you see the column names and data types clearly. This function is part of the **`tibble`** package which is loaded with the core **`tidyverse`**.
+You can look at the beginning of your dataset with `head()`.
+
+```{r measles_head}
+head(measles_us)
+```
+
+or the end of your dataset with `tail()`
+```{r measles_tail}
+tail(measles_us)
+```
+
+Notice that this prints out the first and last 6 rows of your data frame to the console in what is called a *tibble*. A tibble is a form of data frame that is particular to the tidyverse. The differences rest mainly it how it reads and displays data, but for the purposes of this class we will use the terms somewhat interchangeably. The tibble printed from `head()` and `tail()` will only print as many columns as can fit on the width of your monitor.
+
+The `glimpse()` function which is part of the **`tidyverse`** package **`tibble`**, lets you see the column names and data types clearly.
 
 ```{r glimpse}
 #summary of columns and first few entries
 glimpse(measles_us)
 ```
 
-You can also use the `head()` function to view the first `n` rows. The function defaults to 6 rows, but you can specify the number you want with an argument. Below we ask to see just the first 5 rows.
+Some of our variables only have one value. For example `ConditionName` is always going to be "Measles" and `CountryName` is always going to be "UNITED STATES OF AMERICA", because this dataset is a dataset of measles case counts in the US. But you don't have to take my word for it! Let's use some tools to explore distinct values. First the **`dplyr`** function `distinct()` will print all the distinct values in a given column. 
 
-```{r head}
-#first n rows (defaults to 6)
-head(measles_us, n = 5)
+```{r distinct_condition}
+distinct(measles_us, ConditionName)
+```
+As expected, we have only one distinct value in this column.
+
+To contrast, let's run `distinct()` on `Admin1Name`.
+
+```{r distinct_state}
+distinct(measles_us, Admin1Name)
 ```
 
-## Working with columns
+Now we get a clearer idea that this column contains names of US states and territories.
 
-### `Select()`
+We might want, not just the distinct values, but also counts of how often each distinct value occurs. For that we can use `count()`
 
-To select columns of a data frame, use `select()`. This is a great way to create a smaller data frame with only the variables you are interested in.
-
-`select()` is a function. Remember that functions have arguments which go inside the parentheses. The *first argument* to this function is the name of the data object, which in this case is `measles_us`, and the subsequent arguments are the names of the columns we want to keep, separated by commas. 
-
-Let's try selecting the `Admin1Name` column and the `CountValue` column. 
-
-```{r}
-select(measles_us, Admin1Name, CountValue)
-```
-
-As you can imagine, if you had a number of columns to select, it could get tiresome to write them all out. One way around this is to use a colon `:` to name a range of adjacent columns.  
-
-```{r colon}
-select(measles_us, ConditionName:Admin1ISO)
-```
-
-Another helpful tool that the **`tidyverse`** provides is the **`pipe`** operator which looks like **`%>%`**. The pipe is made available via the **`magrittr`** package, installed automatically with **`dplyr`**. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
-
-With the pipe you start with your data object and pipe it to the function, rather than naming the data as your first argument. So, the pipe becomes especially valuable when you have a number of steps that you want to connect. Another benefit of using the pipe in RStudio is that the interface will supply column names to you in the auto complete. This helps so you do not need to remember sometimes lengthy column names, and you are less likely to get an error from a typo.
-
-```{r}
-measles_us %>% 
-  select(Admin1Name, PartOfCumulativeCountSeries)
-```
-
-Now unfortunately, we did not save this to an object, so while it prints out to the console, we cannot really do anything with these results. So now, let's think through which columns we want for our analysis and save this to a new object called `measles_us_mod`. 
-
-So if we look at our data, we see that the columns `ConditionName`, `CountryName`, and `SourceName` have the same values throughout the data set. So it seems redundant to keep those.  `Admin1ISO` has redundant information to `Admin1Name`, so we can probably get rid of that as well. For this particular analysis we are going to take a state level view of measles, so we do not need `Admin2Name` and `CityName` either. That leaves us with `Admin1Name`, `PeriodStartDate`, `PeriodEndDate`, `PartOfCumulativeCountSeries`, and `CountValue`. 
-
-```{r select}
-measles_us_mod <-
-  measles_us %>% 
-    select(
-    Admin1Name,
-    PeriodStartDate,
-    PeriodEndDate,
-    PartOfCumulativeCountSeries,
-    CountValue
-  )
-
-#inspect our new data frame
-glimpse(measles_us_mod)
-```
-
-Now when you look in your environment pane, you should see your new object which as the same number of rows but 6 instead of 11 columns (or variables)
-
-### Renaming columns
-
-Sometimes when you receive data, you may find that the column names are not very descriptive or useful, and it may be necessary to rename them. You can assign new names to columns when you select them `select(newColumnName = OldColumnName)` or you can use the `rename()` function. Like naming objects, you should use a simple, descriptive, relatively short name without spaces for your column names.
-
-```{r}
-measles_us_mod <-
-  rename(measles_us_mod, State = Admin1Name)
+```{r count_function}
+count(measles_us, Admin1Name)
 ```
 
 
-### Creating new columns with `mutate()`
+### Challenge 
 
-Frequently you'll want to create new columns based on the values in existing columns, for example to do unit conversions, or to find the ratio of values in two columns. For this you can use the `mutate()` function. The `transmute()` function is similar, but **replaces** old columns with the new one.
+::: {.shaded .question data-latex=""}
 
-We know that each row in our dataset represents some time span, but we're not sure what that span is. Below we use `mutate()` to create a new column called Span, which gives the number of days between the PeriodEndDate column and the PeriodStartDate column. This is why it is important to make sure your date columns are parsed properly as dates when importing your data. If the dates had been left as character data, it would not have been possible to do arithmetic with them. 
-
-```{r}
-measles_us_mod <- 
-  mutate(measles_us_mod, Span = PeriodEndDate - PeriodStartDate)
-
-measles_us_mod
-```
-
-It's hard to get a sense of what different time spans are present in our data. We can use the `count()` function to help us figure that out.
-
-```{r count}
-count(measles_us_mod,Span)
-```
-
-All those different time spans will get us into trouble when we try to work with the data. So next we need to filter the dataset for only the rows we want. 
-
-## Working with rows
-
-### `filter()`
-
-`select()` lets us choose columns. To choose rows based on a specific criteria, we can use the `filter()` function. The arguments after the data frame are the condition(s) we want for our final dataframe to adhere to. Specify conditions using logical operator:
-
-| operator | meaning                  |
-|:---------|:-------------------------|
-| ==       | exactly equal            |
-| !=       | not equal to             |
-| \<       | less than                |
-| \<=      | less than or equal to    |
-| \>       | greater than             |
-| \>=      | greater than or equal to |
-| x\|y     | x or y                   |
-| x&y      | x and y                  |
-| !x       | not x                    |
-
-We'll come back to our problem of different time spans in a moment. First, let's try filtering our data by just one condition. We want to see just the rows that contain counts from Maryland.
-
-```{r filter-one-condition}
-measles_us_mod %>% filter(State == "MARYLAND")
-```
-
-:::{.shaded .important}
-When matching strings you must be exact. R is case-sensitive. So `State == "Maryland"` or `State == "maryland"` would return 0 rows.
+1. Test out `distinct()` with a few other columns in `measles_us`.
+2. `unique()` and `table()` are two base R functions that work similarly to `distinct()` and `count()`. Try running `unique(measles_us$Admin1Name)` and `table(measles_us$Admin1Name)`. How do the results differ from `distinct()` and `count()`? Which do you prefer?
+3. Try to run `unique()` and `table()` on a few more variables in measles_us()
 :::
 
-You can add additional conditions to filter by, separated by commas or other logical operators like `&`, `>`, and `>`. 
+<!-- ## Subsetting Data -->
 
-Below we want just the rows for Maryland, and only include periods where the count was more than 500 reported cases. Note that while you need quotation marks around character data, you do not need them around numeric data.
+<!-- In the last chapter, we learned that we can use brackets to subset vectors and data frames.  -->
 
-```{r filter-multiple}
-measles_us_mod %>% 
-  filter(State == "MARYLAND" & CountValue > 500)
+<!-- ### Subsetting Columns with `Select()` -->
 
-```
+<!-- To select columns of a data frame, use `select()`. This is a great way to create a smaller data frame with only the variables you are interested in. -->
 
-### Grouping and Summarizing data
+<!-- `select()` is a function. Remember that functions have arguments which go inside the parentheses. The *first argument* to this function is the name of the data object, which in this case is `measles_us`, and the subsequent arguments are the names of the columns we want to keep, separated by commas.  -->
 
-Many data analysis tasks can be approached using the *split-apply-combine* paradigm: split the data into groups, apply some analysis to each group, and then combine the results. **`dplyr`** makes this very easy through the use of the `group_by()` function.
+<!-- Let's try selecting the `Admin1Name` column and the `CountValue` column.  -->
 
-`group_by()` is often used together with `summarize()`, which collapses each group into a single-row summary of that group. `group_by()` takes as arguments the column names that contain the **categorical** variables for which you want to calculate the summary statistics.
+<!-- ```{r} -->
+<!-- select(measles_us, Admin1Name, CountValue) -->
+<!-- ``` -->
 
-Let's return to our `measles_us_mod` data frame. To analyze this further, we need to separate out the rows that represent cumulative counts from the rows that have a fixed interval. So we use `filter()` as we did above, this time saving to a new object called `non_cumulative_period`.
+<!-- As you can imagine, if you had a number of columns to select, it could get tiresome to write them all out. One way around this is to use a colon `:` to name a range of adjacent columns.   -->
 
-```{r filter-non-cum}
-#filter out cumulative counts
+<!-- ```{r colon} -->
+<!-- select(measles_us, ConditionName:Admin1ISO) -->
+<!-- ``` -->
 
-non_cumulative <-
-  measles_us_mod %>%
-    filter(PartOfCumulativeCountSeries == 0)
-```
+<!-- Another helpful tool that the **`tidyverse`** provides is the **`pipe`** operator which looks like **`%>%`**. The pipe is made available via the **`magrittr`** package, installed automatically with **`dplyr`**. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac. -->
 
-How can we calculate the total number of measles cases in each state for each reported time period?
+<!-- With the pipe you start with your data object and pipe it to the function, rather than naming the data as your first argument. So, the pipe becomes especially valuable when you have a number of steps that you want to connect. Another benefit of using the pipe in RStudio is that the interface will supply column names to you in the auto complete. This helps so you do not need to remember sometimes lengthy column names, and you are less likely to get an error from a typo. -->
 
-First we need to group our data by state, and then group by period. Remember that in our original data set each state contained counts for multiple municipalities. That means in our current data frame there will be multiple rows for each period that needs to be condensed.
+<!-- ```{r} -->
+<!-- measles_us %>%  -->
+<!--   select(Admin1Name, PartOfCumulativeCountSeries) -->
+<!-- ``` -->
 
-```{r group}
-#group - prepares for summary calculations
-count_by_period <-
-  non_cumulative %>%
-  group_by(State, PeriodStartDate)
+<!-- Now unfortunately, we did not save this to an object, so while it prints out to the console, we cannot really do anything with these results. So now, let's think through which columns we want for our analysis and save this to a new object called `measles_us_mod`.  -->
 
-count_by_period
-```
+<!-- So if we look at our data, we see that the columns `ConditionName`, `CountryName`, and `SourceName` have the same values throughout the data set. So it seems redundant to keep those.  `Admin1ISO` has redundant information to `Admin1Name`, so we can probably get rid of that as well. For this particular analysis we are going to take a state level view of measles, so we do not need `Admin2Name` and `CityName` either. That leaves us with `Admin1Name`, `PeriodStartDate`, `PeriodEndDate`, `PartOfCumulativeCountSeries`, and `CountValue`.  -->
 
-When you inspect your new data frame, everything should look the same. Grouping prepares your data for summarize, but it does not do anything visually to the data.
+<!-- ```{r select} -->
+<!-- measles_us_mod <- -->
+<!--   measles_us %>%  -->
+<!--     select( -->
+<!--     Admin1Name, -->
+<!--     PeriodStartDate, -->
+<!--     PeriodEndDate, -->
+<!--     PartOfCumulativeCountSeries, -->
+<!--     CountValue -->
+<!--   ) -->
 
-Now let's trying summarizing that data. `summarize()` takes the dataframe as it's first argument, then you need to provide some calculation and the name for the new column where the results of that calculation will go. In this case, we will use the `sum()` function on the CountValue column and put this in a new column called TotalCount
+<!-- #inspect our new data frame -->
+<!-- glimpse(measles_us_mod) -->
+<!-- ``` -->
 
-```{r summarize}
-count_by_period <-
-  non_cumulative %>%
-  group_by(State, PeriodStartDate) %>% 
-  summarize(TotalCount = sum(CountValue))
-```
+<!-- Now when you look in your environment pane, you should see your new object which as the same number of rows but 6 instead of 11 columns (or variables) -->
 
-Notice how the use of pipes really comes in handy here. It saved us from having to create and keep track of a number of intermediate objects.
+<!-- ### Renaming columns -->
 
-Now each row in our dataset represents a week of data. It might be better if we can look at yearly trends. So, let's try separating out the year from PeriodStartDate into its own column. In addition to `mutate()`, we will also use the `year()` function from **`lubridate`**. Since **`lubridate`** is not loaded with the core **`tidyverse`** let's go ahead and load that now.
+<!-- Sometimes when you receive data, you may find that the column names are not very descriptive or useful, and it may be necessary to rename them. You can assign new names to columns when you select them `select(newColumnName = OldColumnName)` or you can use the `rename()` function. Like naming objects, you should use a simple, descriptive, relatively short name without spaces for your column names. -->
 
-```{r lubridate}
-library(lubridate)
-```
+<!-- ```{r} -->
+<!-- measles_us_mod <- -->
+<!--   rename(measles_us_mod, State = Admin1Name) -->
+<!-- ``` -->
 
-Remember, you only need to install a package once, but you have to load it with each new session.
 
-```{r count-by-period}
-#Get year in separate column from PeriodStartDate
-count_by_period <- 
-  count_by_period %>% 
-  mutate(Year = year(PeriodStartDate))
+<!-- ### Creating new columns with `mutate()` -->
 
-count_by_period
-```
+<!-- Frequently you'll want to create new columns based on the values in existing columns, for example to do unit conversions, or to find the ratio of values in two columns. For this you can use the `mutate()` function. The `transmute()` function is similar, but **replaces** old columns with the new one. -->
 
-Now we can do our grouping and summarizing again as we did above.
+<!-- We know that each row in our dataset represents some time span, but we're not sure what that span is. Below we use `mutate()` to create a new column called Span, which gives the number of days between the `PeriodEndDate` column and the `PeriodStartDate` column. This is why it is important to make sure your date columns are parsed properly as dates when importing your data. If the dates had been left as character data, it would not have been possible to do arithmetic with them.  -->
 
-```{r count-by-state}
-#Get totals for each state each year.
-yearly_count_state <-
-  count_by_period %>% 
-  group_by(Year, State) %>% 
-  summarise(TotalCount = sum(TotalCount))
+<!-- It's hard to get a sense of what different time spans are present in our data. We can use the `count()` function to help us figure that out. -->
 
-yearly_count_state
-```
+<!-- ```{r count} -->
+<!-- count(measles_us_mod,Span) -->
+<!-- ``` -->
 
-Alternatively, to see a national level summary, we could group just by Year
+<!-- All those different time spans will get us into trouble when we try to work with the data. So next we need to filter the dataset for only the rows we want.  -->
 
-```{r count-year}
-#Get totals each year.
-yearly_count <-
-  count_by_period %>% 
-  group_by(Year) %>%
-  summarise(TotalCount = sum(TotalCount))
+<!-- ## Working with rows -->
 
-yearly_count
-```
-## Joining Datasets
+<!-- ### `filter()` -->
 
-Of course, looking at total counts in each state is not the most helpful metric without taking population into account. To rectify this, let's try joining some historical population data with our measles data.
+<!-- `select()` lets us choose columns. To choose rows based on a specific criteria, we can use the `filter()` function. The arguments after the data frame are the condition(s) we want for our final dataframe to adhere to. Specify conditions using logical operator: -->
 
-First we need to import the population data.
+<!-- | operator | meaning                  | -->
+<!-- |:---------|:-------------------------| -->
+<!-- | ==       | exactly equal            | -->
+<!-- | !=       | not equal to             | -->
+<!-- | \<       | less than                | -->
+<!-- | \<=      | less than or equal to    | -->
+<!-- | \>       | greater than             | -->
+<!-- | \>=      | greater than or equal to | -->
+<!-- | x\|y     | x or y                   | -->
+<!-- | x&y      | x and y                  | -->
+<!-- | !x       | not x                    | -->
 
-```{r}
-#load csv of populations by state over time, changing some of the datatypes from default
-hist_pop_by_state <-
-  read_csv(
-    "data/Historical_Population_by_State.csv",
-    col_types = cols(ALASKA = col_double(), HAWAII = col_double())
-  )
-```
+<!-- We'll come back to our problem of different time spans in a moment. First, let's try filtering our data by just one condition. We want to see just the rows that contain counts from Maryland. -->
 
-```{r eval=FALSE}
-View(hist_pop_by_state)
-```
+<!-- ```{r filter-one-condition} -->
+<!-- measles_us_mod %>% filter(State == "MARYLAND") -->
+<!-- ``` -->
 
-As we saw in our measles data import, the presence of NAs makes it necessary to explicitly state that the Hawaii and Alaska columns contain numerical data.
+<!-- :::{.shaded .important} -->
+<!-- When matching strings you must be exact. R is case-sensitive. So `State == "Maryland"` or `State == "maryland"` would return 0 rows. -->
+<!-- ::: -->
 
-### Long vs Wide formats
+<!-- You can add additional conditions to filter by, separated by commas or other logical operators like `&`, `>`, and `>`.  -->
 
-For data to be considered "tidy", it should be in what is called "long" format. Each column is a variable, each row is an observation, and each cell is a value. Our state population data is in "wide" format, which is often preferable for human-readability, but is less ideal for machine-readability.
+<!-- Below we want just the rows for Maryland, and only include periods where the count was more than 500 reported cases. Note that while you need quotation marks around character data, you do not need them around numeric data. -->
 
-We will use the package **`tidyr`** and the function `pivot_longer` to convert our population data to a long format, thus making it easier to join with our measles data.
+<!-- ```{r filter-multiple} -->
+<!-- measles_us_mod %>%  -->
+<!--   filter(State == "MARYLAND" & CountValue > 500) -->
 
-Each column in our population dataset represents a state. To make it tidy we are going to reduce those to one column called State with the state names as the values of the column. We will then need to create a new column for population containing the current cell values. To remember that the population data is provided in 1000s of persons, we will call this new column pop1000.
+<!-- ``` -->
 
-`pivot_longer()` takes four principal arguments:
+<!-- ### Grouping and Summarizing data -->
 
-1.  the data
-2.  *cols* are the names of the columns we use to fill the new values variable (or to drop).
-3.  the *names_to* column variable we wish to create from the *cols* provided.
-4.  the *values_to* column variable we wish to create and fill with values associated with the *cols* provided.
+<!-- Many data analysis tasks can be approached using the *split-apply-combine* paradigm: split the data into groups, apply some analysis to each group, and then combine the results. **`dplyr`** makes this very easy through the use of the `group_by()` function. -->
 
-```{r}
-library(tidyr)
-hist_pop_long <- hist_pop_by_state %>% 
-  pivot_longer(ALASKA:WYOMING,
-               names_to = "State",
-               values_to = "pop1000")
-```
+<!-- `group_by()` is often used together with `summarize()`, which collapses each group into a single-row summary of that group. `group_by()` takes as arguments the column names that contain the **categorical** variables for which you want to calculate the summary statistics. -->
 
-```{r eval=FALSE}
-View(hist_pop_long)
-```
+<!-- Let's return to our `measles_us_mod` data frame. To analyze this further, we need to separate out the rows that represent cumulative counts from the rows that have a fixed interval. So we use `filter()` as we did above, this time saving to a new object called `non_cumulative_period`. -->
 
-Now our two datasets have similar structures, a column of state names, a column of years, and a column of values. Let's join these two datasets by the state and year columns. Note that if both sets have the same column names, you do not need to specify anything in the by argument. We use a left join here which preserves all the rows in our measles dataset and adds the matching rows from the population dataset.
+<!-- ```{r filter-non-cum} -->
+<!-- #filter out cumulative counts -->
 
-```{r}
-joined_df <-
-  left_join(yearly_count_state, hist_pop_long, by=c("State" = "State", "Year" = "DATE" ))
+<!-- non_cumulative <- -->
+<!--   measles_us_mod %>% -->
+<!--     filter(PartOfCumulativeCountSeries == 0) -->
+<!-- ``` -->
 
-joined_df
-```
+<!-- How can we calculate the total number of measles cases in each state for each reported time period? -->
 
-Now we can use our old friend `mutate()` to add a rate column calculated from the count and pop1000 columns.
+<!-- First we need to group our data by state, and then group by period. Remember that in our original data set each state contained counts for multiple municipalities. That means in our current data frame there will be multiple rows for each period that needs to be condensed. -->
 
-```{r}
-#Add column for rate (per 1000) of measles
-rate_by_year <- mutate(joined_df, rate = TotalCount / pop1000)
-rate_by_year
-```
+<!-- ```{r group} -->
+<!-- #group - prepares for summary calculations -->
+<!-- count_by_period <- -->
+<!--   non_cumulative %>% -->
+<!--   group_by(State, PeriodStartDate) -->
+
+<!-- count_by_period -->
+<!-- ``` -->
+
+<!-- When you inspect your new data frame, everything should look the same. Grouping prepares your data for summarize, but it does not do anything visually to the data. -->
+
+<!-- Now let's trying summarizing that data. `summarize()` takes the dataframe as it's first argument, then you need to provide some calculation and the name for the new column where the results of that calculation will go. In this case, we will use the `sum()` function on the CountValue column and put this in a new column called TotalCount -->
+
+<!-- ```{r summarize} -->
+<!-- count_by_period <- -->
+<!--   non_cumulative %>% -->
+<!--   group_by(State, PeriodStartDate) %>%  -->
+<!--   summarize(TotalCount = sum(CountValue)) -->
+<!-- ``` -->
+
+<!-- Notice how the use of pipes really comes in handy here. It saved us from having to create and keep track of a number of intermediate objects. -->
+
+<!-- Now each row in our dataset represents a week of data. It might be better if we can look at yearly trends. So, let's try separating out the year from PeriodStartDate into its own column. In addition to `mutate()`, we will also use the `year()` function from **`lubridate`**. Since **`lubridate`** is not loaded with the core **`tidyverse`** let's go ahead and load that now. -->
+
+<!-- ```{r lubridate} -->
+<!-- library(lubridate) -->
+<!-- ``` -->
+
+<!-- Remember, you only need to install a package once, but you have to load it with each new session. -->
+
+<!-- ```{r count-by-period} -->
+<!-- #Get year in separate column from PeriodStartDate -->
+<!-- count_by_period <-  -->
+<!--   count_by_period %>%  -->
+<!--   mutate(Year = year(PeriodStartDate)) -->
+
+<!-- count_by_period -->
+<!-- ``` -->
+
+<!-- Now we can do our grouping and summarizing again as we did above. -->
+
+<!-- ```{r count-by-state} -->
+<!-- #Get totals for each state each year. -->
+<!-- yearly_count_state <- -->
+<!--   count_by_period %>%  -->
+<!--   group_by(Year, State) %>%  -->
+<!--   summarise(TotalCount = sum(TotalCount)) -->
+
+<!-- yearly_count_state -->
+<!-- ``` -->
+
+<!-- Alternatively, to see a national level summary, we could group just by Year -->
+
+<!-- ```{r count-year} -->
+<!-- #Get totals each year. -->
+<!-- yearly_count <- -->
+<!--   count_by_period %>%  -->
+<!--   group_by(Year) %>% -->
+<!--   summarise(TotalCount = sum(TotalCount)) -->
+
+<!-- yearly_count -->
+<!-- ``` -->
+<!-- ## Joining Datasets -->
+
+<!-- Of course, looking at total counts in each state is not the most helpful metric without taking population into account. To rectify this, let's try joining some historical population data with our measles data. -->
+
+<!-- First we need to import the population data. -->
+
+<!-- ```{r} -->
+<!-- #load csv of populations by state over time, changing some of the datatypes from default -->
+<!-- hist_pop_by_state <- -->
+<!--   read_csv( -->
+<!--     "data/Historical_Population_by_State.csv", -->
+<!--     col_types = cols(ALASKA = col_double(), HAWAII = col_double()) -->
+<!--   ) -->
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE} -->
+<!-- View(hist_pop_by_state) -->
+<!-- ``` -->
+
+<!-- As we saw in our measles data import, the presence of NAs makes it necessary to explicitly state that the Hawaii and Alaska columns contain numerical data. -->
+
+<!-- ### Long vs Wide formats -->
+
+<!-- For data to be considered "tidy", it should be in what is called "long" format. Each column is a variable, each row is an observation, and each cell is a value. Our state population data is in "wide" format, which is often preferable for human-readability, but is less ideal for machine-readability. -->
+
+<!-- We will use the package **`tidyr`** and the function `pivot_longer` to convert our population data to a long format, thus making it easier to join with our measles data. -->
+
+<!-- Each column in our population dataset represents a state. To make it tidy we are going to reduce those to one column called State with the state names as the values of the column. We will then need to create a new column for population containing the current cell values. To remember that the population data is provided in 1000s of persons, we will call this new column pop1000. -->
+
+<!-- `pivot_longer()` takes four principal arguments: -->
+
+<!-- 1.  the data -->
+<!-- 2.  *cols* are the names of the columns we use to fill the new values variable (or to drop). -->
+<!-- 3.  the *names_to* column variable we wish to create from the *cols* provided. -->
+<!-- 4.  the *values_to* column variable we wish to create and fill with values associated with the *cols* provided. -->
+
+<!-- ```{r} -->
+<!-- library(tidyr) -->
+<!-- hist_pop_long <- hist_pop_by_state %>%  -->
+<!--   pivot_longer(ALASKA:WYOMING, -->
+<!--                names_to = "State", -->
+<!--                values_to = "pop1000") -->
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE} -->
+<!-- View(hist_pop_long) -->
+<!-- ``` -->
+
+<!-- Now our two datasets have similar structures, a column of state names, a column of years, and a column of values. Let's join these two datasets by the state and year columns. Note that if both sets have the same column names, you do not need to specify anything in the by argument. We use a left join here which preserves all the rows in our measles dataset and adds the matching rows from the population dataset. -->
+
+<!-- ```{r} -->
+<!-- joined_df <- -->
+<!--   left_join(yearly_count_state, hist_pop_long, by=c("State" = "State", "Year" = "DATE" )) -->
+
+<!-- joined_df -->
+<!-- ``` -->
+
+<!-- Now we can use our old friend `mutate()` to add a rate column calculated from the count and pop1000 columns. -->
+
+<!-- ```{r} -->
+<!-- #Add column for rate (per 1000) of measles -->
+<!-- rate_by_year <- mutate(joined_df, rate = TotalCount / pop1000) -->
+<!-- rate_by_year -->
+<!-- ``` -->
 
 
 
