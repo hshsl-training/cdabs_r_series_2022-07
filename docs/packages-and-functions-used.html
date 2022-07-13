@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,6 +197,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-1"><i class="fa fa-check"></i><b>3.6.1</b> Challenge</a></li>
 </ul></li>
+<li class="chapter" data-level="3.7" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#wrangling-data-with-dplyr"><i class="fa fa-check"></i><b>3.7</b> Wrangling data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.8" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-data"><i class="fa fa-check"></i><b>3.8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-columns-with-select"><i class="fa fa-check"></i><b>3.8.1</b> Subsetting Columns with <code>Select()</code></a></li>
+<li class="chapter" data-level="3.8.2" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#renaming-columns"><i class="fa fa-check"></i><b>3.8.2</b> Renaming columns</a></li>
+<li class="chapter" data-level="3.8.3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-rows-with-filter"><i class="fa fa-check"></i><b>3.8.3</b> Subsetting rows with <code>filter()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#working-with-dates"><i class="fa fa-check"></i><b>3.9</b> Working with Dates</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#date-intervals-durations-and-periods"><i class="fa fa-check"></i><b>3.9.1</b> Date intervals, durations, and periods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>3.10</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.11" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#grouping-and-summarizing-data"><i class="fa fa-check"></i><b>3.11</b> Grouping and Summarizing data</a></li>
+<li class="chapter" data-level="3.12" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#sorting-datasets-with-arrange"><i class="fa fa-check"></i><b>3.12</b> Sorting datasets with <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.13" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#joining-datasets"><i class="fa fa-check"></i><b>3.13</b> Joining Datasets</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#long-vs-wide-formats"><i class="fa fa-check"></i><b>3.13.1</b> Long vs Wide formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#writing-data"><i class="fa fa-check"></i><b>3.14</b> Writing Data</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-2"><i class="fa fa-check"></i><b>3.14.1</b> Challenge</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>Session III</b></span></li>
 <li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a></li>
@@ -292,6 +314,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="packages-and-functions-used" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">C</span> Packages and Functions Used<a href="packages-and-functions-used.html#packages-and-functions-used" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong><code>base</code></strong></p>
+<ul>
+<li><code>c()</code>: combine values into a vector or list</li>
+<li><code>round()</code>: rounding of numbers</li>
+<li><code>mean()</code>: arithmetic mean</li>
+<li><code>length()</code>: length of an object</li>
+<li><code>class()</code>: object classes</li>
+<li><code>[]</code>: extract or replace parts of an object</li>
+<li><code>data.frame()</code>: creates data frames</li>
+<li><code>summary()</code>: object summaries</li>
+<li><code>colnames()</code>: retrieve or set the row or column names</li>
+<li><code>nrow()</code>: return the number of rows present in x</li>
+<li><code>ncol()</code>: return the number of columns present in x</li>
+<li><code>head() | tail()</code>: return the first or last parts of an object</li>
+<li><code>sum()</code>: sum of vector elements</li>
+<li><code>typeof()</code>: returns the type of an object</li>
+<li><code>sort()</code>: sort (or order) a vector into ascending or descending order</li>
+<li><code>table()</code>: cross tabulation and table creation</li>
+<li><code>factor()</code>: encode a vector as a factor</li>
+<li><code>str()</code>: compactly display the structure of an arbitrary R object</li>
+<li><code>plot()</code>: generic x-y plotting</li>
+<li><code>names()</code>: functions to get or set the names of an object</li>
+<li><code>hist()</code>: computes a histogram of the given data values</li>
+</ul>
 <p><strong><code>readr</code></strong></p>
 <ul>
 <li><code>read_csv()</code>: import data from csv files</li>
@@ -315,6 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 
 </div>
+
 
 
 

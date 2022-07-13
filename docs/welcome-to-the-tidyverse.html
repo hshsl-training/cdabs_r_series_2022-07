@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,6 +197,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-1"><i class="fa fa-check"></i><b>3.6.1</b> Challenge</a></li>
 </ul></li>
+<li class="chapter" data-level="3.7" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#wrangling-data-with-dplyr"><i class="fa fa-check"></i><b>3.7</b> Wrangling data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.8" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-data"><i class="fa fa-check"></i><b>3.8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-columns-with-select"><i class="fa fa-check"></i><b>3.8.1</b> Subsetting Columns with <code>Select()</code></a></li>
+<li class="chapter" data-level="3.8.2" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#renaming-columns"><i class="fa fa-check"></i><b>3.8.2</b> Renaming columns</a></li>
+<li class="chapter" data-level="3.8.3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-rows-with-filter"><i class="fa fa-check"></i><b>3.8.3</b> Subsetting rows with <code>filter()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#working-with-dates"><i class="fa fa-check"></i><b>3.9</b> Working with Dates</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#date-intervals-durations-and-periods"><i class="fa fa-check"></i><b>3.9.1</b> Date intervals, durations, and periods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>3.10</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.11" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#grouping-and-summarizing-data"><i class="fa fa-check"></i><b>3.11</b> Grouping and Summarizing data</a></li>
+<li class="chapter" data-level="3.12" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#sorting-datasets-with-arrange"><i class="fa fa-check"></i><b>3.12</b> Sorting datasets with <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.13" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#joining-datasets"><i class="fa fa-check"></i><b>3.13</b> Joining Datasets</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#long-vs-wide-formats"><i class="fa fa-check"></i><b>3.13.1</b> Long vs Wide formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#writing-data"><i class="fa fa-check"></i><b>3.14</b> Writing Data</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-2"><i class="fa fa-check"></i><b>3.14.1</b> Challenge</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>Session III</b></span></li>
 <li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a></li>
@@ -312,23 +334,24 @@ You can install these packages individually, or you can install the entire tidyv
 <li>Each cell is a single value<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></li>
 </ol>
 <p>Data “in the wild” often isn’t tidy, but the tidyverse packages can help you create and analyze tidy datasets.</p>
+<p><img src="images/tidy-data.png" width="960" style="display: block; margin: auto;" /></p>
 </div>
 <div id="getting-set-up" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Getting set up<a href="welcome-to-the-tidyverse.html#getting-set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Sign in to RStudio Cloud (Or, if you haven’t already, sign up for a free account at RStudio Cloud <a href="https://rstudio.cloud/plans/free" class="uri">https://rstudio.cloud/plans/free</a>)</li>
-<li>Go to the RStudio Cloud class project for this session <a href="https://rstudio.cloud/project/4260029" class="uri">https://rstudio.cloud/project/4260029</a></li>
-<li><ol start="3" style="list-style-type: decimal">
-<li>Note the text that marks this as a Temporary Copy. Select the
+<li>Go to the RStudio Cloud class project for this session <a href="https://rstudio.cloud/project/4260029" class="uri">https://rstudio.cloud/project/4260029</a>
+3.Note the text that marks this as a Temporary Copy. Select the
 <code>Save a Permanent Copy</code> button to begin working!</li>
-</ol></li>
 <li>Create a new script called <code>measles_script.R</code></li>
 </ol>
-<p><strong>Reminder:</strong> You can open a new R script in the following ways:
-1. Go to the menu bar <code>File &gt; New File &gt; R Script</code>
-2. In the toolbar below the menu bar, select the new blank file icon, and then R Script from the menu bar.
-3. In the Files pane, select the New Blank File Icon, and then R Script
-4. Use the keyboard shortcut <code>Ctrl+Shift+N</code> (PC) or <code>Shift+Command+N</code>(Mac)</p>
+<p><strong>Reminder:</strong> You can open a new R script in the following ways:</p>
+<ol style="list-style-type: decimal">
+<li>Go to the menu bar <code>File &gt; New File &gt; R Script</code></li>
+<li>In the toolbar below the menu bar, select the new blank file icon, and then R Script from the menu bar.</li>
+<li>In the Files pane, select the New Blank File Icon, and then R Script</li>
+<li>Use the keyboard shortcut <code>Ctrl+Shift+N</code> (PC) or <code>Shift+Command+N</code>(Mac)</li>
+</ol>
 </div>
 <div id="install" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Install<a href="welcome-to-the-tidyverse.html#install" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -511,6 +534,32 @@ You can install these packages individually, or you can install the entire tidyv
 ##  9 DELAWARE              4507
 ## 10 DISTRICT OF COLUMBIA  5027
 ## # … with 46 more rows</code></pre>
+<p>This might be helpful information to have on its own. Let’s save this to an object that we can refer to later.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="welcome-to-the-tidyverse.html#cb166-1" aria-hidden="true" tabindex="-1"></a>Admin1_counts <span class="ot">&lt;-</span> <span class="fu">count</span>(measles_us, Admin1Name)</span></code></pre></div>
+<p>We might also notice that some of our columns have a number of NA values. Let’s take a closer look at one of these. We can use the function <code>is.na()</code> to test for the presence of NAs in our data. <code>is.na()</code> will return a vector of values TRUE or FALSE. TRUE if the value is NA, FALSE if it is not.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="welcome-to-the-tidyverse.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(measles_us<span class="sc">$</span>Admin2Name)</span></code></pre></div>
+<p>We can use that together with <code>sum()</code> to find out how many NAs are in the column.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="welcome-to-the-tidyverse.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(measles_us<span class="sc">$</span>Admin2Name))</span></code></pre></div>
+<pre><code>## [1] 198104</code></pre>
+<p>To find out how many NAs there are per column of our dataset, we can use the function <code>colSums()</code>.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="welcome-to-the-tidyverse.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(measles_us))</span></code></pre></div>
+<pre><code>##               ConditionName             ConditionSNOMED 
+##                           0                           0 
+##                PathogenName                 CountryName 
+##                           0                           0 
+##                  CountryISO                  Admin1Name 
+##                           0                           0 
+##                   Admin1ISO                  Admin2Name 
+##                           0                      198104 
+##                    CityName             PeriodStartDate 
+##                      198104                           0 
+##               PeriodEndDate PartOfCumulativeCountSeries 
+##                           0                           0 
+##          DiagnosisCertainty                  SourceName 
+##                      422051                           0 
+##                  CountValue 
+##                           0</code></pre>
+<p>We see that <code>Admin2Name</code> and <code>CityName</code> variables have many missing values, and the <code>DiagnosisCertainty</code> column is entirely missing (i.e. the number of missing values is the same as the number of observations in the dataset). This is something to consider as we figure out what variables we want to focus our analysis on.</p>
 <div id="challenge-1" class="section level3 hasAnchor" number="3.6.1">
 <h3><span class="header-section-number">3.6.1</span> Challenge<a href="welcome-to-the-tidyverse.html#challenge-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="shaded question">
@@ -518,188 +567,567 @@ You can install these packages individually, or you can install the entire tidyv
 <li>Test out <code>distinct()</code> with a few other columns in <code>measles_us</code>.</li>
 <li><code>unique()</code> and <code>table()</code> are two base R functions that work similarly to <code>distinct()</code> and <code>count()</code>. Try running <code>unique(measles_us$Admin1Name)</code> and <code>table(measles_us$Admin1Name)</code>. How do the results differ from <code>distinct()</code> and <code>count()</code>? Which do you prefer?</li>
 <li>Try to run <code>unique()</code> and <code>table()</code> on a few more variables in measles_us()</li>
+<li>Look up the <code>colSums()</code> in RStudio Help pane. What are some related functions and what do they do? Test them out!</li>
 </ol>
 </div>
-<!-- ## Subsetting Data -->
-<!-- In the last chapter, we learned that we can use brackets to subset vectors and data frames.  -->
-<!-- ### Subsetting Columns with `Select()` -->
-<!-- To select columns of a data frame, use `select()`. This is a great way to create a smaller data frame with only the variables you are interested in. -->
-<!-- `select()` is a function. Remember that functions have arguments which go inside the parentheses. The *first argument* to this function is the name of the data object, which in this case is `measles_us`, and the subsequent arguments are the names of the columns we want to keep, separated by commas.  -->
-<!-- Let's try selecting the `Admin1Name` column and the `CountValue` column.  -->
-<!-- ```{r} -->
-<!-- select(measles_us, Admin1Name, CountValue) -->
-<!-- ``` -->
-<!-- As you can imagine, if you had a number of columns to select, it could get tiresome to write them all out. One way around this is to use a colon `:` to name a range of adjacent columns.   -->
-<!-- ```{r colon} -->
-<!-- select(measles_us, ConditionName:Admin1ISO) -->
-<!-- ``` -->
-<!-- Another helpful tool that the **`tidyverse`** provides is the **`pipe`** operator which looks like **`%>%`**. The pipe is made available via the **`magrittr`** package, installed automatically with **`dplyr`**. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac. -->
-<!-- With the pipe you start with your data object and pipe it to the function, rather than naming the data as your first argument. So, the pipe becomes especially valuable when you have a number of steps that you want to connect. Another benefit of using the pipe in RStudio is that the interface will supply column names to you in the auto complete. This helps so you do not need to remember sometimes lengthy column names, and you are less likely to get an error from a typo. -->
-<!-- ```{r} -->
-<!-- measles_us %>%  -->
-<!--   select(Admin1Name, PartOfCumulativeCountSeries) -->
-<!-- ``` -->
-<!-- Now unfortunately, we did not save this to an object, so while it prints out to the console, we cannot really do anything with these results. So now, let's think through which columns we want for our analysis and save this to a new object called `measles_us_mod`.  -->
-<!-- So if we look at our data, we see that the columns `ConditionName`, `CountryName`, and `SourceName` have the same values throughout the data set. So it seems redundant to keep those.  `Admin1ISO` has redundant information to `Admin1Name`, so we can probably get rid of that as well. For this particular analysis we are going to take a state level view of measles, so we do not need `Admin2Name` and `CityName` either. That leaves us with `Admin1Name`, `PeriodStartDate`, `PeriodEndDate`, `PartOfCumulativeCountSeries`, and `CountValue`.  -->
-<!-- ```{r select} -->
-<!-- measles_us_mod <- -->
-<!--   measles_us %>%  -->
-<!--     select( -->
-<!--     Admin1Name, -->
-<!--     PeriodStartDate, -->
-<!--     PeriodEndDate, -->
-<!--     PartOfCumulativeCountSeries, -->
-<!--     CountValue -->
-<!--   ) -->
-<!-- #inspect our new data frame -->
-<!-- glimpse(measles_us_mod) -->
-<!-- ``` -->
-<!-- Now when you look in your environment pane, you should see your new object which as the same number of rows but 6 instead of 11 columns (or variables) -->
-<!-- ### Renaming columns -->
-<!-- Sometimes when you receive data, you may find that the column names are not very descriptive or useful, and it may be necessary to rename them. You can assign new names to columns when you select them `select(newColumnName = OldColumnName)` or you can use the `rename()` function. Like naming objects, you should use a simple, descriptive, relatively short name without spaces for your column names. -->
-<!-- ```{r} -->
-<!-- measles_us_mod <- -->
-<!--   rename(measles_us_mod, State = Admin1Name) -->
-<!-- ``` -->
-<!-- ### Creating new columns with `mutate()` -->
-<!-- Frequently you'll want to create new columns based on the values in existing columns, for example to do unit conversions, or to find the ratio of values in two columns. For this you can use the `mutate()` function. The `transmute()` function is similar, but **replaces** old columns with the new one. -->
-<!-- We know that each row in our dataset represents some time span, but we're not sure what that span is. Below we use `mutate()` to create a new column called Span, which gives the number of days between the `PeriodEndDate` column and the `PeriodStartDate` column. This is why it is important to make sure your date columns are parsed properly as dates when importing your data. If the dates had been left as character data, it would not have been possible to do arithmetic with them.  -->
-<!-- It's hard to get a sense of what different time spans are present in our data. We can use the `count()` function to help us figure that out. -->
-<!-- ```{r count} -->
-<!-- count(measles_us_mod,Span) -->
-<!-- ``` -->
-<!-- All those different time spans will get us into trouble when we try to work with the data. So next we need to filter the dataset for only the rows we want.  -->
-<!-- ## Working with rows -->
-<!-- ### `filter()` -->
-<!-- `select()` lets us choose columns. To choose rows based on a specific criteria, we can use the `filter()` function. The arguments after the data frame are the condition(s) we want for our final dataframe to adhere to. Specify conditions using logical operator: -->
-<!-- | operator | meaning                  | -->
-<!-- |:---------|:-------------------------| -->
-<!-- | ==       | exactly equal            | -->
-<!-- | !=       | not equal to             | -->
-<!-- | \<       | less than                | -->
-<!-- | \<=      | less than or equal to    | -->
-<!-- | \>       | greater than             | -->
-<!-- | \>=      | greater than or equal to | -->
-<!-- | x\|y     | x or y                   | -->
-<!-- | x&y      | x and y                  | -->
-<!-- | !x       | not x                    | -->
-<!-- We'll come back to our problem of different time spans in a moment. First, let's try filtering our data by just one condition. We want to see just the rows that contain counts from Maryland. -->
-<!-- ```{r filter-one-condition} -->
-<!-- measles_us_mod %>% filter(State == "MARYLAND") -->
-<!-- ``` -->
-<!-- :::{.shaded .important} -->
-<!-- When matching strings you must be exact. R is case-sensitive. So `State == "Maryland"` or `State == "maryland"` would return 0 rows. -->
-<!-- ::: -->
-<!-- You can add additional conditions to filter by, separated by commas or other logical operators like `&`, `>`, and `>`.  -->
-<!-- Below we want just the rows for Maryland, and only include periods where the count was more than 500 reported cases. Note that while you need quotation marks around character data, you do not need them around numeric data. -->
-<!-- ```{r filter-multiple} -->
-<!-- measles_us_mod %>%  -->
-<!--   filter(State == "MARYLAND" & CountValue > 500) -->
-<!-- ``` -->
-<!-- ### Grouping and Summarizing data -->
-<!-- Many data analysis tasks can be approached using the *split-apply-combine* paradigm: split the data into groups, apply some analysis to each group, and then combine the results. **`dplyr`** makes this very easy through the use of the `group_by()` function. -->
-<!-- `group_by()` is often used together with `summarize()`, which collapses each group into a single-row summary of that group. `group_by()` takes as arguments the column names that contain the **categorical** variables for which you want to calculate the summary statistics. -->
-<!-- Let's return to our `measles_us_mod` data frame. To analyze this further, we need to separate out the rows that represent cumulative counts from the rows that have a fixed interval. So we use `filter()` as we did above, this time saving to a new object called `non_cumulative_period`. -->
-<!-- ```{r filter-non-cum} -->
-<!-- #filter out cumulative counts -->
-<!-- non_cumulative <- -->
-<!--   measles_us_mod %>% -->
-<!--     filter(PartOfCumulativeCountSeries == 0) -->
-<!-- ``` -->
-<!-- How can we calculate the total number of measles cases in each state for each reported time period? -->
-<!-- First we need to group our data by state, and then group by period. Remember that in our original data set each state contained counts for multiple municipalities. That means in our current data frame there will be multiple rows for each period that needs to be condensed. -->
-<!-- ```{r group} -->
-<!-- #group - prepares for summary calculations -->
-<!-- count_by_period <- -->
-<!--   non_cumulative %>% -->
-<!--   group_by(State, PeriodStartDate) -->
-<!-- count_by_period -->
-<!-- ``` -->
-<!-- When you inspect your new data frame, everything should look the same. Grouping prepares your data for summarize, but it does not do anything visually to the data. -->
-<!-- Now let's trying summarizing that data. `summarize()` takes the dataframe as it's first argument, then you need to provide some calculation and the name for the new column where the results of that calculation will go. In this case, we will use the `sum()` function on the CountValue column and put this in a new column called TotalCount -->
-<!-- ```{r summarize} -->
-<!-- count_by_period <- -->
-<!--   non_cumulative %>% -->
-<!--   group_by(State, PeriodStartDate) %>%  -->
-<!--   summarize(TotalCount = sum(CountValue)) -->
-<!-- ``` -->
-<!-- Notice how the use of pipes really comes in handy here. It saved us from having to create and keep track of a number of intermediate objects. -->
-<!-- Now each row in our dataset represents a week of data. It might be better if we can look at yearly trends. So, let's try separating out the year from PeriodStartDate into its own column. In addition to `mutate()`, we will also use the `year()` function from **`lubridate`**. Since **`lubridate`** is not loaded with the core **`tidyverse`** let's go ahead and load that now. -->
-<!-- ```{r lubridate} -->
-<!-- library(lubridate) -->
-<!-- ``` -->
-<!-- Remember, you only need to install a package once, but you have to load it with each new session. -->
-<!-- ```{r count-by-period} -->
-<!-- #Get year in separate column from PeriodStartDate -->
-<!-- count_by_period <-  -->
-<!--   count_by_period %>%  -->
-<!--   mutate(Year = year(PeriodStartDate)) -->
-<!-- count_by_period -->
-<!-- ``` -->
-<!-- Now we can do our grouping and summarizing again as we did above. -->
-<!-- ```{r count-by-state} -->
-<!-- #Get totals for each state each year. -->
-<!-- yearly_count_state <- -->
-<!--   count_by_period %>%  -->
-<!--   group_by(Year, State) %>%  -->
-<!--   summarise(TotalCount = sum(TotalCount)) -->
-<!-- yearly_count_state -->
-<!-- ``` -->
-<!-- Alternatively, to see a national level summary, we could group just by Year -->
-<!-- ```{r count-year} -->
-<!-- #Get totals each year. -->
-<!-- yearly_count <- -->
-<!--   count_by_period %>%  -->
-<!--   group_by(Year) %>% -->
-<!--   summarise(TotalCount = sum(TotalCount)) -->
-<!-- yearly_count -->
-<!-- ``` -->
-<!-- ## Joining Datasets -->
-<!-- Of course, looking at total counts in each state is not the most helpful metric without taking population into account. To rectify this, let's try joining some historical population data with our measles data. -->
-<!-- First we need to import the population data. -->
-<!-- ```{r} -->
-<!-- #load csv of populations by state over time, changing some of the datatypes from default -->
-<!-- hist_pop_by_state <- -->
-<!--   read_csv( -->
-<!--     "data/Historical_Population_by_State.csv", -->
-<!--     col_types = cols(ALASKA = col_double(), HAWAII = col_double()) -->
-<!--   ) -->
-<!-- ``` -->
-<!-- ```{r eval=FALSE} -->
-<!-- View(hist_pop_by_state) -->
-<!-- ``` -->
-<!-- As we saw in our measles data import, the presence of NAs makes it necessary to explicitly state that the Hawaii and Alaska columns contain numerical data. -->
-<!-- ### Long vs Wide formats -->
-<!-- For data to be considered "tidy", it should be in what is called "long" format. Each column is a variable, each row is an observation, and each cell is a value. Our state population data is in "wide" format, which is often preferable for human-readability, but is less ideal for machine-readability. -->
-<!-- We will use the package **`tidyr`** and the function `pivot_longer` to convert our population data to a long format, thus making it easier to join with our measles data. -->
-<!-- Each column in our population dataset represents a state. To make it tidy we are going to reduce those to one column called State with the state names as the values of the column. We will then need to create a new column for population containing the current cell values. To remember that the population data is provided in 1000s of persons, we will call this new column pop1000. -->
-<!-- `pivot_longer()` takes four principal arguments: -->
-<!-- 1.  the data -->
-<!-- 2.  *cols* are the names of the columns we use to fill the new values variable (or to drop). -->
-<!-- 3.  the *names_to* column variable we wish to create from the *cols* provided. -->
-<!-- 4.  the *values_to* column variable we wish to create and fill with values associated with the *cols* provided. -->
-<!-- ```{r} -->
-<!-- library(tidyr) -->
-<!-- hist_pop_long <- hist_pop_by_state %>%  -->
-<!--   pivot_longer(ALASKA:WYOMING, -->
-<!--                names_to = "State", -->
-<!--                values_to = "pop1000") -->
-<!-- ``` -->
-<!-- ```{r eval=FALSE} -->
-<!-- View(hist_pop_long) -->
-<!-- ``` -->
-<!-- Now our two datasets have similar structures, a column of state names, a column of years, and a column of values. Let's join these two datasets by the state and year columns. Note that if both sets have the same column names, you do not need to specify anything in the by argument. We use a left join here which preserves all the rows in our measles dataset and adds the matching rows from the population dataset. -->
-<!-- ```{r} -->
-<!-- joined_df <- -->
-<!--   left_join(yearly_count_state, hist_pop_long, by=c("State" = "State", "Year" = "DATE" )) -->
-<!-- joined_df -->
-<!-- ``` -->
-<!-- Now we can use our old friend `mutate()` to add a rate column calculated from the count and pop1000 columns. -->
-<!-- ```{r} -->
-<!-- #Add column for rate (per 1000) of measles -->
-<!-- rate_by_year <- mutate(joined_df, rate = TotalCount / pop1000) -->
-<!-- rate_by_year -->
-<!-- ``` -->
+</div>
+</div>
+<div id="wrangling-data-with-dplyr" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Wrangling data with <code>dplyr</code><a href="welcome-to-the-tidyverse.html#wrangling-data-with-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that we have a better sense of what’s in our data, we can start to getting it into shape for analysis. Of all the <strong><code>tidyverse</code></strong> packages, <strong><code>dplyr</code></strong> might be the one you wind up using the most. <strong><code>dplyr</code></strong> is characterized by its easy to understand “verb” functions, such as <code>count()</code>, which we’ve already used. Some others are:</p>
+<ul>
+<li><code>select()</code> - selects columns by name</li>
+<li><code>filter()</code> - filters rows by some condition</li>
+<li><code>mutate()</code> - creates new columns based on existing values of existing columns</li>
+<li><code>group_by()</code> - groups data</li>
+<li><code>summarize()</code> - summarizes rows to a single value</li>
+<li><code>arrange()</code> - changes the order of rows</li>
+</ul>
+<p>If you’re familiar at all with SQL, you may that some of these <strong><code>dplyr</code></strong> functions have similar names or purposes as SQL commands.</p>
+</div>
+<div id="subsetting-data" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Subsetting Data<a href="welcome-to-the-tidyverse.html#subsetting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To work efficiently, we want to work with the smallest version of our dataset possible that still contains all the information we need. That means getting rid of extraneous columns and rows.
+In the last chapter, we learned that we can use brackets to subset vectors and data frames.</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="welcome-to-the-tidyverse.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use bracket notation to select the value in the 5th row, 7th column</span></span>
+<span id="cb172-2"><a href="welcome-to-the-tidyverse.html#cb172-2" aria-hidden="true" tabindex="-1"></a>measles_us[<span class="dv">5</span>,<span class="dv">7</span>]</span>
+<span id="cb172-3"><a href="welcome-to-the-tidyverse.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1 × 1</span></span>
+<span id="cb172-4"><a href="welcome-to-the-tidyverse.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Admin1ISO</span></span>
+<span id="cb172-5"><a href="welcome-to-the-tidyverse.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    </span></span>
+<span id="cb172-6"><a href="welcome-to-the-tidyverse.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 US-WI</span></span>
+<span id="cb172-7"><a href="welcome-to-the-tidyverse.html#cb172-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-8"><a href="welcome-to-the-tidyverse.html#cb172-8" aria-hidden="true" tabindex="-1"></a><span class="co">#use bracket notation to select the 3rd row</span></span>
+<span id="cb172-9"><a href="welcome-to-the-tidyverse.html#cb172-9" aria-hidden="true" tabindex="-1"></a>measles_us[<span class="dv">3</span>,]</span>
+<span id="cb172-10"><a href="welcome-to-the-tidyverse.html#cb172-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1 × 15</span></span>
+<span id="cb172-11"><a href="welcome-to-the-tidyverse.html#cb172-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   ConditionName ConditionSNOMED PathogenName  CountryName  CountryISO Admin1Name</span></span>
+<span id="cb172-12"><a href="welcome-to-the-tidyverse.html#cb172-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;     </span></span>
+<span id="cb172-13"><a href="welcome-to-the-tidyverse.html#cb172-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Measles              14189004 Measles virus UNITED STAT… US         WISCONSIN </span></span>
+<span id="cb172-14"><a href="welcome-to-the-tidyverse.html#cb172-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 9 more variables: Admin1ISO &lt;chr&gt;, Admin2Name &lt;chr&gt;, CityName &lt;chr&gt;,</span></span>
+<span id="cb172-15"><a href="welcome-to-the-tidyverse.html#cb172-15" aria-hidden="true" tabindex="-1"></a><span class="do">## #   PeriodStartDate &lt;date&gt;, PeriodEndDate &lt;chr&gt;,</span></span>
+<span id="cb172-16"><a href="welcome-to-the-tidyverse.html#cb172-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   PartOfCumulativeCountSeries &lt;dbl&gt;, DiagnosisCertainty &lt;lgl&gt;,</span></span>
+<span id="cb172-17"><a href="welcome-to-the-tidyverse.html#cb172-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   SourceName &lt;chr&gt;, CountValue &lt;dbl&gt;</span></span>
+<span id="cb172-18"><a href="welcome-to-the-tidyverse.html#cb172-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-19"><a href="welcome-to-the-tidyverse.html#cb172-19" aria-hidden="true" tabindex="-1"></a><span class="co">#use bracket notation to select the 10th column</span></span>
+<span id="cb172-20"><a href="welcome-to-the-tidyverse.html#cb172-20" aria-hidden="true" tabindex="-1"></a>measles_us[<span class="dv">10</span>]</span>
+<span id="cb172-21"><a href="welcome-to-the-tidyverse.html#cb172-21" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 422,051 × 1</span></span>
+<span id="cb172-22"><a href="welcome-to-the-tidyverse.html#cb172-22" aria-hidden="true" tabindex="-1"></a><span class="do">##    PeriodStartDate</span></span>
+<span id="cb172-23"><a href="welcome-to-the-tidyverse.html#cb172-23" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;date&gt;         </span></span>
+<span id="cb172-24"><a href="welcome-to-the-tidyverse.html#cb172-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1927-11-20     </span></span>
+<span id="cb172-25"><a href="welcome-to-the-tidyverse.html#cb172-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1927-11-27     </span></span>
+<span id="cb172-26"><a href="welcome-to-the-tidyverse.html#cb172-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1927-12-04     </span></span>
+<span id="cb172-27"><a href="welcome-to-the-tidyverse.html#cb172-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1927-12-18     </span></span>
+<span id="cb172-28"><a href="welcome-to-the-tidyverse.html#cb172-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 1927-12-25     </span></span>
+<span id="cb172-29"><a href="welcome-to-the-tidyverse.html#cb172-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1928-01-01     </span></span>
+<span id="cb172-30"><a href="welcome-to-the-tidyverse.html#cb172-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1928-01-08     </span></span>
+<span id="cb172-31"><a href="welcome-to-the-tidyverse.html#cb172-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1928-01-15     </span></span>
+<span id="cb172-32"><a href="welcome-to-the-tidyverse.html#cb172-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1928-01-22     </span></span>
+<span id="cb172-33"><a href="welcome-to-the-tidyverse.html#cb172-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1928-01-29     </span></span>
+<span id="cb172-34"><a href="welcome-to-the-tidyverse.html#cb172-34" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 422,041 more rows</span></span>
+<span id="cb172-35"><a href="welcome-to-the-tidyverse.html#cb172-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-36"><a href="welcome-to-the-tidyverse.html#cb172-36" aria-hidden="true" tabindex="-1"></a><span class="co">#use bracket notation to select a range of rows and columns</span></span>
+<span id="cb172-37"><a href="welcome-to-the-tidyverse.html#cb172-37" aria-hidden="true" tabindex="-1"></a>measles_us[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">9</span>]</span>
+<span id="cb172-38"><a href="welcome-to-the-tidyverse.html#cb172-38" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 7</span></span>
+<span id="cb172-39"><a href="welcome-to-the-tidyverse.html#cb172-39" aria-hidden="true" tabindex="-1"></a><span class="do">##   PathogenName  CountryName  CountryISO Admin1Name Admin1ISO Admin2Name CityName</span></span>
+<span id="cb172-40"><a href="welcome-to-the-tidyverse.html#cb172-40" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;   </span></span>
+<span id="cb172-41"><a href="welcome-to-the-tidyverse.html#cb172-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Measles virus UNITED STAT… US         WISCONSIN  US-WI     &lt;NA&gt;       &lt;NA&gt;    </span></span>
+<span id="cb172-42"><a href="welcome-to-the-tidyverse.html#cb172-42" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Measles virus UNITED STAT… US         WISCONSIN  US-WI     &lt;NA&gt;       &lt;NA&gt;    </span></span>
+<span id="cb172-43"><a href="welcome-to-the-tidyverse.html#cb172-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Measles virus UNITED STAT… US         WISCONSIN  US-WI     &lt;NA&gt;       &lt;NA&gt;    </span></span>
+<span id="cb172-44"><a href="welcome-to-the-tidyverse.html#cb172-44" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Measles virus UNITED STAT… US         WISCONSIN  US-WI     &lt;NA&gt;       &lt;NA&gt;    </span></span>
+<span id="cb172-45"><a href="welcome-to-the-tidyverse.html#cb172-45" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Measles virus UNITED STAT… US         WISCONSIN  US-WI     &lt;NA&gt;       &lt;NA&gt;</span></span></code></pre></div>
+<div id="subsetting-columns-with-select" class="section level3 hasAnchor" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Subsetting Columns with <code>Select()</code><a href="welcome-to-the-tidyverse.html#subsetting-columns-with-select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong><code>dplyr</code></strong> makes this subsetting task a bit easier, because we can use <code>select()</code> to choose columns by name rather than index.</p>
+<p>The first argument to this function is the name of the data object, which in this case is <code>measles_us</code>, and the subsequent arguments are the names of the columns we want to keep, separated by commas.</p>
+<p>Let’s try selecting the <code>Admin1Name</code> column and the <code>CountValue</code> column.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="welcome-to-the-tidyverse.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(measles_us, Admin1Name, CountValue)</span></code></pre></div>
+<pre><code>## # A tibble: 422,051 × 2
+##    Admin1Name CountValue
+##    &lt;chr&gt;           &lt;dbl&gt;
+##  1 WISCONSIN          85
+##  2 WISCONSIN         120
+##  3 WISCONSIN          84
+##  4 WISCONSIN         106
+##  5 WISCONSIN          39
+##  6 WISCONSIN          45
+##  7 WISCONSIN          28
+##  8 WISCONSIN         140
+##  9 WISCONSIN          48
+## 10 WISCONSIN          85
+## # … with 422,041 more rows</code></pre>
+<p>As you can imagine, if you had a number of columns to select, it could get tiresome to write them all out. One way around this is to use a colon <code>:</code> to name a range of adjacent columns, just as we used the colon with brackets.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="welcome-to-the-tidyverse.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(measles_us, ConditionName<span class="sc">:</span>Admin1ISO)</span></code></pre></div>
+<pre><code>## # A tibble: 422,051 × 7
+##    ConditionName ConditionSNOMED PathogenName  CountryName CountryISO Admin1Name
+##    &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     
+##  1 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  2 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  3 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  4 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  5 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  6 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  7 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  8 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+##  9 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+## 10 Measles              14189004 Measles virus UNITED STA… US         WISCONSIN 
+## # … with 422,041 more rows, and 1 more variable: Admin1ISO &lt;chr&gt;</code></pre>
+<p>Another helpful tool that the <strong><code>tidyverse</code></strong> provides is the <strong><code>pipe</code></strong> operator which looks like <strong><code>%&gt;%</code></strong>. The pipe is made available via the <strong><code>magrittr</code></strong> package, installed automatically with <strong><code>dplyr</code></strong>. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.</p>
+<p>With the pipe you start with your data object and pipe it to the function, rather than naming the data as your first argument. So, the pipe becomes especially valuable when you have a number of steps that you want to connect. Another benefit of using the pipe in RStudio is that the interface will supply column names to you in the auto complete. This helps so you do not need to remember sometimes lengthy column names, and you are less likely to get an error from a typo.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="welcome-to-the-tidyverse.html#cb177-1" aria-hidden="true" tabindex="-1"></a>measles_us <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="welcome-to-the-tidyverse.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Admin1Name, PartOfCumulativeCountSeries)</span></code></pre></div>
+<pre><code>## # A tibble: 422,051 × 2
+##    Admin1Name PartOfCumulativeCountSeries
+##    &lt;chr&gt;                            &lt;dbl&gt;
+##  1 WISCONSIN                            0
+##  2 WISCONSIN                            0
+##  3 WISCONSIN                            0
+##  4 WISCONSIN                            0
+##  5 WISCONSIN                            0
+##  6 WISCONSIN                            0
+##  7 WISCONSIN                            0
+##  8 WISCONSIN                            0
+##  9 WISCONSIN                            0
+## 10 WISCONSIN                            0
+## # … with 422,041 more rows</code></pre>
+<p>Now, let’s think through which columns we want for our analysis and save this to a new object called <code>measles_us_mod</code>. It’s always a good idea to create new objects when you make major changes to your data.</p>
+<p>For this exercise, we want to look at trends in number of measles cases over time. To do that, we’ll need to keep our <code>CountValue</code> variable, as and the date variables (<code>PeriodStartDate</code> and <code>PeriodEndDate</code>), as well as the<code>PartOfCumulativeCountSeries</code> variable, which will help us understand how to use the dates (more on this later). The first five columns each have only one value. So it might be redundant to keep those, although if we were combining them with other Project Tycho datasets they could be useful. It might be interesting to get a state-level view of the data, so let’s keep <code>Admin1Name</code>. But we saw that there are a number of missing values in our <code>Admin2Name</code> and <code>CityName</code> variables, so they might not be very useful for our analysis.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="welcome-to-the-tidyverse.html#cb179-1" aria-hidden="true" tabindex="-1"></a>measles_us_mod <span class="ot">&lt;-</span></span>
+<span id="cb179-2"><a href="welcome-to-the-tidyverse.html#cb179-2" aria-hidden="true" tabindex="-1"></a>  measles_us <span class="sc">%&gt;%</span></span>
+<span id="cb179-3"><a href="welcome-to-the-tidyverse.html#cb179-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb179-4"><a href="welcome-to-the-tidyverse.html#cb179-4" aria-hidden="true" tabindex="-1"></a>     Admin1Name,</span>
+<span id="cb179-5"><a href="welcome-to-the-tidyverse.html#cb179-5" aria-hidden="true" tabindex="-1"></a>     PeriodStartDate,</span>
+<span id="cb179-6"><a href="welcome-to-the-tidyverse.html#cb179-6" aria-hidden="true" tabindex="-1"></a>     PeriodEndDate,</span>
+<span id="cb179-7"><a href="welcome-to-the-tidyverse.html#cb179-7" aria-hidden="true" tabindex="-1"></a>     PartOfCumulativeCountSeries,</span>
+<span id="cb179-8"><a href="welcome-to-the-tidyverse.html#cb179-8" aria-hidden="true" tabindex="-1"></a>     CountValue</span>
+<span id="cb179-9"><a href="welcome-to-the-tidyverse.html#cb179-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb179-10"><a href="welcome-to-the-tidyverse.html#cb179-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-11"><a href="welcome-to-the-tidyverse.html#cb179-11" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect our new data frame</span></span>
+<span id="cb179-12"><a href="welcome-to-the-tidyverse.html#cb179-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(measles_us_mod)</span></code></pre></div>
+<pre><code>## Rows: 422,051
+## Columns: 5
+## $ Admin1Name                  &lt;chr&gt; &quot;WISCONSIN&quot;, &quot;WISCONSIN&quot;, &quot;WISCONSIN&quot;, &quot;WI…
+## $ PeriodStartDate             &lt;date&gt; 1927-11-20, 1927-11-27, 1927-12-04, 1927-…
+## $ PeriodEndDate               &lt;chr&gt; &quot;11/26/1927&quot;, &quot;12/3/1927&quot;, &quot;12/10/1927&quot;, &quot;…
+## $ PartOfCumulativeCountSeries &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ CountValue                  &lt;dbl&gt; 85, 120, 84, 106, 39, 45, 28, 140, 48, 85,…</code></pre>
+<p>Now when you look in your environment pane, you should see your new object which as the same number of rows but 6 instead of 11 columns (or variables)</p>
+</div>
+<div id="renaming-columns" class="section level3 hasAnchor" number="3.8.2">
+<h3><span class="header-section-number">3.8.2</span> Renaming columns<a href="welcome-to-the-tidyverse.html#renaming-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes when you receive data, you may find that the column names are not very descriptive or useful, and it may be necessary to rename them. You can assign new names to columns when you select them <code>select(newColumnName = OldColumnName)</code> or you can use the <code>rename()</code> function. Like naming objects, you should use a simple, descriptive, relatively short name without spaces for your column names.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="welcome-to-the-tidyverse.html#cb181-1" aria-hidden="true" tabindex="-1"></a>measles_us_mod <span class="ot">&lt;-</span></span>
+<span id="cb181-2"><a href="welcome-to-the-tidyverse.html#cb181-2" aria-hidden="true" tabindex="-1"></a>  measles_us_mod <span class="sc">%&gt;%</span> </span>
+<span id="cb181-3"><a href="welcome-to-the-tidyverse.html#cb181-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">State =</span> Admin1Name)</span></code></pre></div>
+</div>
+<div id="subsetting-rows-with-filter" class="section level3 hasAnchor" number="3.8.3">
+<h3><span class="header-section-number">3.8.3</span> Subsetting rows with <code>filter()</code><a href="welcome-to-the-tidyverse.html#subsetting-rows-with-filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>select()</code> lets us choose columns. To choose rows based on a specific criteria, we can use the <code>filter()</code> function. The arguments after the data frame are the condition(s) we want for our final dataframe to adhere to. Specify conditions using logical operator:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">operator</th>
+<th align="left">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">==</td>
+<td align="left">exactly equal</td>
+</tr>
+<tr class="even">
+<td align="left">!=</td>
+<td align="left">not equal to</td>
+</tr>
+<tr class="odd">
+<td align="left">&lt;</td>
+<td align="left">less than</td>
+</tr>
+<tr class="even">
+<td align="left">&lt;=</td>
+<td align="left">less than or equal to</td>
+</tr>
+<tr class="odd">
+<td align="left">&gt;</td>
+<td align="left">greater than</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;=</td>
+<td align="left">greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td align="left">x|y</td>
+<td align="left">x or y</td>
+</tr>
+<tr class="even">
+<td align="left">x&amp;y</td>
+<td align="left">x and y</td>
+</tr>
+<tr class="odd">
+<td align="left">!x</td>
+<td align="left">not x</td>
+</tr>
+</tbody>
+</table>
+<p>We’ll come back to our problem of different time spans in a moment. First, let’s try filtering our data by just one condition. We want to see just the rows that contain counts from Maryland.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="welcome-to-the-tidyverse.html#cb182-1" aria-hidden="true" tabindex="-1"></a>measles_us_mod <span class="sc">%&gt;%</span> <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">&quot;MARYLAND&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 7,246 × 5
+##    State    PeriodStartDate PeriodEndDate PartOfCumulativeCountSeries CountValue
+##    &lt;chr&gt;    &lt;date&gt;          &lt;chr&gt;                               &lt;dbl&gt;      &lt;dbl&gt;
+##  1 MARYLAND 1927-11-27      12/3/1927                               0         64
+##  2 MARYLAND 1927-12-04      12/10/1927                              0         88
+##  3 MARYLAND 1927-12-18      12/24/1927                              0        105
+##  4 MARYLAND 1927-12-25      12/31/1927                              0        109
+##  5 MARYLAND 1928-01-01      1/7/1928                                0        175
+##  6 MARYLAND 1928-01-08      1/14/1928                               0        249
+##  7 MARYLAND 1928-01-15      1/21/1928                               0        345
+##  8 MARYLAND 1928-01-22      1/28/1928                               0        365
+##  9 MARYLAND 1928-01-29      2/4/1928                                0        504
+## 10 MARYLAND 1928-02-05      2/11/1928                               0        563
+## # … with 7,236 more rows</code></pre>
+<div class="shaded important">
+<p>When matching strings you must be exact. R is case-sensitive. So <code>State == "Maryland"</code> or <code>State == "maryland"</code> would return 0 rows.</p>
+</div>
+<p>You can add additional conditions to filter by, separated by commas or other logical operators like <code>&amp;</code>, <code>&gt;</code>, and <code>&gt;</code>.</p>
+<p>Below we want just the rows for Maryland, and only include periods where the count was more than 500 reported cases. Note that while you need quotation marks around character data, you do not need them around numeric data.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="welcome-to-the-tidyverse.html#cb184-1" aria-hidden="true" tabindex="-1"></a>measles_us_mod <span class="sc">%&gt;%</span></span>
+<span id="cb184-2"><a href="welcome-to-the-tidyverse.html#cb184-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">&quot;MARYLAND&quot;</span> <span class="sc">&amp;</span> CountValue <span class="sc">&gt;</span> <span class="dv">500</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 328 × 5
+##    State    PeriodStartDate PeriodEndDate PartOfCumulativeCountSeries CountValue
+##    &lt;chr&gt;    &lt;date&gt;          &lt;chr&gt;                               &lt;dbl&gt;      &lt;dbl&gt;
+##  1 MARYLAND 1928-01-29      2/4/1928                                0        504
+##  2 MARYLAND 1928-02-05      2/11/1928                               0        563
+##  3 MARYLAND 1928-02-12      2/18/1928                               0        696
+##  4 MARYLAND 1928-02-19      2/25/1928                               0        750
+##  5 MARYLAND 1928-02-26      3/3/1928                                0       1012
+##  6 MARYLAND 1928-03-04      3/10/1928                               0        951
+##  7 MARYLAND 1928-03-11      3/17/1928                               0       1189
+##  8 MARYLAND 1928-03-18      3/24/1928                               0       1163
+##  9 MARYLAND 1928-03-25      3/31/1928                               0       1020
+## 10 MARYLAND 1928-04-01      4/7/1928                                0        753
+## # … with 318 more rows</code></pre>
+<p>We can filter based on a vector of values with the<code>%in%</code> operator. Remember that our dataset contains data for US states and territories. To do this we will make use of a nifty built-in R vector called <code>state.name</code>. We’ll keep only the rows where the <code>State</code> column has a value that matches one of the values in that vector. Because the state names in our data are in all upper case letters, we will use the base R function <code>toupper()</code> (to upper case).</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="welcome-to-the-tidyverse.html#cb186-1" aria-hidden="true" tabindex="-1"></a>measles_states_only <span class="ot">&lt;-</span></span>
+<span id="cb186-2"><a href="welcome-to-the-tidyverse.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  measles_us_mod <span class="sc">%&gt;%</span> </span>
+<span id="cb186-3"><a href="welcome-to-the-tidyverse.html#cb186-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">%in%</span> <span class="fu">toupper</span>(state.name))</span></code></pre></div>
+<p>Let’s save this output to a new object <code>measles_states_only</code>. Notice how we now have fewer rows than we had in our <code>measles_us_mod object</code>.</p>
+<p>We could alternatively have used negation with the names of the values we specifically wanted to exclude.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="welcome-to-the-tidyverse.html#cb187-1" aria-hidden="true" tabindex="-1"></a>measles_states_only <span class="ot">&lt;-</span> measles_us_mod <span class="sc">%&gt;%</span> </span>
+<span id="cb187-2"><a href="welcome-to-the-tidyverse.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>State <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;PUERTO RICO&quot;</span>, <span class="st">&quot;GUAM&quot;</span>, <span class="st">&quot;AMERICAN SAMOA&quot;</span>, <span class="st">&quot;NORTHERN MARIANA ISLANDS&quot;</span>, <span class="st">&quot;VIRGIN ISLANDS, U.S.&quot;</span>, <span class="st">&quot;DISTRICT OF COLUMBIA&quot;</span>))</span></code></pre></div>
+<p>Great! Our dataset is really shaping up. Let’s also take a closer look at our date columns. If you look at the first several rows, it looks like each row of our dataset represents about a discrete week of measles case counts. But (as you can read in the Tycho data documentation) there are actually two date series in this dataset - non-cumulative and cumulative. Which series a row belongs to is noted by the <code>PartofCumulativeCountSeries</code>, which as the value <code>0</code> if a row is non-cumulative, and <code>1</code> if the row is part of a cumulative count.</p>
+<p>To keep things consistent. Let’s filter our dataset so we only have the non-overlapping discrete weeks.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="welcome-to-the-tidyverse.html#cb188-1" aria-hidden="true" tabindex="-1"></a>measles_non_cumulative <span class="ot">&lt;-</span> </span>
+<span id="cb188-2"><a href="welcome-to-the-tidyverse.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  measles_states_only <span class="sc">%&gt;%</span> </span>
+<span id="cb188-3"><a href="welcome-to-the-tidyverse.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PartOfCumulativeCountSeries<span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
+<p>Once again, we have fewer rows than we started with.</p>
+<p>Now do some more with our date variables.</p>
+</div>
+</div>
+<div id="working-with-dates" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Working with Dates<a href="welcome-to-the-tidyverse.html#working-with-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Working with dates in your dataset can be tricky. The <strong><code>tidyverse</code></strong> provides the <strong><code>lubridate</code></strong> package to make this task easier. Because of it’s specialized focus, it’s not loaded with the rest of the <strong><code>tidyverse</code></strong> packages. So let’s load it now:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="welcome-to-the-tidyverse.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<p>As we saw when we loaded our measles dataset, R often will try to read in date variables as character data. But, if we want to be able to do calculations with our dates, or graph some time information, we need the dates to be recognized as date objects.</p>
+<p><strong><code>lubridate</code></strong> has a number of functions for parsing and creating dates. Let’s say we have a character string that looks like a date in a typical US date format: month, day, year. We can parse this with the function called <code>mdy()</code></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="welcome-to-the-tidyverse.html#cb192-1" aria-hidden="true" tabindex="-1"></a>my_date <span class="ot">&lt;-</span> <span class="st">&quot;03/14/2022&quot;</span></span>
+<span id="cb192-2"><a href="welcome-to-the-tidyverse.html#cb192-2" aria-hidden="true" tabindex="-1"></a>real_date <span class="ot">&lt;-</span> <span class="fu">mdy</span>(my_date)</span>
+<span id="cb192-3"><a href="welcome-to-the-tidyverse.html#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="welcome-to-the-tidyverse.html#cb192-4" aria-hidden="true" tabindex="-1"></a>real_date</span></code></pre></div>
+<pre><code>## [1] &quot;2022-03-14&quot;</code></pre>
+<p>Note it changes the date to a standard format Year-Month-Day. Let’s look at the classes of our two dates.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="welcome-to-the-tidyverse.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_date)</span>
+<span id="cb194-2"><a href="welcome-to-the-tidyverse.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
+<span id="cb194-3"><a href="welcome-to-the-tidyverse.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(real_date)</span>
+<span id="cb194-4"><a href="welcome-to-the-tidyverse.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Date&quot;</span></span></code></pre></div>
+<p>Let’s try parsing a couple more dates in different formats with related functions <code>dmy()</code> and <code>ymd()</code>:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="welcome-to-the-tidyverse.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">&quot;14-03-2022&quot;</span>)</span>
+<span id="cb195-2"><a href="welcome-to-the-tidyverse.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-03-14&quot;</span></span>
+<span id="cb195-3"><a href="welcome-to-the-tidyverse.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;20220314&quot;</span>)</span>
+<span id="cb195-4"><a href="welcome-to-the-tidyverse.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-03-14&quot;</span></span></code></pre></div>
+<p>Note that you can use different types of separators between the date components or no separators at all.</p>
+<p>Now let’s use this new function to change <code>PeriodEndDate</code> to a date object. Currently, the dates are in Month, Day, Year format. Notice that since we are changing one column of data, we must save the results of our function directly to that column. We can use the <code>class()</code> function to check that it worked.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="welcome-to-the-tidyverse.html#cb196-1" aria-hidden="true" tabindex="-1"></a>measles_non_cumulative<span class="sc">$</span>PeriodEndDate <span class="ot">&lt;-</span> <span class="fu">mdy</span>(measles_non_cumulative<span class="sc">$</span>PeriodEndDate)</span>
+<span id="cb196-2"><a href="welcome-to-the-tidyverse.html#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-3"><a href="welcome-to-the-tidyverse.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(measles_non_cumulative<span class="sc">$</span>PeriodEndDate)</span></code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p><strong><code>lubridate</code></strong> also has functions that will let you pull out different components of dates. For example:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="welcome-to-the-tidyverse.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(real_date)</span>
+<span id="cb198-2"><a href="welcome-to-the-tidyverse.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2022</span></span>
+<span id="cb198-3"><a href="welcome-to-the-tidyverse.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(real_date)</span>
+<span id="cb198-4"><a href="welcome-to-the-tidyverse.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb198-5"><a href="welcome-to-the-tidyverse.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(real_date)</span>
+<span id="cb198-6"><a href="welcome-to-the-tidyverse.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 14</span></span>
+<span id="cb198-7"><a href="welcome-to-the-tidyverse.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(real_date)</span>
+<span id="cb198-8"><a href="welcome-to-the-tidyverse.html#cb198-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
+<span id="cb198-9"><a href="welcome-to-the-tidyverse.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(real_date, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb198-10"><a href="welcome-to-the-tidyverse.html#cb198-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] Mon</span></span>
+<span id="cb198-11"><a href="welcome-to-the-tidyverse.html#cb198-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</span></span></code></pre></div>
+<p>We’ll come back to that idea shortly.</p>
+<div id="date-intervals-durations-and-periods" class="section level3 hasAnchor" number="3.9.1">
+<h3><span class="header-section-number">3.9.1</span> Date intervals, durations, and periods<a href="welcome-to-the-tidyverse.html#date-intervals-durations-and-periods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can also use <strong><code>lubridate</code></strong> to work with time durations, intervals, and periods, and to do arithmetic with dates.</p>
+<p>The measles data has a start date and an end date variable. This dataset has a mix of discrete 6 day periods and cumulative periods. Let’s look at that a little more closely. First we create an interval object based on those two dates with the <code>interval()</code> function.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="welcome-to-the-tidyverse.html#cb199-1" aria-hidden="true" tabindex="-1"></a>measles_weeks <span class="ot">&lt;-</span> measles_us_mod</span>
+<span id="cb199-2"><a href="welcome-to-the-tidyverse.html#cb199-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-3"><a href="welcome-to-the-tidyverse.html#cb199-3" aria-hidden="true" tabindex="-1"></a>measles_weeks<span class="sc">$</span>PeriodEndDate <span class="ot">&lt;-</span> <span class="fu">mdy</span>(measles_weeks<span class="sc">$</span>PeriodEndDate)</span>
+<span id="cb199-4"><a href="welcome-to-the-tidyverse.html#cb199-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-5"><a href="welcome-to-the-tidyverse.html#cb199-5" aria-hidden="true" tabindex="-1"></a>measles_intervals <span class="ot">&lt;-</span></span>
+<span id="cb199-6"><a href="welcome-to-the-tidyverse.html#cb199-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">interval</span>(<span class="at">start=</span>measles_weeks<span class="sc">$</span>PeriodStartDate, <span class="at">end=</span>measles_weeks<span class="sc">$</span>PeriodEndDate)</span>
+<span id="cb199-7"><a href="welcome-to-the-tidyverse.html#cb199-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-8"><a href="welcome-to-the-tidyverse.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(measles_intervals)</span></code></pre></div>
+<pre><code>## [1] 1927-11-20 UTC--1927-11-26 UTC 1927-11-27 UTC--1927-12-03 UTC
+## [3] 1927-12-04 UTC--1927-12-10 UTC 1927-12-18 UTC--1927-12-24 UTC
+## [5] 1927-12-25 UTC--1927-12-31 UTC 1928-01-01 UTC--1928-01-07 UTC</code></pre>
+<p>To figure out how many days are in our interval we can use a duration function. Duration functions return the number of seconds in a provided value.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="welcome-to-the-tidyverse.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duration</span>(<span class="dv">10</span>)</span>
+<span id="cb201-2"><a href="welcome-to-the-tidyverse.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;10s&quot;</span></span>
+<span id="cb201-3"><a href="welcome-to-the-tidyverse.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dminutes</span>(<span class="dv">10</span>)</span>
+<span id="cb201-4"><a href="welcome-to-the-tidyverse.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;600s (~10 minutes)&quot;</span></span>
+<span id="cb201-5"><a href="welcome-to-the-tidyverse.html#cb201-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dhours</span>(<span class="dv">10</span>)</span>
+<span id="cb201-6"><a href="welcome-to-the-tidyverse.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;36000s (~10 hours)&quot;</span></span>
+<span id="cb201-7"><a href="welcome-to-the-tidyverse.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ddays</span>(<span class="dv">10</span>)</span>
+<span id="cb201-8"><a href="welcome-to-the-tidyverse.html#cb201-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;864000s (~1.43 weeks)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="welcome-to-the-tidyverse.html#cb202-1" aria-hidden="true" tabindex="-1"></a>measles_days <span class="ot">&lt;-</span> </span>
+<span id="cb202-2"><a href="welcome-to-the-tidyverse.html#cb202-2" aria-hidden="true" tabindex="-1"></a>  measles_intervals <span class="sc">/</span> <span class="fu">ddays</span>(<span class="dv">1</span>)</span>
+<span id="cb202-3"><a href="welcome-to-the-tidyverse.html#cb202-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-4"><a href="welcome-to-the-tidyverse.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(measles_days)</span></code></pre></div>
+<pre><code>## [1] 6 6 6 6 6 6</code></pre>
+<p>The table function will tell us how many times each interval appears</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="welcome-to-the-tidyverse.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(<span class="fu">table</span>(measles_days))</span></code></pre></div>
+<pre><code>## # A tibble: 59 × 2
+##    measles_days      n
+##    &lt;chr&gt;         &lt;int&gt;
+##  1 6            338063
+##  2 13              558
+##  3 20              693
+##  4 27              782
+##  5 34              857
+##  6 41              929
+##  7 48              913
+##  8 55              997
+##  9 62             1083
+## 10 69             1136
+## # … with 49 more rows</code></pre>
+</div>
+</div>
+<div id="creating-new-columns-with-mutate" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Creating new columns with <code>mutate()</code><a href="welcome-to-the-tidyverse.html#creating-new-columns-with-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Frequently you’ll want to create new columns based on the values in existing columns, for example to do unit conversions, or to find the ratio of values in two columns. For this you can use the <code>mutate()</code> function. The <code>transmute()</code> function is similar, but <strong>replaces</strong> old columns with the new one.</p>
+<p>We can use <code>mutate()</code> plus what we learned about <strong><code>lubridate</code></strong> functions to create a <code>Year</code> variable based on our current date variables. This will be useful later on for grouping purposes. <code>mutate()</code> takes as an argument the name of the new column you want to create and an expression used to create it.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="welcome-to-the-tidyverse.html#cb206-1" aria-hidden="true" tabindex="-1"></a>measles_w_year <span class="ot">&lt;-</span> </span>
+<span id="cb206-2"><a href="welcome-to-the-tidyverse.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  measles_non_cumulative <span class="sc">%&gt;%</span> </span>
+<span id="cb206-3"><a href="welcome-to-the-tidyverse.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year=</span><span class="fu">year</span>(PeriodStartDate))</span>
+<span id="cb206-4"><a href="welcome-to-the-tidyverse.html#cb206-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb206-5"><a href="welcome-to-the-tidyverse.html#cb206-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(measles_w_year)</span></code></pre></div>
+<pre><code>## Rows: 332,138
+## Columns: 6
+## $ State                       &lt;chr&gt; &quot;WISCONSIN&quot;, &quot;WISCONSIN&quot;, &quot;WISCONSIN&quot;, &quot;WI…
+## $ PeriodStartDate             &lt;date&gt; 1927-11-20, 1927-11-27, 1927-12-04, 1927-…
+## $ PeriodEndDate               &lt;date&gt; 1927-11-26, 1927-12-03, 1927-12-10, 1927-…
+## $ PartOfCumulativeCountSeries &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ CountValue                  &lt;dbl&gt; 85, 120, 84, 106, 39, 45, 28, 140, 48, 85,…
+## $ Year                        &lt;dbl&gt; 1927, 1927, 1927, 1927, 1927, 1928, 1928, …</code></pre>
+</div>
+<div id="grouping-and-summarizing-data" class="section level2 hasAnchor" number="3.11">
+<h2><span class="header-section-number">3.11</span> Grouping and Summarizing data<a href="welcome-to-the-tidyverse.html#grouping-and-summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many data analysis tasks can be approached using the <em>split-apply-combine</em> paradigm: split the data into groups, apply some analysis to each group, and then combine the results. <strong><code>dplyr</code></strong> makes this very easy through the use of the <code>group_by()</code> function.</p>
+<p><code>group_by()</code> is often used together with <code>summarize()</code>, which collapses each group into a single-row summary of that group. <code>group_by()</code> takes as arguments the column names that contain the <strong>categorical</strong> variables for which you want to calculate the summary statistics.</p>
+<p>How can we calculate the total number of measles cases for each year?</p>
+<p>First we need to group our data by year using our new <code>Year</code> column.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="welcome-to-the-tidyverse.html#cb208-1" aria-hidden="true" tabindex="-1"></a>yearly_count_state <span class="ot">&lt;-</span></span>
+<span id="cb208-2"><a href="welcome-to-the-tidyverse.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  measles_w_year <span class="sc">%&gt;%</span></span>
+<span id="cb208-3"><a href="welcome-to-the-tidyverse.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year)</span>
+<span id="cb208-4"><a href="welcome-to-the-tidyverse.html#cb208-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb208-5"><a href="welcome-to-the-tidyverse.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yearly_count_state)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+## # Groups:   Year [2]
+##   State     PeriodStartDate PeriodEndDate PartOfCumulativeCoun… CountValue  Year
+##   &lt;chr&gt;     &lt;date&gt;          &lt;date&gt;                        &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1 WISCONSIN 1927-11-20      1927-11-26                        0         85  1927
+## 2 WISCONSIN 1927-11-27      1927-12-03                        0        120  1927
+## 3 WISCONSIN 1927-12-04      1927-12-10                        0         84  1927
+## 4 WISCONSIN 1927-12-18      1927-12-24                        0        106  1927
+## 5 WISCONSIN 1927-12-25      1927-12-31                        0         39  1927
+## 6 WISCONSIN 1928-01-01      1928-01-07                        0         45  1928</code></pre>
+<p>When you inspect your new data frame, everything should look the same. Grouping prepares your data for summarize, but it does not do anything visually to the data.</p>
+<p>Now let’s trying summarizing that data. <code>summarize()</code> condenses the value of the group values to a single value per group. Like <code>mutate()</code>, we provide the function with the name of the new column that will hold the summary information. In this case, we will use the <code>sum()</code> function on the <code>CountValue</code> column and put this in a new column called <code>TotalCount</code>. Summarize will drop the columns that aren’t being used.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="welcome-to-the-tidyverse.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get totals for each state each year.</span></span>
+<span id="cb210-2"><a href="welcome-to-the-tidyverse.html#cb210-2" aria-hidden="true" tabindex="-1"></a>yearly_count <span class="ot">&lt;-</span></span>
+<span id="cb210-3"><a href="welcome-to-the-tidyverse.html#cb210-3" aria-hidden="true" tabindex="-1"></a>  measles_w_year <span class="sc">%&gt;%</span></span>
+<span id="cb210-4"><a href="welcome-to-the-tidyverse.html#cb210-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span></span>
+<span id="cb210-5"><a href="welcome-to-the-tidyverse.html#cb210-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(CountValue))</span>
+<span id="cb210-6"><a href="welcome-to-the-tidyverse.html#cb210-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-7"><a href="welcome-to-the-tidyverse.html#cb210-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yearly_count)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##    Year TotalCount
+##   &lt;dbl&gt;      &lt;dbl&gt;
+## 1  1906       2345
+## 2  1907      40199
+## 3  1908      54471
+## 4  1909      49802
+## 5  1910      86984
+## 6  1911      59171</code></pre>
+<p>A more useful view might be to look for yearly totals of case counts by state. We can group by two variables, Year, and then State.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="welcome-to-the-tidyverse.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get totals for each state each year.</span></span>
+<span id="cb212-2"><a href="welcome-to-the-tidyverse.html#cb212-2" aria-hidden="true" tabindex="-1"></a>yearly_count_state <span class="ot">&lt;-</span></span>
+<span id="cb212-3"><a href="welcome-to-the-tidyverse.html#cb212-3" aria-hidden="true" tabindex="-1"></a>  measles_w_year <span class="sc">%&gt;%</span></span>
+<span id="cb212-4"><a href="welcome-to-the-tidyverse.html#cb212-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, State) <span class="sc">%&gt;%</span></span>
+<span id="cb212-5"><a href="welcome-to-the-tidyverse.html#cb212-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(CountValue))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Year&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="welcome-to-the-tidyverse.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yearly_count_state)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+## # Groups:   Year [1]
+##    Year State       TotalCount
+##   &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+## 1  1906 CALIFORNIA         224
+## 2  1906 CONNECTICUT         23
+## 3  1906 FLORIDA              4
+## 4  1906 ILLINOIS           187
+## 5  1906 INDIANA             20
+## 6  1906 KENTUCKY             2</code></pre>
+<p>Notice how the use of pipes really comes in handy here. It saved us from having to create and keep track of a number of intermediate objects.</p>
+</div>
+<div id="sorting-datasets-with-arrange" class="section level2 hasAnchor" number="3.12">
+<h2><span class="header-section-number">3.12</span> Sorting datasets with <code>arrange()</code><a href="welcome-to-the-tidyverse.html#sorting-datasets-with-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Which state in which year had the highest case count? To easily find out, we can use the function <code>arrange()</code>. One of the arguments must be the column you want to sort on.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="welcome-to-the-tidyverse.html#cb216-1" aria-hidden="true" tabindex="-1"></a>yearly_count_state <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(TotalCount)</span></code></pre></div>
+<pre><code>## # A tibble: 4,055 × 3
+## # Groups:   Year [96]
+##     Year State       TotalCount
+##    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+##  1  1925 NEVADA               0
+##  2  1937 MISSISSIPPI          0
+##  3  1938 MISSISSIPPI          0
+##  4  1939 MISSISSIPPI          0
+##  5  1940 MISSISSIPPI          0
+##  6  1940 NEVADA               0
+##  7  1941 MISSISSIPPI          0
+##  8  1944 MISSISSIPPI          0
+##  9  1945 MISSISSIPPI          0
+## 10  1906 TEXAS                1
+## # … with 4,045 more rows</code></pre>
+<p>By default, arrange sorts in ascending order. To sort by descending order we use together with the <code>desc()</code> function.</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="welcome-to-the-tidyverse.html#cb218-1" aria-hidden="true" tabindex="-1"></a>yearly_count_state <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(TotalCount))</span></code></pre></div>
+<pre><code>## # A tibble: 4,055 × 3
+## # Groups:   Year [96]
+##     Year State        TotalCount
+##    &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
+##  1  1938 PENNSYLVANIA     146467
+##  2  1941 PENNSYLVANIA     137180
+##  3  1938 ILLINOIS         127935
+##  4  1942 CALIFORNIA       116180
+##  5  1941 OHIO             114788
+##  6  1935 MICHIGAN         111413
+##  7  1941 NEW YORK         109663
+##  8  1938 MICHIGAN         109041
+##  9  1934 PENNSYLVANIA     107031
+## 10  1938 WISCONSIN        104450
+## # … with 4,045 more rows</code></pre>
+</div>
+<div id="joining-datasets" class="section level2 hasAnchor" number="3.13">
+<h2><span class="header-section-number">3.13</span> Joining Datasets<a href="welcome-to-the-tidyverse.html#joining-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Of course, looking at total counts in each state is not the most helpful metric without taking population into account. To rectify this, let’s try joining some historical population data with our measles data.</p>
+<p>First we need to import the population data<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="welcome-to-the-tidyverse.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load csv of populations by state over time, changing some of the datatypes from default</span></span>
+<span id="cb220-2"><a href="welcome-to-the-tidyverse.html#cb220-2" aria-hidden="true" tabindex="-1"></a>hist_pop_by_state <span class="ot">&lt;-</span></span>
+<span id="cb220-3"><a href="welcome-to-the-tidyverse.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(</span>
+<span id="cb220-4"><a href="welcome-to-the-tidyverse.html#cb220-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://osf.io/download/62cdb7d8779f1710fb070f06/&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 107 Columns: 52
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (52): DATE, ALASKA, ALABAMA, ARKANSAS, ARIZONA, CALIFORNIA, COLORADO, CO...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="welcome-to-the-tidyverse.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hist_pop_by_state)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 52
+##    DATE ALASKA ALABAMA ARKANSAS ARIZONA CALIFORNIA COLORADO CONNECTICUT
+##   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+## 1  1900     NA    1830     1314     124       1490      543         910
+## 2  1901     NA    1907     1341     131       1550      581         931
+## 3  1902     NA    1935     1360     138       1623      621         952
+## 4  1903     NA    1957     1384     144       1702      652         972
+## 5  1904     NA    1978     1419     151       1792      659         987
+## 6  1905     NA    2012     1447     158       1893      680        1010
+## # … with 44 more variables: `DISTRICT OF COLUMBIA` &lt;dbl&gt;, DELAWARE &lt;dbl&gt;,
+## #   FLORIDA &lt;dbl&gt;, GEORGIA &lt;dbl&gt;, HAWAII &lt;dbl&gt;, IOWA &lt;dbl&gt;, IDAHO &lt;dbl&gt;,
+## #   ILLINOIS &lt;dbl&gt;, INDIANA &lt;dbl&gt;, KANSAS &lt;dbl&gt;, KENTUCKY &lt;dbl&gt;,
+## #   LOUISIANA &lt;dbl&gt;, MASSACHUSETTS &lt;dbl&gt;, MARYLAND &lt;dbl&gt;, MAINE &lt;dbl&gt;,
+## #   MICHIGAN &lt;dbl&gt;, MINNESOTA &lt;dbl&gt;, MISSOURI &lt;dbl&gt;, MISSISSIPPI &lt;dbl&gt;,
+## #   MONTANA &lt;dbl&gt;, `NORTH CAROLINA` &lt;dbl&gt;, `NORTH DAKOTA` &lt;dbl&gt;,
+## #   NEBRASKA &lt;dbl&gt;, `NEW HAMPSHIRE` &lt;dbl&gt;, `NEW JERSEY` &lt;dbl&gt;, …</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="welcome-to-the-tidyverse.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(hist_pop_by_state)</span></code></pre></div>
+<div id="long-vs-wide-formats" class="section level3 hasAnchor" number="3.13.1">
+<h3><span class="header-section-number">3.13.1</span> Long vs Wide formats<a href="welcome-to-the-tidyverse.html#long-vs-wide-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Remember that for data to be considered “tidy”, it should be in what is called “long” format. Each column is a variable, each row is an observation, and each cell is a value. Our state population data is in “wide” format, because State Name is being treated as a variable, when it is really a value. Wide data is often preferable for human-readability, but is less ideal for machine-readability. To be able to join this data to our measles dataset, it needs to have 3 columns - Year, State Name, and Population.</p>
+<p>We will use the package <strong><code>tidyr</code></strong> and the function <code>pivot_longer</code> to convert our population data to a long format, thus making it easier to join with our measles data.</p>
+<p>Each column in our population dataset represents a state. To make it tidy we are going to reduce those to one column called State with the state names as the values of the column. We will then need to create a new column for population containing the current cell values. To remember that the population data is provided in 1000s of persons, we will call this new column pop1000.</p>
+<p><code>pivot_longer()</code> takes four principal arguments:</p>
+<ol style="list-style-type: decimal">
+<li>the data</li>
+<li><em>cols</em> are the names of the columns we use to fill the new values variable (or to drop).</li>
+<li>the <em>names_to</em> column variable we wish to create from the <em>cols</em> provided.</li>
+<li>the <em>values_to</em> column variable we wish to create and fill with values associated with the <em>cols</em> provided.</li>
+</ol>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="welcome-to-the-tidyverse.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb225-2"><a href="welcome-to-the-tidyverse.html#cb225-2" aria-hidden="true" tabindex="-1"></a>hist_pop_long <span class="ot">&lt;-</span> hist_pop_by_state <span class="sc">%&gt;%</span></span>
+<span id="cb225-3"><a href="welcome-to-the-tidyverse.html#cb225-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(ALASKA<span class="sc">:</span>WYOMING,</span>
+<span id="cb225-4"><a href="welcome-to-the-tidyverse.html#cb225-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;State&quot;</span>,</span>
+<span id="cb225-5"><a href="welcome-to-the-tidyverse.html#cb225-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;pop1000&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="welcome-to-the-tidyverse.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(hist_pop_long)</span></code></pre></div>
+<p>Now our two datasets have similar structures, a column of state names, a column of years, and a column of values. Let’s join these two datasets by the state and year columns. Note that if both sets have the same column names, you do not need to specify anything in the by argument. We use a left join here which preserves all the rows in our measles dataset and adds the matching rows from the population dataset.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="welcome-to-the-tidyverse.html#cb227-1" aria-hidden="true" tabindex="-1"></a>joined_df <span class="ot">&lt;-</span></span>
+<span id="cb227-2"><a href="welcome-to-the-tidyverse.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(yearly_count_state, hist_pop_long, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;State&quot;</span> <span class="ot">=</span> <span class="st">&quot;State&quot;</span>, <span class="st">&quot;Year&quot;</span> <span class="ot">=</span> <span class="st">&quot;DATE&quot;</span> ))</span>
+<span id="cb227-3"><a href="welcome-to-the-tidyverse.html#cb227-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-4"><a href="welcome-to-the-tidyverse.html#cb227-4" aria-hidden="true" tabindex="-1"></a>joined_df</span></code></pre></div>
+<pre><code>## # A tibble: 4,055 × 4
+## # Groups:   Year [96]
+##     Year State         TotalCount pop1000
+##    &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;
+##  1  1906 CALIFORNIA           224    1976
+##  2  1906 CONNECTICUT           23    1033
+##  3  1906 FLORIDA                4     628
+##  4  1906 ILLINOIS             187    5309
+##  5  1906 INDIANA               20    2663
+##  6  1906 KENTUCKY               2    2234
+##  7  1906 MAINE                 26     729
+##  8  1906 MASSACHUSETTS        282    3107
+##  9  1906 MICHIGAN             320    2626
+## 10  1906 MISSOURI             274    3223
+## # … with 4,045 more rows</code></pre>
+<p>Now we can use our old friend <code>mutate()</code> to add a rate column calculated from the count and pop1000 columns.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="welcome-to-the-tidyverse.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add column for rate (per 1000) of measles</span></span>
+<span id="cb229-2"><a href="welcome-to-the-tidyverse.html#cb229-2" aria-hidden="true" tabindex="-1"></a>measles_yearly_rates <span class="ot">&lt;-</span></span>
+<span id="cb229-3"><a href="welcome-to-the-tidyverse.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  joined_df <span class="sc">%&gt;%</span> </span>
+<span id="cb229-4"><a href="welcome-to-the-tidyverse.html#cb229-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rate =</span> TotalCount <span class="sc">/</span> pop1000)</span>
+<span id="cb229-5"><a href="welcome-to-the-tidyverse.html#cb229-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-6"><a href="welcome-to-the-tidyverse.html#cb229-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(measles_yearly_rates)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+## # Groups:   Year [1]
+##    Year State       TotalCount pop1000     rate
+##   &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+## 1  1906 CALIFORNIA         224    1976 0.113   
+## 2  1906 CONNECTICUT         23    1033 0.0223  
+## 3  1906 FLORIDA              4     628 0.00637 
+## 4  1906 ILLINOIS           187    5309 0.0352  
+## 5  1906 INDIANA             20    2663 0.00751 
+## 6  1906 KENTUCKY             2    2234 0.000895</code></pre>
+<p>Now our data is ready to be analyzed.</p>
+</div>
+</div>
+<div id="writing-data" class="section level2 hasAnchor" number="3.14">
+<h2><span class="header-section-number">3.14</span> Writing Data<a href="welcome-to-the-tidyverse.html#writing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you wanted to be able to share this new dataset outside of R, you could turn it into a new csv file with the <code>write_csv()</code> function, which like <code>read_csv()</code> is part of the <strong><code>readr</code></strong> package. <code>write_csv()</code> requires two arguments - the name of the object you want to write, and the path of the file it will be written to.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="welcome-to-the-tidyverse.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(measles_yearly_rates, <span class="st">&quot;data_output/measles_yearly_rates.csv&quot;</span>)</span></code></pre></div>
+<div id="challenge-2" class="section level3 hasAnchor" number="3.14.1">
+<h3><span class="header-section-number">3.14.1</span> Challenge<a href="welcome-to-the-tidyverse.html#challenge-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>::: {.shaded .question data-latex=““}
+Try using <code>write_csv()</code> to turn the <code>yearly_count</code> and <code>yearly_count_state</code> objects to csv files.</p>
 
 </div>
 </div>
@@ -712,6 +1140,7 @@ You can install these packages individually, or you can install the entire tidyv
 <ol start="6">
 <li id="fn6"><p><a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a><a href="welcome-to-the-tidyverse.html#fnref6" class="footnote-back">↩︎</a></p></li>
 <li id="fn7"><p>read more about tidy data <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" class="uri">https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</a><a href="welcome-to-the-tidyverse.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>population data retrieved from the FRED, the Federal Reserve Bank of St. Louis Economic Data, <a href="https://fred.stlouisfed.org/release/tables?rid=118&amp;eid=259194" class="uri">https://fred.stlouisfed.org/release/tables?rid=118&amp;eid=259194</a><a href="welcome-to-the-tidyverse.html#fnref8" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

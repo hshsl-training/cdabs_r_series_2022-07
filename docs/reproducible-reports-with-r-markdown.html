@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,6 +197,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-1"><i class="fa fa-check"></i><b>3.6.1</b> Challenge</a></li>
 </ul></li>
+<li class="chapter" data-level="3.7" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#wrangling-data-with-dplyr"><i class="fa fa-check"></i><b>3.7</b> Wrangling data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.8" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-data"><i class="fa fa-check"></i><b>3.8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-columns-with-select"><i class="fa fa-check"></i><b>3.8.1</b> Subsetting Columns with <code>Select()</code></a></li>
+<li class="chapter" data-level="3.8.2" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#renaming-columns"><i class="fa fa-check"></i><b>3.8.2</b> Renaming columns</a></li>
+<li class="chapter" data-level="3.8.3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-rows-with-filter"><i class="fa fa-check"></i><b>3.8.3</b> Subsetting rows with <code>filter()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#working-with-dates"><i class="fa fa-check"></i><b>3.9</b> Working with Dates</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#date-intervals-durations-and-periods"><i class="fa fa-check"></i><b>3.9.1</b> Date intervals, durations, and periods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>3.10</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.11" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#grouping-and-summarizing-data"><i class="fa fa-check"></i><b>3.11</b> Grouping and Summarizing data</a></li>
+<li class="chapter" data-level="3.12" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#sorting-datasets-with-arrange"><i class="fa fa-check"></i><b>3.12</b> Sorting datasets with <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.13" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#joining-datasets"><i class="fa fa-check"></i><b>3.13</b> Joining Datasets</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#long-vs-wide-formats"><i class="fa fa-check"></i><b>3.13.1</b> Long vs Wide formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#writing-data"><i class="fa fa-check"></i><b>3.14</b> Writing Data</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-2"><i class="fa fa-check"></i><b>3.14.1</b> Challenge</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>Session III</b></span></li>
 <li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a></li>
@@ -337,12 +359,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="yaml-header" class="section level4 hasAnchor" number="6.3.2.1">
 <h4><span class="header-section-number">6.3.2.1</span> YAML Header<a href="reproducible-reports-with-r-markdown.html#yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it what type of output you want to produce. In this case, we’re creating an html document. The syntax for the metadata is YAML (YAML Ain’t Markup Language, (<a href="https://en.wikipedia.org/wiki/YAML" class="uri">https://en.wikipedia.org/wiki/YAML</a>)), so sometimes it is also called the YAML metadata or the YAML frontmatter. Before it bites you hard, we want to warn you in advance that indentation matters in YAML, so do not forget to indent the sub-fields of a top field properly.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="reproducible-reports-with-r-markdown.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb178-2"><a href="reproducible-reports-with-r-markdown.html#cb178-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;T32-Rmd-Practice&quot;</span></span>
-<span id="cb178-3"><a href="reproducible-reports-with-r-markdown.html#cb178-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;JP Courneya&quot;</span></span>
-<span id="cb178-4"><a href="reproducible-reports-with-r-markdown.html#cb178-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;7/21/2021&quot;</span></span>
-<span id="cb178-5"><a href="reproducible-reports-with-r-markdown.html#cb178-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb178-6"><a href="reproducible-reports-with-r-markdown.html#cb178-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="reproducible-reports-with-r-markdown.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb244-2"><a href="reproducible-reports-with-r-markdown.html#cb244-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;T32-Rmd-Practice&quot;</span></span>
+<span id="cb244-3"><a href="reproducible-reports-with-r-markdown.html#cb244-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;JP Courneya&quot;</span></span>
+<span id="cb244-4"><a href="reproducible-reports-with-r-markdown.html#cb244-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;7/21/2021&quot;</span></span>
+<span id="cb244-5"><a href="reproducible-reports-with-r-markdown.html#cb244-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb244-6"><a href="reproducible-reports-with-r-markdown.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 </div>
 <div id="body-of-the-document" class="section level4 hasAnchor" number="6.3.2.2">
 <h4><span class="header-section-number">6.3.2.2</span> Body of the document<a href="reproducible-reports-with-r-markdown.html#body-of-the-document" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -350,8 +372,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You will notice in the <code>.Rmd</code> interface the code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code:</p>
 <p><img src="images/session3/run_code_chunk.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>To generate a report from the file, run the <code>render</code> command:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="reproducible-reports-with-r-markdown.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
-<span id="cb179-2"><a href="reproducible-reports-with-r-markdown.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render</span>(<span class="st">&quot;T32-rmd-practice.Rmd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="reproducible-reports-with-r-markdown.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
+<span id="cb245-2"><a href="reproducible-reports-with-r-markdown.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render</span>(<span class="st">&quot;T32-rmd-practice.Rmd&quot;</span>)</span></code></pre></div>
 <p>Better still, use the <img src="images/session3/knit_button.png" width="62" /> button in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K). You will notice your first time “knitting” the document you are prompted to save the file, save it with a meaningful name.</p>
 <p><img src="images/session3/rmd_render.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>R Markdown generates a new file that contains selected text, code, and results from the .Rmd file.</p>
@@ -370,16 +392,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For now, let’s delete all of the stuff that’s in the <code>.Rmd</code> file and write a bit of markdown.</p>
 <p>You make things bold using two asterisks, like this: <code>**bold**</code>, and you make things italics by using underscores, like this: <code>_italics_</code>.</p>
 <p>You can make a bulleted list by writing a list with hyphens or asterisks, like this:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb180-1"><a href="reproducible-reports-with-r-markdown.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>one item</span>
-<span id="cb180-2"><a href="reproducible-reports-with-r-markdown.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>one item</span>
-<span id="cb180-3"><a href="reproducible-reports-with-r-markdown.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>one item</span>
-<span id="cb180-4"><a href="reproducible-reports-with-r-markdown.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>one more item</span>
-<span id="cb180-5"><a href="reproducible-reports-with-r-markdown.html#cb180-5" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>one more item</span>
-<span id="cb180-6"><a href="reproducible-reports-with-r-markdown.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>one more item</span>
-<span id="cb180-7"><a href="reproducible-reports-with-r-markdown.html#cb180-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb180-8"><a href="reproducible-reports-with-r-markdown.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bold with double-asterisks</span>
-<span id="cb180-9"><a href="reproducible-reports-with-r-markdown.html#cb180-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>italics with underscores</span>
-<span id="cb180-10"><a href="reproducible-reports-with-r-markdown.html#cb180-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>code-type font with backticks</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb246-1"><a href="reproducible-reports-with-r-markdown.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>one item</span>
+<span id="cb246-2"><a href="reproducible-reports-with-r-markdown.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>one item</span>
+<span id="cb246-3"><a href="reproducible-reports-with-r-markdown.html#cb246-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>one item</span>
+<span id="cb246-4"><a href="reproducible-reports-with-r-markdown.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>one more item</span>
+<span id="cb246-5"><a href="reproducible-reports-with-r-markdown.html#cb246-5" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>one more item</span>
+<span id="cb246-6"><a href="reproducible-reports-with-r-markdown.html#cb246-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>one more item</span>
+<span id="cb246-7"><a href="reproducible-reports-with-r-markdown.html#cb246-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb246-8"><a href="reproducible-reports-with-r-markdown.html#cb246-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bold with double-asterisks</span>
+<span id="cb246-9"><a href="reproducible-reports-with-r-markdown.html#cb246-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>italics with underscores</span>
+<span id="cb246-10"><a href="reproducible-reports-with-r-markdown.html#cb246-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>code-type font with backticks</span></code></pre></div>
 <p>The output is:</p>
 <ul>
 <li>one item</li>
@@ -396,9 +418,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>You can use whatever method you prefer, but be consistent. This maintains the readability of your code.</p>
 <p>You can make a numbered list by just using numbers. You can even use the same number over and over if you want:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb181-1"><a href="reproducible-reports-with-r-markdown.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>bold with double-asterisks</span>
-<span id="cb181-2"><a href="reproducible-reports-with-r-markdown.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>italics with underscores</span>
-<span id="cb181-3"><a href="reproducible-reports-with-r-markdown.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>code-type font with backticks</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb247-1"><a href="reproducible-reports-with-r-markdown.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>bold with double-asterisks</span>
+<span id="cb247-2"><a href="reproducible-reports-with-r-markdown.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>italics with underscores</span>
+<span id="cb247-3"><a href="reproducible-reports-with-r-markdown.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>code-type font with backticks</span></code></pre></div>
 <p>This will appear as:</p>
 <ol style="list-style-type: decimal">
 <li>bold with double-asterisks</li>
@@ -406,10 +428,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>code-type font with backticks</li>
 </ol>
 <p>You can make section headers of different sizes by initiating a line with some number of <code>#</code> symbols:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb182-1"><a href="reproducible-reports-with-r-markdown.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Title</span></span>
-<span id="cb182-2"><a href="reproducible-reports-with-r-markdown.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Main section</span></span>
-<span id="cb182-3"><a href="reproducible-reports-with-r-markdown.html#cb182-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sub-section</span></span>
-<span id="cb182-4"><a href="reproducible-reports-with-r-markdown.html#cb182-4" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sub-sub section</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb248-1"><a href="reproducible-reports-with-r-markdown.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Title</span></span>
+<span id="cb248-2"><a href="reproducible-reports-with-r-markdown.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Main section</span></span>
+<span id="cb248-3"><a href="reproducible-reports-with-r-markdown.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sub-section</span></span>
+<span id="cb248-4"><a href="reproducible-reports-with-r-markdown.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sub-sub section</span></span></code></pre></div>
 <p>They will appear like this:</p>
 <p><img src="images/session3/rmd_headers.png" width="60%" style="display: block; margin: auto;" /></p>
 <div id="a-bit-more-markdown" class="section level4 hasAnchor" number="6.3.3.1">
@@ -418,7 +440,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can include an image file like this: <code>![caption](http://url/for/file)</code></p>
 <p>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2~</code> and superscripts (e.g., F<sup>2</sup>) with <code>F^2^</code>.</p>
 <p>If you know how to write equations in LaTeX, you can use <code>$ $</code> and <code>$$ $$</code> to insert math equations, like <code>$E = mc^2$</code> and</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb183-1"><a href="reproducible-reports-with-r-markdown.html#cb183-1" aria-hidden="true" tabindex="-1"></a>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb249-1"><a href="reproducible-reports-with-r-markdown.html#cb249-1" aria-hidden="true" tabindex="-1"></a>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$</span></code></pre></div>
 </div>
 </div>
 <div id="r-code-chunks" class="section level3 hasAnchor" number="6.3.4">
@@ -462,13 +484,13 @@ plot(lifeExp ~ year, data = gapminder)
 ```</code></pre>
 </div>
 <p>As a courtesy the code to copy and place in chunks:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="reproducible-reports-with-r-markdown.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="at">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span>
-<span id="cb186-2"><a href="reproducible-reports-with-r-markdown.html#cb186-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-3"><a href="reproducible-reports-with-r-markdown.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb186-4"><a href="reproducible-reports-with-r-markdown.html#cb186-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-5"><a href="reproducible-reports-with-r-markdown.html#cb186-5" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb186-6"><a href="reproducible-reports-with-r-markdown.html#cb186-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-7"><a href="reproducible-reports-with-r-markdown.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lifeExp <span class="sc">~</span> year, <span class="at">data =</span> gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="reproducible-reports-with-r-markdown.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="at">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span>
+<span id="cb252-2"><a href="reproducible-reports-with-r-markdown.html#cb252-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-3"><a href="reproducible-reports-with-r-markdown.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb252-4"><a href="reproducible-reports-with-r-markdown.html#cb252-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-5"><a href="reproducible-reports-with-r-markdown.html#cb252-5" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb252-6"><a href="reproducible-reports-with-r-markdown.html#cb252-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-7"><a href="reproducible-reports-with-r-markdown.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lifeExp <span class="sc">~</span> year, <span class="at">data =</span> gapminder)</span></code></pre></div>
 <div id="chunk-options" class="section level4 hasAnchor" number="6.3.4.1">
 <h4><span class="header-section-number">6.3.4.1</span> Chunk Options<a href="reproducible-reports-with-r-markdown.html#chunk-options" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There are a variety of options to affect how the code chunks are treated. Here are some examples:</p>
@@ -515,10 +537,10 @@ The expression:</p>
 <p>We have data about 53,940 diamonds.</p>
 </blockquote>
 <p>You can combine these into a helper function:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="reproducible-reports-with-r-markdown.html#cb189-1" aria-hidden="true" tabindex="-1"></a>comma <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb189-2"><a href="reproducible-reports-with-r-markdown.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="fu">comma</span>(<span class="dv">3452345</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="reproducible-reports-with-r-markdown.html#cb255-1" aria-hidden="true" tabindex="-1"></a>comma <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb255-2"><a href="reproducible-reports-with-r-markdown.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">comma</span>(<span class="dv">3452345</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;3,452,345&quot;</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="reproducible-reports-with-r-markdown.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comma</span>(.<span class="dv">12358124331</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="reproducible-reports-with-r-markdown.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comma</span>(.<span class="dv">12358124331</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;0.12&quot;</code></pre>
 <p>Using our nifty helper function,</p>
 <p>The expression will now look different <code>`r comma(nrow(ggplot2::diamonds))`</code></p>
