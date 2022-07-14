@@ -25,7 +25,7 @@ Data is considered "tidy" if it follows three rules:
 
 Data "in the wild" often isn't tidy, but the tidyverse packages can help you create and analyze tidy datasets.
 
-```{r echo=F}
+```{r echo=F, fig.cap="tidy data structure^[image from R for Data Science https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure]"}
 knitr::include_graphics("images/tidy-data.PNG")
 ```
 
@@ -33,9 +33,10 @@ knitr::include_graphics("images/tidy-data.PNG")
 
 1. Sign in to RStudio Cloud (Or, if you haven't already, sign up for a free account at RStudio Cloud https://rstudio.cloud/plans/free)
 2. Go to the RStudio Cloud class project for this session https://rstudio.cloud/project/4260029
-3.Note the text that marks this as a Temporary Copy. Select the
-    `Save a Permanent Copy` button to begin working!
+3. Note the text that marks this as a Temporary Copy. Select the `Save a Permanent Copy` button to begin working!
 4. Create a new script called `measles_script.R`
+
+::: {.shaded .tip data-latex=""}
 
 **Reminder:** You can open a new R script in the following ways:
 
@@ -43,7 +44,7 @@ knitr::include_graphics("images/tidy-data.PNG")
 2. In the toolbar below the menu bar, select the new blank file icon, and then R Script from the menu bar.
 3. In the Files pane, select the New Blank File Icon, and then R Script
 4. Use the keyboard shortcut `Ctrl+Shift+N` (PC) or `Shift+Command+N`(Mac)
-
+:::
 
 ## Install
 First we are going to use `install.packages()` to install **`tidyverse`**, if you haven't already. Then we are going to load **`tidyverse`** with the `library()` function. You only need to install a package once, but you will load it each time you start a new r session. To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
@@ -549,7 +550,7 @@ yearly_count_state %>% arrange(desc(TotalCount))
 
 Of course, looking at total counts in each state is not the most helpful metric without taking population into account. To rectify this, let's try joining some historical population data with our measles data.
 
-First we need to import the population data^[population data retrieved from the FRED, the Federal Reserve Bank of St. Louis Economic Data, https://fred.stlouisfed.org/release/tables?rid=118&eid=259194].
+First we need to import the population data^[population data retrieved from the FRED, the Federal Reserve Bank of St. Louis Economic Data, https://fred.stlouisfed.org/release/tables?rid=118&eid=259194]. In addition to importing a file on your computer, you can also import data using a url to download data from the internet directly to your R session.
 
 ```{r}
 #load csv of populations by state over time, changing some of the datatypes from default
@@ -611,7 +612,8 @@ measles_yearly_rates <-
 
 head(measles_yearly_rates)
 ```
-Now our data is ready to be analyzed.
+
+Now our data is ready to be visualized!
 
 ## Writing Data
 
@@ -625,3 +627,4 @@ write_csv(measles_yearly_rates, "data_output/measles_yearly_rates.csv")
 
 ::: {.shaded .question data-latex=""}
 Try using `write_csv()` to turn the `yearly_count` and `yearly_count_state` objects to csv files.
+:::
