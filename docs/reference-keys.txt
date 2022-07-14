@@ -46,6 +46,7 @@ subsetting-data
 subsetting-columns-with-select
 renaming-columns
 subsetting-rows-with-filter
+challenge-2
 working-with-dates
 date-intervals-durations-and-periods
 creating-new-columns-with-mutate
@@ -54,7 +55,8 @@ sorting-datasets-with-arrange
 joining-datasets
 long-vs-wide-formats
 writing-data
-challenge-2
+challenge-3
+exercises-1
 plotting-with-ggplot2
 reproducible-project-management
 rstudio-projects

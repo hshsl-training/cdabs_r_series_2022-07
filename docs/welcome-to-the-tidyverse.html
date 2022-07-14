@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-13" />
+<meta name="date" content="2022-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,6 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-columns-with-select"><i class="fa fa-check"></i><b>3.8.1</b> Subsetting Columns with <code>Select()</code></a></li>
 <li class="chapter" data-level="3.8.2" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#renaming-columns"><i class="fa fa-check"></i><b>3.8.2</b> Renaming columns</a></li>
 <li class="chapter" data-level="3.8.3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-rows-with-filter"><i class="fa fa-check"></i><b>3.8.3</b> Subsetting rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="3.8.4" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-2"><i class="fa fa-check"></i><b>3.8.4</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#working-with-dates"><i class="fa fa-check"></i><b>3.9</b> Working with Dates</a>
 <ul>
@@ -217,8 +218,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.14" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#writing-data"><i class="fa fa-check"></i><b>3.14</b> Writing Data</a>
 <ul>
-<li class="chapter" data-level="3.14.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-2"><i class="fa fa-check"></i><b>3.14.1</b> Challenge</a></li>
+<li class="chapter" data-level="3.14.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-3"><i class="fa fa-check"></i><b>3.14.1</b> Challenge</a></li>
 </ul></li>
+<li class="chapter" data-level="3.15" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#exercises-1"><i class="fa fa-check"></i><b>3.15</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Session III</b></span></li>
 <li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a></li>
@@ -825,7 +827,13 @@ In the last chapter, we learned that we can use brackets to subset vectors and d
 <span id="cb188-2"><a href="welcome-to-the-tidyverse.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  measles_states_only <span class="sc">%&gt;%</span> </span>
 <span id="cb188-3"><a href="welcome-to-the-tidyverse.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PartOfCumulativeCountSeries<span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
 <p>Once again, we have fewer rows than we started with.</p>
-<p>Now do some more with our date variables.</p>
+</div>
+<div id="challenge-2" class="section level3 hasAnchor" number="3.8.4">
+<h3><span class="header-section-number">3.8.4</span> Challenge<a href="welcome-to-the-tidyverse.html#challenge-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded question">
+<p>Use <code>filter()</code> to limit the dataset to just the rows containing Maryland, Virginia, or Delaware and more than 1000 cases of measles.</p>
+</div>
+<p>Now let’s do some more with our date variables.</p>
 </div>
 </div>
 <div id="working-with-dates" class="section level2 hasAnchor" number="3.9">
@@ -1130,13 +1138,28 @@ In the last chapter, we learned that we can use brackets to subset vectors and d
 <h2><span class="header-section-number">3.14</span> Writing Data<a href="welcome-to-the-tidyverse.html#writing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you wanted to be able to share this new dataset outside of R, you could turn it into a new csv file with the <code>write_csv()</code> function, which like <code>read_csv()</code> is part of the <strong><code>readr</code></strong> package. <code>write_csv()</code> requires two arguments - the name of the object you want to write, and the path of the file it will be written to.</p>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="welcome-to-the-tidyverse.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(measles_yearly_rates, <span class="st">&quot;data_output/measles_yearly_rates.csv&quot;</span>)</span></code></pre></div>
-<div id="challenge-2" class="section level3 hasAnchor" number="3.14.1">
-<h3><span class="header-section-number">3.14.1</span> Challenge<a href="welcome-to-the-tidyverse.html#challenge-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="challenge-3" class="section level3 hasAnchor" number="3.14.1">
+<h3><span class="header-section-number">3.14.1</span> Challenge<a href="welcome-to-the-tidyverse.html#challenge-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="shaded question">
 <p>Try using <code>write_csv()</code> to turn the <code>yearly_count</code> and <code>yearly_count_state</code> objects to csv files.</p>
 </div>
-
 </div>
+</div>
+<div id="exercises-1" class="section level2 hasAnchor" number="3.15">
+<h2><span class="header-section-number">3.15</span> Exercises<a href="welcome-to-the-tidyverse.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Be sure the <code>tidyverse</code> is loaded in your R session.</li>
+<li>Use <code>read_csv()</code> and the url “<a href="https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/data/gapminder_data.csv" class="uri">https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/data/gapminder_data.csv</a>” to import this <a href="https://www.gapminder.org/data/">gapminder</a> data on life expectancy. Assign to an object called <code>gapminder</code>.</li>
+<li>Use <code>summary()</code> and <code>glimpse()</code> to explore the data. How many observations and variables are there? What data types are present?</li>
+<li>Use <code>distinct()</code> and <code>count()</code> to explore the values present in the <code>country</code>, <code>year</code>, and <code>continent</code> variables.</li>
+<li>Use <code>filter()</code> to select all rows in <code>gapminder</code> with a country of your choice.</li>
+<li>Use <code>filter()</code> to select all rows with a year of your choice.</li>
+<li>Use <code>filter()</code> to select all rows with a continent and year of your choice.</li>
+<li>Use <code>filter()</code> to select all rows with a greater than mean <code>gdpPercap</code>.</li>
+<li>Use <code>group_by</code> and <code>summarize</code> to create a new object with mean life expectancy per continent.</li>
+<li>Use <code>arrange()</code> to sort the object you created in question 9 in descending order.</li>
+</ol>
+
 </div>
 </div>
 
