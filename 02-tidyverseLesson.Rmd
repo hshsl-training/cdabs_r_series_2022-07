@@ -375,7 +375,13 @@ measles_non_cumulative <-
 
 Once again, we have fewer rows than we started with. 
 
-Now do some more with our date variables.
+### Challenge 
+
+::: {.shaded .question data-latex=""}
+Use `filter()` to limit the dataset to just the rows containing Maryland, Virginia, or Delaware and more than 1000 cases of measles. 
+:::
+
+Now let's do some more with our date variables.
 
 ## Working with Dates
 
@@ -628,3 +634,16 @@ write_csv(measles_yearly_rates, "data_output/measles_yearly_rates.csv")
 ::: {.shaded .question data-latex=""}
 Try using `write_csv()` to turn the `yearly_count` and `yearly_count_state` objects to csv files.
 :::
+
+## Exercises
+
+1. Be sure the `tidyverse` is loaded in your R session. 
+2. Use `read_csv()` and the url "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/data/gapminder_data.csv" to import this [gapminder](https://www.gapminder.org/data/) data on life expectancy. Assign to an object called `gapminder`.
+3. Use `summary()` and `glimpse()` to explore the data. How many observations and variables are there? What data types are present?
+4. Use `distinct()` and `count()` to explore the values present in the `country`, `year`, and `continent` variables.
+5. Use `filter()` to select all rows in `gapminder` with a country of your choice.
+6. Use `filter()` to select all rows with a year of your choice.
+7. Use `filter()` to select all rows with a continent and year of your choice.
+8. Use `filter()` to select all rows with a greater than mean `gdpPercap`. 
+9. Use `group_by` and `summarize` to create a new object with mean life expectancy per continent.
+10. Use `arrange()` to sort the object you created in question 9 in descending order. 
