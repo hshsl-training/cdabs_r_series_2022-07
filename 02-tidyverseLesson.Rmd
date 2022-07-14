@@ -32,7 +32,7 @@ knitr::include_graphics("images/tidy-data.PNG")
 ## Getting set up
 
 1. Sign in to RStudio Cloud (Or, if you haven't already, sign up for a free account at RStudio Cloud https://rstudio.cloud/plans/free)
-2. Go to the RStudio Cloud class project for this session https://rstudio.cloud/project/4260029
+2. Go to the RStudio Cloud class project for this session https://rstudio.cloud/project/4266255
 3. Note the text that marks this as a Temporary Copy. Select the `Save a Permanent Copy` button to begin working!
 4. Create a new script called `measles_script.R`
 
