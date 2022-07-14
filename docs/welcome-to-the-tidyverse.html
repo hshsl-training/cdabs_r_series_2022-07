@@ -334,17 +334,22 @@ You can install these packages individually, or you can install the entire tidyv
 <li>Each cell is a single value<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></li>
 </ol>
 <p>Data “in the wild” often isn’t tidy, but the tidyverse packages can help you create and analyze tidy datasets.</p>
-<p><img src="images/tidy-data.png" width="960" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<img src="images/tidy-data.png" alt="tidy data structure^[image from R for Data Science https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure]" width="960" />
+<p class="caption">
+Figure 3.1: tidy data structure<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
+</p>
+</div>
 </div>
 <div id="getting-set-up" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Getting set up<a href="welcome-to-the-tidyverse.html#getting-set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Sign in to RStudio Cloud (Or, if you haven’t already, sign up for a free account at RStudio Cloud <a href="https://rstudio.cloud/plans/free" class="uri">https://rstudio.cloud/plans/free</a>)</li>
-<li>Go to the RStudio Cloud class project for this session <a href="https://rstudio.cloud/project/4260029" class="uri">https://rstudio.cloud/project/4260029</a>
-3.Note the text that marks this as a Temporary Copy. Select the
-<code>Save a Permanent Copy</code> button to begin working!</li>
+<li>Go to the RStudio Cloud class project for this session <a href="https://rstudio.cloud/project/4260029" class="uri">https://rstudio.cloud/project/4260029</a></li>
+<li>Note the text that marks this as a Temporary Copy. Select the <code>Save a Permanent Copy</code> button to begin working!</li>
 <li>Create a new script called <code>measles_script.R</code></li>
 </ol>
+<div class="shaded tip">
 <p><strong>Reminder:</strong> You can open a new R script in the following ways:</p>
 <ol style="list-style-type: decimal">
 <li>Go to the menu bar <code>File &gt; New File &gt; R Script</code></li>
@@ -352,6 +357,7 @@ You can install these packages individually, or you can install the entire tidyv
 <li>In the Files pane, select the New Blank File Icon, and then R Script</li>
 <li>Use the keyboard shortcut <code>Ctrl+Shift+N</code> (PC) or <code>Shift+Command+N</code>(Mac)</li>
 </ol>
+</div>
 </div>
 <div id="install" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Install<a href="welcome-to-the-tidyverse.html#install" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1032,7 +1038,7 @@ In the last chapter, we learned that we can use brackets to subset vectors and d
 <div id="joining-datasets" class="section level2 hasAnchor" number="3.13">
 <h2><span class="header-section-number">3.13</span> Joining Datasets<a href="welcome-to-the-tidyverse.html#joining-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Of course, looking at total counts in each state is not the most helpful metric without taking population into account. To rectify this, let’s try joining some historical population data with our measles data.</p>
-<p>First we need to import the population data<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.</p>
+<p>First we need to import the population data<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>. In addition to importing a file on your computer, you can also import data using a url to download data from the internet directly to your R session.</p>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="welcome-to-the-tidyverse.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load csv of populations by state over time, changing some of the datatypes from default</span></span>
 <span id="cb220-2"><a href="welcome-to-the-tidyverse.html#cb220-2" aria-hidden="true" tabindex="-1"></a>hist_pop_by_state <span class="ot">&lt;-</span></span>
 <span id="cb220-3"><a href="welcome-to-the-tidyverse.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(</span>
@@ -1117,7 +1123,7 @@ In the last chapter, we learned that we can use brackets to subset vectors and d
 ## 4  1906 ILLINOIS           187    5309 0.0352  
 ## 5  1906 INDIANA             20    2663 0.00751 
 ## 6  1906 KENTUCKY             2    2234 0.000895</code></pre>
-<p>Now our data is ready to be analyzed.</p>
+<p>Now our data is ready to be visualized!</p>
 </div>
 </div>
 <div id="writing-data" class="section level2 hasAnchor" number="3.14">
@@ -1126,8 +1132,9 @@ In the last chapter, we learned that we can use brackets to subset vectors and d
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="welcome-to-the-tidyverse.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(measles_yearly_rates, <span class="st">&quot;data_output/measles_yearly_rates.csv&quot;</span>)</span></code></pre></div>
 <div id="challenge-2" class="section level3 hasAnchor" number="3.14.1">
 <h3><span class="header-section-number">3.14.1</span> Challenge<a href="welcome-to-the-tidyverse.html#challenge-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>::: {.shaded .question data-latex=““}
-Try using <code>write_csv()</code> to turn the <code>yearly_count</code> and <code>yearly_count_state</code> objects to csv files.</p>
+<div class="shaded question">
+<p>Try using <code>write_csv()</code> to turn the <code>yearly_count</code> and <code>yearly_count_state</code> objects to csv files.</p>
+</div>
 
 </div>
 </div>
@@ -1140,7 +1147,8 @@ Try using <code>write_csv()</code> to turn the <code>yearly_count</code> and <co
 <ol start="6">
 <li id="fn6"><p><a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a><a href="welcome-to-the-tidyverse.html#fnref6" class="footnote-back">↩︎</a></p></li>
 <li id="fn7"><p>read more about tidy data <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" class="uri">https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</a><a href="welcome-to-the-tidyverse.html#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p>population data retrieved from the FRED, the Federal Reserve Bank of St. Louis Economic Data, <a href="https://fred.stlouisfed.org/release/tables?rid=118&amp;eid=259194" class="uri">https://fred.stlouisfed.org/release/tables?rid=118&amp;eid=259194</a><a href="welcome-to-the-tidyverse.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>image from R for Data Science <a href="https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure" class="uri">https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure</a><a href="welcome-to-the-tidyverse.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>population data retrieved from the FRED, the Federal Reserve Bank of St. Louis Economic Data, <a href="https://fred.stlouisfed.org/release/tables?rid=118&amp;eid=259194" class="uri">https://fred.stlouisfed.org/release/tables?rid=118&amp;eid=259194</a><a href="welcome-to-the-tidyverse.html#fnref9" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
