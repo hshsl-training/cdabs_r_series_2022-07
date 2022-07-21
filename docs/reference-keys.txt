@@ -58,6 +58,10 @@ writing-data
 challenge-3
 exercises-1
 plotting-with-ggplot2
+getting-set-up-1
+why-data-visualization
+about-the-data
+about-ggplot2
 univariate-plots
 histograms
 bivariate-plots
