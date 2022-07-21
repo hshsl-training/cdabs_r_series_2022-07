@@ -130,7 +130,7 @@ plot_usmap(data = measles_pre_vacc, values = "rate") +
 
 #highlighting
 
-regional_rates <- yearly_rates_ext %>% filter(state.division=="East North Central" & between(Year, 1950, 1980))
+regional_rates <- yearly_rates_ext %>% filter(state.division=="South Atlantic" & between(Year, 1950, 1980))
 
 regional_rates %>% ungroup() %>% count(state)
 
@@ -141,7 +141,7 @@ tmp %>%
   ggplot(aes(x=Year, y=rate)) +
   geom_line(data=tmp %>% dplyr::select(-state), aes(group=state2), color="grey", size=0.5, alpha=0.5) +
   geom_line(aes(color=state), color="#69b3a2", size=1.2 ) +
-  scale_y_continuous(breaks=seq(from=1950, to=1980, by=5)) +
+  scale_x_continuous(breaks=seq(from=1950, to=1980, by=5)) +
   scale_color_viridis() +
   theme_minimal() +
   theme(
@@ -150,4 +150,4 @@ tmp %>%
     panel.grid = element_blank()
   ) +
   ggtitle("A comparison of measles cases in the South Atlantic Region") +
-  facet_wrap(~state, ncol = 1)
+  facet_wrap(~state, ncol = 2)

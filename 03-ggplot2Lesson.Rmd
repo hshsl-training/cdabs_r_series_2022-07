@@ -1,4 +1,6 @@
 # (PART\*) Session III {-}
+
+# Plotting with ggplot2
 ```{r eval=TRUE, echo=FALSE}
 #create the data used for this lesson
 
@@ -56,7 +58,33 @@ state_data <- state_data %>% rename(state = toupper.state.name.)
 yearly_rates_ext <- left_join(measles_year_rates, state_data, by="state")
 ```
 
-# Plotting with ggplot2
+## Getting set up
+
+1. Sign in to RStudio Cloud (Or, if you haven't already, sign up for a free account at RStudio Cloud https://rstudio.cloud/plans/free)
+2. Go to the RStudio Cloud class project for this session https://rstudio.cloud/content/4282445
+3. Note the text that marks this as a Temporary Copy. Select the `Save a Permanent Copy` button to begin working!
+4. Create a new script called `measles_viz_script.R`
+5. Load the object in your `data` folder called `yearly_rates_ext`
+
+::: {.shaded .tip data-latex=""}
+
+**Reminder:** You can open a new R script in the following ways:
+
+1. Go to the menu bar `File > New File > R Script`
+2. In the toolbar below the menu bar, select the new blank file icon, and then R Script from the menu bar.
+3. In the Files pane, select the New Blank File Icon, and then R Script
+4. Use the keyboard shortcut `Ctrl+Shift+N` (PC) or `Shift+Command+N`(Mac)
+:::
+
+## Why Data Visualization?
+
+Visualization is an important process which can help us explore, understand, analyze, and communicate about data. Visualizations, including many kinds of graphs, charts, maps, animations, and infographics, can be far more effective at quickly communicating important points than raw numbers alone. But visualizations also have the power to mislead. And so throughout this class, we'll be covering some good data visualization practices. Slides accompanying this section can be found here: https://osf.io/yk5bx^[Slides created by the [Visualizing the Future project] (https://visualizingthefuture.github.io/), made possible in part by the Institute of Museum and Library Services, RE-73-18-0059-18.
+
+## About the data
+
+We'll be visualizing the same dataset from the previous chapter of historical measles case counts in the US. We've made some additional tweaks, like adding `state.region` and `state.division` columns. This data frame has been provided to you in your RStudio Cloud project, but if you want to create it in your own environment, you can find the script to create it here: https://osf.io/5acbd.
+
+## About **`ggplot2`**
 
 **`ggplot2`** is a plotting package that makes it simple to create complex plots from data stored in a data frame. It provides a programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.
 
@@ -234,6 +262,14 @@ year_total_line <- yearly_rates_ext %>%
 
 year_total_line
 ```
+
+
+::: {.shaded .tip data-latex=""}
+
+**Color names in R**
+How did I know R would understand the word "red" for the line color? R has 657 built-in color names. You can call the function `colors()` to see all of them. Also check out [this neat chart](https://r-charts.com/colors/) of the R colors, names, and equivalent hex codes.
+
+:::
 
 Finally, let's add a title and axis labels to our plot with the `labs()` function. Note that axis labels will automatically be supplied from the column names, but you can use this function to override those defaults.
 
@@ -445,7 +481,7 @@ Try out some of the other **`viridis`** palettes. You can also try to create you
 
 So far we've looked at visualizations with one or two variables. But sometimes, we want to include a third variable, or compare different groups or levels of a variable. For example, the bar chart and map we made allow us to compare all states, but for only one year. The line graph lets us see all years, but just one national total and not individual states? How can we easily compare data for multiple states in multiple years? This is where **`ggplot2`** facetting abilities come in handy. 
 
-Facets let you split your graph into multiple smaller graphs arranged in a grid layout. This sort of visualization is often called "small multiples", and is often a useful way of reducing visual clutter. Let's use facetting to make small maps that let us compare measles rates in the five years prior to the vaccine being introduced.
+Facets let you split your graph into multiple smaller graphs arranged in a grid layout. This sort of visualization is often called "small multiples", and is often a useful way of reducing visual clutter. Let's use faceting to make small maps that let us compare measles rates in the five years prior to the vaccine being introduced.
 
 First, it will be helpful to create a data frame of just the years we are interested in.
 
@@ -464,6 +500,33 @@ pre_vacc_maps <- plot_usmap(data = measles_pre_vacc, values = "rate") +
 pre_vacc_maps
 ```
 
+We could also use highlighting to do away with noise in a line graph. First create a new data frame.
+
+```{r}
+regional_rates <- yearly_rates_ext %>% filter(state.division=="South Atlantic" & between(Year, 1950, 1980))
+```
+
+Then we can create two `geom_line` layers and highlight just the one in the facet.
+```{r}
+
+tmp <- regional_rates %>%
+  mutate(state2=state)
+
+tmp %>%
+  ggplot(aes(x=Year, y=rate)) +
+  geom_line(data=tmp %>% dplyr::select(-state), aes(group=state2), color="grey", size=0.5, alpha=0.5) +
+  geom_line(aes(color=state), color="#69b3a2", size=1.2 ) +
+  scale_x_continuous(breaks=seq(from=1950, to=1980, by=5)) +
+  scale_color_viridis() +
+  theme_minimal() +
+  theme(
+    legend.position="none",
+    plot.title = element_text(size=14),
+    panel.grid = element_blank()
+  ) +
+  ggtitle("A comparison of measles cases in the South Atlantic Region") +
+  facet_wrap(~state, ncol = 2)
+```
 
 ### Challenge 
 
