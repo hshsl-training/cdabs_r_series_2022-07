@@ -58,6 +58,16 @@ writing-data
 challenge-3
 exercises-1
 plotting-with-ggplot2
+univariate-plots
+histograms
+bivariate-plots
+line-graphs
+bar-charts
+challenge-4
+maps
+challenge-5
+grouping-and-faceting
+challenge-6
 reproducible-project-management
 rstudio-projects
 what-is-real

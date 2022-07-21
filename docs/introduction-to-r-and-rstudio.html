@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-14" />
+<meta name="date" content="2022-07-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -223,7 +223,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.15" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#exercises-1"><i class="fa fa-check"></i><b>3.15</b> Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Session III</b></span></li>
-<li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a></li>
+<li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#univariate-plots"><i class="fa fa-check"></i><b>4.1</b> Univariate plots</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#histograms"><i class="fa fa-check"></i><b>4.1.1</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#bivariate-plots"><i class="fa fa-check"></i><b>4.2</b> Bivariate Plots</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#line-graphs"><i class="fa fa-check"></i><b>4.2.1</b> Line graphs</a></li>
+<li class="chapter" data-level="4.2.2" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#bar-charts"><i class="fa fa-check"></i><b>4.2.2</b> Bar charts</a></li>
+<li class="chapter" data-level="4.2.3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#challenge-4"><i class="fa fa-check"></i><b>4.2.3</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#maps"><i class="fa fa-check"></i><b>4.3</b> Maps</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#challenge-5"><i class="fa fa-check"></i><b>4.3.1</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#grouping-and-faceting"><i class="fa fa-check"></i><b>4.4</b> Grouping and Faceting</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#challenge-6"><i class="fa fa-check"></i><b>4.4.1</b> Challenge</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>Session IV</b></span></li>
 <li class="chapter" data-level="5" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html"><i class="fa fa-check"></i><b>5</b> Reproducible Project Management</a>
 <ul>
@@ -1147,7 +1167,8 @@ Similar to subsetting vectors using bracket syntax <code>[]</code>, data frames 
 ## # … with 17 more variables: VDB &lt;dbl&gt;, RPB &lt;dbl&gt;, MQB &lt;dbl&gt;, BQB &lt;dbl&gt;,
 ## #   MQSB &lt;dbl&gt;, SGB &lt;dbl&gt;, MQ0F &lt;dbl&gt;, ICB &lt;lgl&gt;, HOB &lt;lgl&gt;, AC &lt;dbl&gt;,
 ## #   AN &lt;dbl&gt;, DP4 &lt;chr&gt;, MQ &lt;dbl&gt;, Indiv &lt;chr&gt;, gt_PL &lt;dbl&gt;, gt_GT &lt;dbl&gt;,
-## #   gt_GT_alleles &lt;chr&gt;</code></pre>
+## #   gt_GT_alleles &lt;chr&gt;
+## # ℹ Use `colnames()` to see all variable names</code></pre>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="introduction-to-r-and-rstudio.html#cb108-1" aria-hidden="true" tabindex="-1"></a>variants[, <span class="st">&quot;REF&quot;</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 801 × 1
 ##    REF                             
@@ -1162,7 +1183,8 @@ Similar to subsetting vectors using bracket syntax <code>[]</code>, data frames 
 ##  8 G                               
 ##  9 ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAG
 ## 10 AT                              
-## # … with 791 more rows</code></pre>
+## # … with 791 more rows
+## # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <p>You can use a vector to retrieve specific rows or columns you may want. This vector can be a named object or created on the spot and passed as an argument in the subsetting.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introduction-to-r-and-rstudio.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset a range of rows using `colon :`</span></span>
 <span id="cb110-2"><a href="introduction-to-r-and-rstudio.html#cb110-2" aria-hidden="true" tabindex="-1"></a>variants[<span class="dv">35</span><span class="sc">:</span><span class="dv">45</span>, ]</span></code></pre></div>
@@ -1183,7 +1205,8 @@ Similar to subsetting vectors using bracket syntax <code>[]</code>, data frames 
 ## # … with 17 more variables: VDB &lt;dbl&gt;, RPB &lt;dbl&gt;, MQB &lt;dbl&gt;, BQB &lt;dbl&gt;,
 ## #   MQSB &lt;dbl&gt;, SGB &lt;dbl&gt;, MQ0F &lt;dbl&gt;, ICB &lt;lgl&gt;, HOB &lt;lgl&gt;, AC &lt;dbl&gt;,
 ## #   AN &lt;dbl&gt;, DP4 &lt;chr&gt;, MQ &lt;dbl&gt;, Indiv &lt;chr&gt;, gt_PL &lt;dbl&gt;, gt_GT &lt;dbl&gt;,
-## #   gt_GT_alleles &lt;chr&gt;</code></pre>
+## #   gt_GT_alleles &lt;chr&gt;
+## # ℹ Use `colnames()` to see all variable names</code></pre>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="introduction-to-r-and-rstudio.html#cb112-1" aria-hidden="true" tabindex="-1"></a>columns_desired <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">9</span>)</span>
 <span id="cb112-2"><a href="introduction-to-r-and-rstudio.html#cb112-2" aria-hidden="true" tabindex="-1"></a>variants[, columns_desired] <span class="co"># same as variants[,c(1:3,6:7, 9)]</span></span></code></pre></div>
 <pre><code>## # A tibble: 801 × 6
@@ -1199,7 +1222,8 @@ Similar to subsetting vectors using bracket syntax <code>[]</code>, data frames 
 ##  8 SRR2584863 CP000819.1 1733343 A                                     225 FALSE
 ##  9 SRR2584863 CP000819.1 2103887 ACAGCCAGCCAGCCAGCCAGCCAGCCAGCCAGCC…    56 TRUE 
 ## 10 SRR2584863 CP000819.1 2333538 ATT                                   167 TRUE 
-## # … with 791 more rows</code></pre>
+## # … with 791 more rows
+## # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <p>You might be interested in working with a new object that is just your subset from the main data frame. You can do this!</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="introduction-to-r-and-rstudio.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># put the first three columns, column 6, column 7 and column 9 of variants into a new data frame called subset_variants</span></span>
 <span id="cb114-2"><a href="introduction-to-r-and-rstudio.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
