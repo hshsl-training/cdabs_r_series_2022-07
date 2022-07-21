@@ -1,7 +1,7 @@
 # (PART\*) Session III {-}
 
 # Plotting with ggplot2
-```{r eval=TRUE, echo=FALSE}
+```{r eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
 #create the data used for this lesson
 
 library(tidyverse)
