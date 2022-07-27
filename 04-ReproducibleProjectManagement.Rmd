@@ -48,9 +48,32 @@ As a beginning R user, it’s OK to let your home directory, documents directory
 setwd("/path/to/expert/coolProject")
 ```
 
+### Creating an RStudio Cloud project
+
+R experts keep all the files associated with a project together — input data, R scripts, analytical results, figures. This is such a wise and common practice that RStudio has built-in support for this via projects. You're already used to working with projects from RStudio Cloud which organizes everything into projects automatically. 
+
+Let's create a new project in RStudio Cloud now.
+
+First make sure you are logged in to your RStudio Cloud account (or create a [free account](https://rstudio.cloud/plans/free) if you haven't yet.)
+
+Then from `Your Workspace`, select `New Project > New RStudio Project`. 
+
+```{r echo=F, out.width = '80%', fig.align="center"}
+knitr::include_graphics("images/new_cloud_project.PNG")
+```
+
+It will take a moment for your project to launch. Then you can give it a name. Let's call this `Reproducible Project Example`. Note that you have a `.Rproj` in your file pane. 
+
+```{r echo=F, out.width = '80%', fig.align="center"}
+knitr::include_graphics("images/rproj.PNG")
+```
+
+Whenever you are in a project, the project is your working directory.
+
+
 ### Creating an RStudio project{#createRproj}
 
-R experts keep all the files associated with a project together — input data, R scripts, analytical results, figures. This is such a wise and common practice that RStudio has built-in support for this via projects.
+It can be especially useful to create an RStudio Project when working with your own instance of RStudio. An RStudio Project will appear like any other directory in your computer's file system, but will have an `.Rproj` file in it. You can even create projects from existing directories.
 
 Let’s practice creating a project. Click File > New Project, then:
 
@@ -61,7 +84,7 @@ knitr::include_graphics("images/session3/Screen Shot 2021-07-19 at 1.40.00 PM.pn
 knitr::include_graphics("images/session3/Screen Shot 2021-07-19 at 1.41.15 PM.png")
 ```
 
-Call your project `T32-Session3` and think carefully about which subdirectory you put the project in. If you don’t store it somewhere sensible, it will be hard to find it in the future!
+Call your project `Reproducible Project Example` and think carefully about which subdirectory you put the project in. If you don’t store it somewhere sensible, it will be hard to find it in the future!
 
 Once this process is complete, you’ll get a new RStudio project just for this practice. Check that the “home” directory of your project is the current working directory:
 
