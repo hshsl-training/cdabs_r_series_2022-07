@@ -48,7 +48,7 @@ As a beginning R user, it’s OK to let your home directory, documents directory
 setwd("/path/to/expert/coolProject")
 ```
 
-### Creating an RStudio Cloud project
+### Creating an RStudio Cloud project{#createRprojCloud}
 
 R experts keep all the files associated with a project together — input data, R scripts, analytical results, figures. This is such a wise and common practice that RStudio has built-in support for this via projects. You're already used to working with projects from RStudio Cloud which organizes everything into projects automatically. 
 
@@ -132,11 +132,11 @@ We will not be covering all the in's and outs of version control with Git, Githu
 
 1. Set up a remote repository on Github
 
-2. Connecting RStudio to Github 
+2. Checking out a project from a version control remote repository 
 
-3. Set up a personal access token on Github
+3. Connecting RStudio to Github
 
-4. Checking out a project from a version control remote repository
+4. Set up a personal access token on Github
 
 5. Making some changes, using the Rstudio Git controls and pushing those changes to Github
 
@@ -158,9 +158,32 @@ Click big green button “Create repository.”
 
 Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.
 
-## Connecting Rstudio to Github
+## Connecting Rstudio Cloud to Github
 
-Here we verify that RStudio can issue Git commands on your behalf. Assuming that you’ve gotten local Git to talk to GitHub, this means you’ll also be able to pull from and push to GitHub from RStudio.
+Here we verify that RStudio can issue Git commands on your behalf. This means you’ll be able to pull from and push to GitHub from RStudio.
+
+## Checking out a project from a version control remote repository
+
+Hopefully it has been a joy configuring your Git setup on your computer. Now we will put all of that machinery to work and test it out. 
+Picking up were we left off when [Setting up a remote repository](#settingupremote) copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.
+
+### Clone the new GitHub repository to your computer via RStudio
+
+In RStudio Cloud, start a new Project [review here](#createRprojCloud):
+
+* RStudioCloud > New Project > New Project from Git Repository. In “Repository URL”, paste the URL of your new GitHub repository. It will be something like this `https://github.com/j-p-courneya/cdabsR_Session4_Practice.git`.
+
+  + Do you NOT see an option to get the Project from Version Control? Restart RStudio and try again. Still no luck? Go to [gitwithr chapter 13](https://happygitwithr.com/rstudio-see-git.html) for tips on how to help RStudio find Git.
+
+* Accept the default project directory name, e.g. cdabsR_Session4_Practice, which coincides with the GitHub repo name.
+
+* Take charge of – or at least notice! – where the Project will be saved locally. A common rookie mistake is to have no idea where you are saving files or what your working directory is. Pay attention. Be intentional. Personally, I would do this in `~/Documents`.
+
+* I suggest you check “Open in new session”, as that’s what you’ll usually do in real life.
+
+* Click “Create Project”.
+
+You should find yourself in a new local RStudio Project that represents the new test repo we just created on GitHub. This should download the README.md file from GitHub. Look in RStudio’s file browser pane for the README.md file.
 
 ### Introduce yourself to Git
 
@@ -229,29 +252,6 @@ usethis::git_sitrep()
 Both of these functions reveal whether a GitHub PAT is discovered and provide information about the associated user, the PAT’s scopes, etc.
 
 This step is something you do once. Or, rather, once per machine, per PAT. From this point on, usethis and its dependencies should be able to automatically retrieve and use this PAT.
-
-## Checking out a project from a version control remote repository
-
-Hopefully it has been a joy configuring your Git setup on your computer. Now we will put all of that machinery to work and test it out. 
-Picking up were we left off when [Setting up a remote repository](#settingupremote) copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.
-
-### Clone the new GitHub repository to your computer via RStudio
-
-In RStudio, start a new Project [review here](#createRproj):
-
-* File > New Project > Version Control > Git. In “Repository URL”, paste the URL of your new GitHub repository. It will be something like this `https://github.com/j-p-courneya/cdabsR_Session4_Practice.git`.
-
-  + Do you NOT see an option to get the Project from Version Control? Restart RStudio and try again. Still no luck? Go to [gitwithr chapter 13](https://happygitwithr.com/rstudio-see-git.html) for tips on how to help RStudio find Git.
-
-* Accept the default project directory name, e.g. T32_Session3_Practice, which coincides with the GitHub repo name.
-
-* Take charge of – or at least notice! – where the Project will be saved locally. A common rookie mistake is to have no idea where you are saving files or what your working directory is. Pay attention. Be intentional. Personally, I would do this in `~/Documents`.
-
-* I suggest you check “Open in new session”, as that’s what you’ll usually do in real life.
-
-* Click “Create Project”.
-
-You should find yourself in a new local RStudio Project that represents the new test repo we just created on GitHub. This should download the README.md file from GitHub. Look in RStudio’s file browser pane for the README.md file.
 
 ## Making some changes, save, commit. 
 
