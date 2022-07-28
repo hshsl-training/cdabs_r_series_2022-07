@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-21" />
+<meta name="date" content="2022-07-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -255,7 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#what-is-real"><i class="fa fa-check"></i><b>5.1.1</b> What is Real?</a></li>
 <li class="chapter" data-level="5.1.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#where-does-your-analysis-live"><i class="fa fa-check"></i><b>5.1.2</b> Where does your analysis live?</a></li>
-<li class="chapter" data-level="5.1.3" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#createRproj"><i class="fa fa-check"></i><b>5.1.3</b> Creating an RStudio project</a></li>
+<li class="chapter" data-level="5.1.3" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#creating-an-rstudio-cloud-project"><i class="fa fa-check"></i><b>5.1.3</b> Creating an RStudio Cloud project</a></li>
+<li class="chapter" data-level="5.1.4" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#createRproj"><i class="fa fa-check"></i><b>5.1.4</b> Creating an RStudio project</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#version-control-and-rstudio"><i class="fa fa-check"></i><b>5.2</b> Version Control and RStudio</a>
 <ul>
@@ -297,14 +298,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="shiny-apps.html"><a href="shiny-apps.html"><i class="fa fa-check"></i><b>7</b> Shiny Apps</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="shiny-apps.html"><a href="shiny-apps.html#shiny-tutorial-2"><i class="fa fa-check"></i><b>7.1</b> Shiny app basics</a></li>
-<li class="chapter" data-level="7.2" data-path="shiny-apps.html"><a href="shiny-apps.html#create-an-empty-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Create an empty Shiny app</a>
+<li class="chapter" data-level="7.2" data-path="shiny-apps.html"><a href="shiny-apps.html#create-a-basic-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Create a basic Shiny app</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="shiny-apps.html"><a href="shiny-apps.html#alternate-way-to-create-a-shiny-app-separate-ui-and-server-files"><i class="fa fa-check"></i><b>7.2.1</b> Alternate way to create a Shiny app: separate UI and server files</a></li>
-<li class="chapter" data-level="7.2.2" data-path="shiny-apps.html"><a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you"><i class="fa fa-check"></i><b>7.2.2</b> Let RStudio fill out a Shiny app template for you</a></li>
+<li class="chapter" data-level="7.2.1" data-path="shiny-apps.html"><a href="shiny-apps.html#basic-shiny-app-r-script"><i class="fa fa-check"></i><b>7.2.1</b> Basic Shiny app R script</a></li>
+<li class="chapter" data-level="7.2.2" data-path="shiny-apps.html"><a href="shiny-apps.html#run-the-basic-shiny-app"><i class="fa fa-check"></i><b>7.2.2</b> Run the basic Shiny app</a></li>
+<li class="chapter" data-level="7.2.3" data-path="shiny-apps.html"><a href="shiny-apps.html#challenge-7"><i class="fa fa-check"></i><b>7.2.3</b> Challenge</a></li>
+<li class="chapter" data-level="7.2.4" data-path="shiny-apps.html"><a href="shiny-apps.html#create-a-shiny-app-using-separate-ui-and-server-files"><i class="fa fa-check"></i><b>7.2.4</b> Create a Shiny app using separate UI and server files</a></li>
+<li class="chapter" data-level="7.2.5" data-path="shiny-apps.html"><a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you"><i class="fa fa-check"></i><b>7.2.5</b> Let RStudio fill out a Shiny app template for you</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="shiny-apps.html"><a href="shiny-apps.html#an-example-shiny-app"><i class="fa fa-check"></i><b>7.3</b> An example Shiny App</a></li>
-<li class="chapter" data-level="7.4" data-path="shiny-apps.html"><a href="shiny-apps.html#host-your-shiny-app"><i class="fa fa-check"></i><b>7.4</b> Host your Shiny App</a></li>
-<li class="chapter" data-level="7.5" data-path="shiny-apps.html"><a href="shiny-apps.html#resources"><i class="fa fa-check"></i><b>7.5</b> Resources</a></li>
+<li class="chapter" data-level="7.3" data-path="shiny-apps.html"><a href="shiny-apps.html#create-the-shiny-app-layout"><i class="fa fa-check"></i><b>7.3</b> Create the Shiny App layout</a></li>
+<li class="chapter" data-level="7.4" data-path="shiny-apps.html"><a href="shiny-apps.html#create-inputoutputlogic-of-the-shiny-app"><i class="fa fa-check"></i><b>7.4</b> Create input/output/logic of the Shiny app</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="shiny-apps.html"><a href="shiny-apps.html#code-to-build-the-app-including-inputsoutputslogic"><i class="fa fa-check"></i><b>7.4.1</b> Code to build the app including inputs/outputs/logic</a></li>
+<li class="chapter" data-level="7.4.2" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-ui-inputs-for-app"><i class="fa fa-check"></i><b>7.4.2</b> Defining UI inputs for app</a></li>
+<li class="chapter" data-level="7.4.3" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-ui-outputs-for-app."><i class="fa fa-check"></i><b>7.4.3</b> Defining UI outputs for app.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-the-server-logic"><i class="fa fa-check"></i><b>7.4.4</b> Defining the server logic</a></li>
+<li class="chapter" data-level="7.4.5" data-path="shiny-apps.html"><a href="shiny-apps.html#run-the-interactive-web-application"><i class="fa fa-check"></i><b>7.4.5</b> Run the interactive web application</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="shiny-apps.html"><a href="shiny-apps.html#host-your-shiny-app"><i class="fa fa-check"></i><b>7.5</b> Host your Shiny App</a></li>
+<li class="chapter" data-level="7.6" data-path="shiny-apps.html"><a href="shiny-apps.html#resources"><i class="fa fa-check"></i><b>7.6</b> Resources</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="further-resources.html"><a href="further-resources.html"><i class="fa fa-check"></i><b>A</b> Further Resources</a>
@@ -341,25 +353,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="shiny-apps" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Shiny Apps<a href="shiny-apps.html#shiny-apps" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><a href="https://shiny.rstudio.com">Shiny</a> is a package from RStudio that can be used to build interactive web pages with R. While that may sound scary because of the words “web pages”, Shiny is geared to R users who have zero experience with web development, and you do not need to know any HTML/CSS/JavaScript.</p>
-<p>You can do quite a lot with Shiny: think of it as an easy way to make an interactive web page, and that web page can seamlessly interact with R and display R objects (plots, tables, of anything else you do in R). To get a sense of the wide range of things you can do with Shiny, you can visit Dean Attali’s Shiny server (<a href="https://attalitech.com/#portfolio" class="uri">https://attalitech.com/#portfolio</a>), which hosts a variety of Shiny apps.</p>
+<p>You can do quite a lot with Shiny: think of it as an easy way to make an interactive web page, and that web page can seamlessly interact with R and display R objects (plots, tables, of anything else you do in R). To get a sense of the wide range of things you can do with Shiny, you can visit Rstudio’s Shiny gallery (<a href="https://shiny.rstudio.com/gallery/" class="uri">https://shiny.rstudio.com/gallery/</a>), which hosts a Shiny user showcase of apps contributed by the Shiny app developer community (also categorized by application domain), demos for getting started with shiny and input and output widgets .</p>
 <div id="shiny-tutorial-2" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Shiny app basics<a href="shiny-apps.html#shiny-tutorial-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Every Shiny app is composed of two parts: a web page that shows the app to the user called the <code>UI</code> (user interface), and a computer that powers the app known as the <code>server</code>. The computer that runs the app can either be your own laptop (such as when you’re running an app from RStudio) or a server somewhere else. You, as the Shiny app developer, need to write these two parts.</p>
-<p>If you look at the <a href="http://daattali.com/shiny/bcl/">app</a> that can be built following the instructions here: <a href="http://deanattali.com/blog/building-shiny-apps-tutorial/">tutorial</a> , the page that you see is built with the UI code. UI is just a web document that the user gets to see, it’s HTML that you write using Shiny’s functions. The UI is responsible for creating the layout of the app and telling Shiny exactly where things go like controls to adjust the price or choose a country or where the plot and table appear on the page. The server is responsible for the logic of the app; it’s the set of instructions that tell the web page what to show, like the data for the table and the plot seen, when the user interacts with the page.</p>
+<p>If you look at the <a href="http://daattali.com/shiny/bcl/">app</a> that can be built following the instructions here: <a href="http://deanattali.com/blog/building-shiny-apps-tutorial/">tutorial</a> , the page that you see is built with the UI code. UI is just a web document that the user gets to see, it’s HTML that is produced for you from code written using Shiny’s functions. The UI is responsible for creating the layout of the app and telling Shiny exactly where things go like input controls to adjust the price or choose a country or where the plot and table appear on the page. The server is responsible for the logic of the app; it’s the set of instructions that tell the web page what to show, like the data for the table and the plot seen, when the user interacts with the page.</p>
 </div>
-<div id="create-an-empty-shiny-app" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Create an empty Shiny app<a href="shiny-apps.html#create-an-empty-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="create-a-basic-shiny-app" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Create a basic Shiny app<a href="shiny-apps.html#create-a-basic-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can think of building your Shiny apps in 3 stages, basic, layout and input/output/logic. The basic stage starts with a template of the fundamental required components of your R script for bringing your app to life. We will start by looking at the basics.</p>
 <p>All Shiny apps follow the same template:</p>
 <p><img src="images/session3/shiny_anatomy.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="shiny-apps.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb300-2"><a href="shiny-apps.html#cb300-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb300-3"><a href="shiny-apps.html#cb300-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Hello, world!&quot;</span></span>
-<span id="cb300-4"><a href="shiny-apps.html#cb300-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb300-5"><a href="shiny-apps.html#cb300-5" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb300-6"><a href="shiny-apps.html#cb300-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb300-7"><a href="shiny-apps.html#cb300-7" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
-<p>This template is by itself a working minimal Shiny app that doesn’t do much. It calls <code>library(shiny)</code> to load the shiny package, initializes a UI containing the words “Hello, world!” and then specifies the behavior of our app by defining a server function, this server is empty so it doesnt do anything, and runs an app using <code>shinyApp(ui, server)</code> using the parts from <code>UI</code> and <code>server</code>.</p>
-<p>Copy the above template into a new file named <code>app.R</code> in a new folder. It is <strong>very important</strong> that the name of the file is <code>app.R</code>, otherwise it would not be recognized as a Shiny app. It is also <strong>very important</strong> that you place this app in its own folder, and not in a folder that already has other R scripts or files, unless those other files are used by your app.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="shiny-apps.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Shiny ----</span></span>
+<span id="cb300-2"><a href="shiny-apps.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb300-3"><a href="shiny-apps.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
+<span id="cb300-4"><a href="shiny-apps.html#cb300-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-5"><a href="shiny-apps.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="co"># UI code for running the app ----</span></span>
+<span id="cb300-6"><a href="shiny-apps.html#cb300-6" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb300-7"><a href="shiny-apps.html#cb300-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Hello, world!&quot;</span></span>
+<span id="cb300-8"><a href="shiny-apps.html#cb300-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb300-9"><a href="shiny-apps.html#cb300-9" aria-hidden="true" tabindex="-1"></a><span class="do">##################################</span></span>
+<span id="cb300-10"><a href="shiny-apps.html#cb300-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-11"><a href="shiny-apps.html#cb300-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Server code for running the app ----</span></span>
+<span id="cb300-12"><a href="shiny-apps.html#cb300-12" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb300-13"><a href="shiny-apps.html#cb300-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb300-14"><a href="shiny-apps.html#cb300-14" aria-hidden="true" tabindex="-1"></a><span class="do">##################################</span></span>
+<span id="cb300-15"><a href="shiny-apps.html#cb300-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-16"><a href="shiny-apps.html#cb300-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Shiny app ----</span></span>
+<span id="cb300-17"><a href="shiny-apps.html#cb300-17" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span>
+<span id="cb300-18"><a href="shiny-apps.html#cb300-18" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span></code></pre></div>
+<p>This template R script is by itself a working minimal Shiny app that doesn’t do much. It calls <code>library(shiny)</code> to load the <code>Shiny</code> package, initializes a <code>UI</code> with <code>ui &lt;- fluidPage()</code> containing the words “Hello, world!”, it then specifies the behavior of our app by defining a function and assigning it to <code>server</code>, this (server) function is empty so it doesn’t do anything, lastly the Shiny function <code>shinyApp(ui, server)</code> is added for building the app. Notice the arguments to <code>shinyApp()</code> which uses the parts <code>ui</code> and <code>server</code> in the script.</p>
+<div id="basic-shiny-app-r-script" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Basic Shiny app R script<a href="shiny-apps.html#basic-shiny-app-r-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded tip">
+<ol style="list-style-type: decimal">
+<li>Create a new folder in your Rstudio project called <code>/basicShinyApp</code></li>
+<li>Create a new file named <code>app.R</code> and save it in the folder you just created <code>/basicShinyApp</code></li>
+<li>Copy the above basic Shiny app template code into the file.</li>
+<li>It is <strong>very important</strong> that the name of the file is <code>app.R</code>, otherwise R will not recognize it as a Shiny app. It is also <strong>very important</strong> that you place this app in its own folder, and not in a folder that already has other R scripts or files, unless those scripts and files are used by your app.</li>
+</ol>
+</div>
+</div>
+<div id="run-the-basic-shiny-app" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Run the basic Shiny app<a href="shiny-apps.html#run-the-basic-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After saving the file, RStudio should recognize that this is a Shiny app, and you should see the usual <em>Run</em> button at the top change to <em>Run App</em>.</p>
 <p><img src="images/session3/shiny_runapp.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>If you don’t see the Run App button, it means you either have a very old version of RStudio, don’t have Shiny installed, or didn’t follow the file naming conventions.</p>
@@ -369,50 +405,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Click the stop button to stop the app, or press the Escape key.</p>
 <p><img src="images/session3/shiny_stopapp.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>You may have noticed that when you click the <em>Run App</em> button, all it’s doing is just running the function <code>shiny::runApp()</code> in the R Console You can run that command instead of clicking the button if you prefer.</p>
+</div>
+<div id="challenge-7" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Challenge<a href="shiny-apps.html#challenge-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded question">
 <p><strong>Exercise:</strong> Try running the empty app using the <code>runApp()</code> function instead of using the <em>Run App</em> button.</p>
-<div id="alternate-way-to-create-a-shiny-app-separate-ui-and-server-files" class="section level3 hasAnchor" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> Alternate way to create a Shiny app: separate UI and server files<a href="shiny-apps.html#alternate-way-to-create-a-shiny-app-separate-ui-and-server-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="create-a-shiny-app-using-separate-ui-and-server-files" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Create a Shiny app using separate UI and server files<a href="shiny-apps.html#create-a-shiny-app-using-separate-ui-and-server-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded tip">
 <p>Another way to define a Shiny app is by separating the UI and server code into two files: <code>ui.R</code> and <code>server.R</code>. This is the preferable way to write Shiny apps when the app is complex and involves more code. If you want to break up your app into these two files, you simply put all code that is assigned to the <code>ui</code> variable in <code>ui.R</code> and all the code assigned to the <code>server</code> function in <code>server.R</code>. When RStudio sees these two files in the same folder, it will know you’re writing a Shiny app.</p>
 </div>
-<div id="let-rstudio-fill-out-a-shiny-app-template-for-you" class="section level3 hasAnchor" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> Let RStudio fill out a Shiny app template for you<a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="let-rstudio-fill-out-a-shiny-app-template-for-you" class="section level3 hasAnchor" number="7.2.5">
+<h3><span class="header-section-number">7.2.5</span> Let RStudio fill out a Shiny app template for you<a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can also create a new Shiny app using RStudio’s menu by selecting <em>File &gt; New File &gt; Shiny Web App…</em>. If you do this, RStudio will let you choose if you want a single-file app (<code>app.R</code>) or a two-file app (<code>ui.R</code>+<code>server.R</code>). RStudio will initialize a simple functional Shiny app with some code in it.</p>
 </div>
 </div>
-<div id="an-example-shiny-app" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> An example Shiny App<a href="shiny-apps.html#an-example-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now that you have the basics, add the following code, run the app and check out the results:</p>
-<p>Replace your <code>UI</code> code with this:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="shiny-apps.html#cb301-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb301-2"><a href="shiny-apps.html#cb301-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">selectInput</span>(<span class="st">&quot;dataset&quot;</span>, <span class="at">label =</span> <span class="st">&quot;Dataset&quot;</span>, <span class="at">choices =</span> <span class="fu">ls</span>(<span class="st">&quot;package:datasets&quot;</span>)),</span>
-<span id="cb301-3"><a href="shiny-apps.html#cb301-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">verbatimTextOutput</span>(<span class="st">&quot;summary&quot;</span>),</span>
-<span id="cb301-4"><a href="shiny-apps.html#cb301-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tableOutput</span>(<span class="st">&quot;table&quot;</span>)</span>
-<span id="cb301-5"><a href="shiny-apps.html#cb301-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>Here youre providing a layout function with <code>fluidPage()</code> to set up the visual structure of the page, an input control for user interaction with <code>selectInput()</code>, <code>verbatimTextOutput()</code> and <code>tableOutput()</code> are output controls that tell Shiny where to put rendered output. Spend some time poking around to see how each of these functions operate under the hood.</p>
-<p>Replace your <code>server</code> code with this:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="shiny-apps.html#cb302-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb302-2"><a href="shiny-apps.html#cb302-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
-<span id="cb302-3"><a href="shiny-apps.html#cb302-3" aria-hidden="true" tabindex="-1"></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
-<span id="cb302-4"><a href="shiny-apps.html#cb302-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(dataset)</span>
-<span id="cb302-5"><a href="shiny-apps.html#cb302-5" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb302-6"><a href="shiny-apps.html#cb302-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb302-7"><a href="shiny-apps.html#cb302-7" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb302-8"><a href="shiny-apps.html#cb302-8" aria-hidden="true" tabindex="-1"></a>    dataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
-<span id="cb302-9"><a href="shiny-apps.html#cb302-9" aria-hidden="true" tabindex="-1"></a>    dataset</span>
-<span id="cb302-10"><a href="shiny-apps.html#cb302-10" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb302-11"><a href="shiny-apps.html#cb302-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Defining the server function is like putting a brain in the app. Now it can receive signals and tell the app what to do. The left-hand side of the assignment operator (<code>&lt;-</code>), <code>output$ID</code>, indicates that you’re providing the recipe for the Shiny output with that ID. The right-hand side of the assignment uses a specific render function to wrap some code that you provide. Each <code>render{Type}</code> function is designed to produce a particular type of output (e.g. text, tables, and plots), and is often paired with a <code>{type}Output function</code>. For example, in this app, <code>renderPrint()</code> is paired with <code>verbatimTextOutput()</code> to display a statistical summary with fixed-width (verbatim) text, and <code>renderTable()</code> is paired with <code>tableOutput()</code> to show the input data in a table.</p>
-<p>Run the app now and see what happens when you change the input! You will joyfully notice that the summary and table update whenever you change the input data from the dropdown menu. This dependency is created implicitly because we’ve referred to <code>input$dataset</code> within the output functions. <code>input$dataset</code> is populated with the current value of the UI component with id <code>dataset</code>, and will cause the outputs to automatically update whenever that value changes. This is a fundamental concept in Shiny known as <strong>reactivity</strong>, outputs automatically react when their inputs change. There is much to learn about this!</p>
+<div id="create-the-shiny-app-layout" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Create the Shiny App layout<a href="shiny-apps.html#create-the-shiny-app-layout" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that you have the basics down, we will move to the layout stage of building a Shiny app. This will surely make the app more interesting. Imagine you want to create an app that allows the user to select the name of an R dataset from the <code>datasets</code> package as input and provides the results of <code>summary()</code> and a table view of the dataset as output. In thinking about the UI for this app you will want to imagine where the Name of the app will appear, where the input selectors are located on the page and where the output will go. Keep in mind creating a layout is not required but having it makes the app much more user friendly and look like a pro made it.</p>
+<p>Building on top of the basic code we already wrote for our an app we will add functions for creating the layout for the different parts of the app <code>UI</code>.</p>
+<p>Replace your <code>UI</code> code in with this:</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="shiny-apps.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Shiny ----</span></span>
+<span id="cb301-2"><a href="shiny-apps.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb301-3"><a href="shiny-apps.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
+<span id="cb301-4"><a href="shiny-apps.html#cb301-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-5"><a href="shiny-apps.html#cb301-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for dataset viewer app ----</span></span>
+<span id="cb301-6"><a href="shiny-apps.html#cb301-6" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(<span class="co"># App title ----</span></span>
+<span id="cb301-7"><a href="shiny-apps.html#cb301-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">titlePanel</span>(<span class="st">&quot;R Datasets Viewer&quot;</span>),</span>
+<span id="cb301-8"><a href="shiny-apps.html#cb301-8" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Sidebar layout which houses the input and output definitions ----</span></span>
+<span id="cb301-9"><a href="shiny-apps.html#cb301-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">sidebarLayout</span>(</span>
+<span id="cb301-10"><a href="shiny-apps.html#cb301-10" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Sidebar panel for inputs ----</span></span>
+<span id="cb301-11"><a href="shiny-apps.html#cb301-11" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">sidebarPanel</span>(<span class="st">&quot;Hello World!!!&quot;</span>),</span>
+<span id="cb301-12"><a href="shiny-apps.html#cb301-12" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb301-13"><a href="shiny-apps.html#cb301-13" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Main panel for displaying outputs ----</span></span>
+<span id="cb301-14"><a href="shiny-apps.html#cb301-14" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">mainPanel</span>(<span class="st">&quot;Hello World!!!&quot;</span>)))</span>
+<span id="cb301-15"><a href="shiny-apps.html#cb301-15" aria-hidden="true" tabindex="-1"></a><span class="do">#######################################</span></span>
+<span id="cb301-16"><a href="shiny-apps.html#cb301-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-17"><a href="shiny-apps.html#cb301-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Server code for running the app ----</span></span>
+<span id="cb301-18"><a href="shiny-apps.html#cb301-18" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb301-19"><a href="shiny-apps.html#cb301-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb301-20"><a href="shiny-apps.html#cb301-20" aria-hidden="true" tabindex="-1"></a><span class="do">##################################</span></span>
+<span id="cb301-21"><a href="shiny-apps.html#cb301-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb301-22"><a href="shiny-apps.html#cb301-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Shiny app ----</span></span>
+<span id="cb301-23"><a href="shiny-apps.html#cb301-23" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span>
+<span id="cb301-24"><a href="shiny-apps.html#cb301-24" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span></code></pre></div>
+<p>In this code you’re providing a layout function with <code>fluidPage()</code> to set up the visual structure of the page. <code>fluidPage()</code> is a function from the shiny package and like all R functions we can pass arguments even other functions, these of which are the elements to include in the layout. The first argument we see is <code>titlePanel()</code>, which allows us to provide the title for our app. The next argument we provide is <code>sidebarLayout()</code>. This will create a layout (<code>sidebarLayout()</code>) with a sidebar (<code>sidebarPanel()</code>) and main area (<code>mainPanel()</code>). The arguments for sidebarLayout() will allow us to define the location of our input controls and location in the app of the outputs. You will notice that some simple text <code>"Hello World!"</code> has been added to see how this all looks when the app is run. The next stage of building our app we will add the actual code for defining these components as well as the logic for running the app. At this stage of app building we dont change anything in the server code. Take a moment and run the app and see how it looks!</p>
 </div>
-<div id="host-your-shiny-app" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Host your Shiny App<a href="shiny-apps.html#host-your-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="create-inputoutputlogic-of-the-shiny-app" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Create input/output/logic of the Shiny app<a href="shiny-apps.html#create-inputoutputlogic-of-the-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the final stage of creating our Shiny app we will be defining our inputs, outputs and the server logic. This stage is where our app really shapes up and we end up with a beautiful data application for whatever we want. In the case of this text an app to look at a summary and table of a dataset our user selects from the R <code>datasets</code> package.</p>
+<div id="code-to-build-the-app-including-inputsoutputslogic" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> Code to build the app including inputs/outputs/logic<a href="shiny-apps.html#code-to-build-the-app-including-inputsoutputslogic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To start we will view all the code which can be copied and placed into an app.R file and run. In the proceeding text we will examine each part.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="shiny-apps.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Shiny and Datasets package ----</span></span>
+<span id="cb302-2"><a href="shiny-apps.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb302-3"><a href="shiny-apps.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
+<span id="cb302-4"><a href="shiny-apps.html#cb302-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-5"><a href="shiny-apps.html#cb302-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for dataset viewer app ----</span></span>
+<span id="cb302-6"><a href="shiny-apps.html#cb302-6" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(<span class="co"># App title ----</span></span>
+<span id="cb302-7"><a href="shiny-apps.html#cb302-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">titlePanel</span>(<span class="st">&quot;R Datasets Viewer&quot;</span>),</span>
+<span id="cb302-8"><a href="shiny-apps.html#cb302-8" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Sidebar layout which houses the input and output definitions ----</span></span>
+<span id="cb302-9"><a href="shiny-apps.html#cb302-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">sidebarLayout</span>(</span>
+<span id="cb302-10"><a href="shiny-apps.html#cb302-10" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Sidebar panel for inputs ----</span></span>
+<span id="cb302-11"><a href="shiny-apps.html#cb302-11" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">sidebarPanel</span>(</span>
+<span id="cb302-12"><a href="shiny-apps.html#cb302-12" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Input: Select a dataset ----</span></span>
+<span id="cb302-13"><a href="shiny-apps.html#cb302-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">selectInput</span>(</span>
+<span id="cb302-14"><a href="shiny-apps.html#cb302-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">inputId =</span> <span class="st">&quot;dataset&quot;</span>,</span>
+<span id="cb302-15"><a href="shiny-apps.html#cb302-15" aria-hidden="true" tabindex="-1"></a>                      <span class="at">label =</span> <span class="st">&quot;Choose Dataset&quot;</span>,</span>
+<span id="cb302-16"><a href="shiny-apps.html#cb302-16" aria-hidden="true" tabindex="-1"></a>                      <span class="at">choices =</span> <span class="fu">ls</span>(<span class="st">&quot;package:datasets&quot;</span>)</span>
+<span id="cb302-17"><a href="shiny-apps.html#cb302-17" aria-hidden="true" tabindex="-1"></a>                    ),</span>
+<span id="cb302-18"><a href="shiny-apps.html#cb302-18" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Include clarifying text ----</span></span>
+<span id="cb302-19"><a href="shiny-apps.html#cb302-19" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">helpText</span>(</span>
+<span id="cb302-20"><a href="shiny-apps.html#cb302-20" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;Note: to View the entirety of the dataset selected&quot;</span>,</span>
+<span id="cb302-21"><a href="shiny-apps.html#cb302-21" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;you may need to scroll.&quot;</span></span>
+<span id="cb302-22"><a href="shiny-apps.html#cb302-22" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb302-23"><a href="shiny-apps.html#cb302-23" aria-hidden="true" tabindex="-1"></a>                  ),</span>
+<span id="cb302-24"><a href="shiny-apps.html#cb302-24" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb302-25"><a href="shiny-apps.html#cb302-25" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># Main panel for displaying outputs ----</span></span>
+<span id="cb302-26"><a href="shiny-apps.html#cb302-26" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">mainPanel</span>(</span>
+<span id="cb302-27"><a href="shiny-apps.html#cb302-27" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Output: Header + summary of the dataset selected ----</span></span>
+<span id="cb302-28"><a href="shiny-apps.html#cb302-28" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">h4</span>(<span class="st">&quot;Summary&quot;</span>),</span>
+<span id="cb302-29"><a href="shiny-apps.html#cb302-29" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">verbatimTextOutput</span>(<span class="at">outputId =</span> <span class="st">&quot;summary&quot;</span>),</span>
+<span id="cb302-30"><a href="shiny-apps.html#cb302-30" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb302-31"><a href="shiny-apps.html#cb302-31" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Output: Header + table of the dataset selected ----</span></span>
+<span id="cb302-32"><a href="shiny-apps.html#cb302-32" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">h4</span>(<span class="st">&quot;Observations&quot;</span>),</span>
+<span id="cb302-33"><a href="shiny-apps.html#cb302-33" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tableOutput</span>(<span class="at">outputId =</span> <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb302-34"><a href="shiny-apps.html#cb302-34" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb302-35"><a href="shiny-apps.html#cb302-35" aria-hidden="true" tabindex="-1"></a>                  ))</span>
+<span id="cb302-36"><a href="shiny-apps.html#cb302-36" aria-hidden="true" tabindex="-1"></a><span class="do">#######################################</span></span>
+<span id="cb302-37"><a href="shiny-apps.html#cb302-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-38"><a href="shiny-apps.html#cb302-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Server code for running the app ----</span></span>
+<span id="cb302-39"><a href="shiny-apps.html#cb302-39" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb302-40"><a href="shiny-apps.html#cb302-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate a summary of the dataset ----</span></span>
+<span id="cb302-41"><a href="shiny-apps.html#cb302-41" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb302-42"><a href="shiny-apps.html#cb302-42" aria-hidden="true" tabindex="-1"></a>    selectedDataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
+<span id="cb302-43"><a href="shiny-apps.html#cb302-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(selectedDataset)</span>
+<span id="cb302-44"><a href="shiny-apps.html#cb302-44" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb302-45"><a href="shiny-apps.html#cb302-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb302-46"><a href="shiny-apps.html#cb302-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate a table of the selected dataset ----</span></span>
+<span id="cb302-47"><a href="shiny-apps.html#cb302-47" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb302-48"><a href="shiny-apps.html#cb302-48" aria-hidden="true" tabindex="-1"></a>    selectedDataset <span class="ot">&lt;-</span> <span class="fu">get</span>(input<span class="sc">$</span>dataset, <span class="st">&quot;package:datasets&quot;</span>)</span>
+<span id="cb302-49"><a href="shiny-apps.html#cb302-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(selectedDataset)</span>
+<span id="cb302-50"><a href="shiny-apps.html#cb302-50" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb302-51"><a href="shiny-apps.html#cb302-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb302-52"><a href="shiny-apps.html#cb302-52" aria-hidden="true" tabindex="-1"></a><span class="do">##################################</span></span>
+<span id="cb302-53"><a href="shiny-apps.html#cb302-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-54"><a href="shiny-apps.html#cb302-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Shiny app ----</span></span>
+<span id="cb302-55"><a href="shiny-apps.html#cb302-55" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span>
+<span id="cb302-56"><a href="shiny-apps.html#cb302-56" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span></code></pre></div>
+</div>
+<div id="defining-ui-inputs-for-app" class="section level3 hasAnchor" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Defining UI inputs for app<a href="shiny-apps.html#defining-ui-inputs-for-app" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Shiny provides many UI inputs, Shiny functions which correspond to user interface elements that prompt the user for input values or interaction with an app. UI input functions follow the naming convention, <code>{typeOfInput}Input()</code> You can see options available on the Shiny reference page (<a href="https://shiny.rstudio.com/reference/shiny/1.7.0/" class="uri">https://shiny.rstudio.com/reference/shiny/1.7.0/</a>) in the section UI Inputs.</p>
+<p>The app we are developing allows the user to investigate a dataset from the <code>datasets</code> package. We therefore need an input that provides a list of selections for the user to select one. To create this we use the <code>selectInput()</code> function, make sure to call the function inside <code>sidebarPanel()</code>. As arguments to <code>selectInput()</code> we have to provide an inputID <code>"dataset"</code> - the input slot that will be used to access the value(we will use this in the server function), a label <code>"Choose Dataset"</code> - a label that will display in the selector (control) in the <code>UI</code>, and the choices the user is provided. The choices are generated from a call to <code>ls()</code> with the argument <code>package:datasets</code> (try that out in your console for fun!). You will also see we have added some text for the user with <code>helpText()</code> that informs them of what is going on in the output when they select a dataset.</p>
+</div>
+<div id="defining-ui-outputs-for-app." class="section level3 hasAnchor" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> Defining UI outputs for app.<a href="shiny-apps.html#defining-ui-outputs-for-app." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Shiny also provides many UI outputs, Shiny functions for creating user interface elements that, in conjunction with rendering functions (discussed in the server logic section next), display different kinds of output from your app. UI output functions follow the naming convention, <code>{typeOfOutput}Output()</code>. You can see options available on the Shiny reference page (<a href="https://shiny.rstudio.com/reference/shiny/1.7.0/" class="uri">https://shiny.rstudio.com/reference/shiny/1.7.0/</a>) in the section UI Outputs</p>
+<p>In our app we will define the outputs we want in the <code>mainPanel()</code> section of the app <code>UI</code>. The first output we want is a header for naming the output + summary of the dataset selected. The header is defined with a call to <code>h4()</code> with the argument <code>"Summary"</code>. The first UI output we encounter is <code>verbatimTextOutput()</code> with its argument <code>outputId = "summary"</code>. You might be wondering where <code>outputID</code> comes from(great question!), that is defined using a render function and we will discuss it in the next section! Our second output in the app is a header + table of the dataset selected. The header is defined with a call to <code>h4()</code> with the argument <code>"Observations"</code> and table output is defined with… a call to <code>tableOutput()</code> with its argument <code>outputId = "table"</code>. Thats it! You have defined your inputs and outputs, spend some time poking around to see how each of these functions operate under the hood. Oh! and remember to close all parentheses, this has been a major pain-point for many Shiny app developers (especially the author).</p>
+</div>
+<div id="defining-the-server-logic" class="section level3 hasAnchor" number="7.4.4">
+<h3><span class="header-section-number">7.4.4</span> Defining the server logic<a href="shiny-apps.html#defining-the-server-logic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Defining the server function is like putting a brain in the app. Now it can receive inputs and tell the app what to do. Rendering functions are functions that you use in your application’s server side code, assigning them to outputs that appear in your user interface. Each <code>render{Type}</code> function is designed to produce a particular type of output (e.g. text, tables, and plots), and is often paired with a <code>{type}Output function</code>. For example, in this app, <code>renderPrint()</code> is paired with <code>verbatimTextOutput()</code> to display a statistical summary with fixed-width (verbatim) text, and <code>renderTable()</code> is paired with <code>tableOutput()</code> to output the data in a table.</p>
+<p>Lets talk about <strong>inputID’s</strong> and <strong>outputID’s</strong>. When we defined our UI input with <code>selectInput()</code> we provided the argument <code>inputId = "dataset"</code> this gives the word <code>"dataset"</code> special status in the app making it the “input slot” that will be used to access the value. In this app you will see <code>input$dataset</code> put to work in the render functions. Before getting to that, lets talk about outputID’s. In the UI outputs you see the arguments <code>outputId = "summary"</code> and <code>outputId = "table"</code>. These outputID’s are defined when a a render function is assigned to them, they will appear in the server side code of the app we’re building as <code>output$summary</code> and <code>output$table</code>. However when you use them in the UI output arguments you only use the keyword (<code>Id</code>) <code>"summary"</code> and <code>"table"</code>. Keep in mind the word you choose is up to you but keeping it consistent with what output it is used with is helpful in readability of your code. Lets walk through writing the server side code.</p>
+<p>We start with the mandatory definition of the server function <code>server &lt;- function(input, output, session) {</code>. Following this we are using the <code>renderPrint({...})</code> function for generating the summary (recall that <code>summary()</code> prints a statistical summary to the console in R). In the body of the function are two lines of code <code>selectedDataset &lt;- get(input$dataset, "package:datasets")</code> which calls <code>get()</code> with the arguments <code>input$dataset</code> (you know where this comes from!) and <code>"package:datasets"</code> and assigns that to the object <code>selectedDataset</code> the next line is a call to <code>summary(selectedDataset)</code> which is what is assigned to <code>output$summary</code> (this is made available to our UI output functions!).</p>
+<p>The second render function we will define <code>renderTable({...})</code> is for generating a table of the selected dataset. In the body of the function are two lines of code <code>selectedDataset &lt;- get(input$dataset, "package:datasets")</code> which calls <code>get()</code> with the arguments <code>input$dataset</code> (you know where this comes from!) and <code>"package:datasets"</code> and assigns that to the object <code>selectedDataset</code> the next line is a call to <code>print(selectedDataset)</code> which is assigned to <code>output$table</code> (again, this is available to the UI output functions and ready to be used in your awesome Shiny app!)</p>
+</div>
+<div id="run-the-interactive-web-application" class="section level3 hasAnchor" number="7.4.5">
+<h3><span class="header-section-number">7.4.5</span> Run the interactive web application<a href="shiny-apps.html#run-the-interactive-web-application" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Make sure you have the mandatory call to <code>shinyApp()</code> and its time to run your app! Run the app now and see what happens when you change the input! You will joyfully notice that the summary and table update whenever you change the input data from the dropdown menu. This dependency is created implicitly because we’ve referred to <code>input$dataset</code> within the output functions. <code>input$dataset</code> is populated with the current value of the UI component with id <code>dataset</code>, and will cause the outputs to automatically update whenever that value changes. This is a fundamental concept in Shiny known as <strong>reactivity</strong>, outputs automatically react when their inputs change. There is much to learn about this!</p>
+</div>
+</div>
+<div id="host-your-shiny-app" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Host your Shiny App<a href="shiny-apps.html#host-your-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="images/session3/shinappsio.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Once you have built a killer Shiny App you will want to show all of your friends and colleagues. Fortunately when youre starting out this can be done at no cost using the power of <a href="https://www.shinyapps.io">shinyapps.io</a>!</p>
 <p>Deployment to the web is done using integrated Rstudio resources <img src="images/session3/shiny_deploy.png" width="165" />.</p>
 <p>When youre ready to step up your hosting game you can evolve to a paid tier within <a href="https://www.shinyapps.io">shinyapps.io</a>, or host on your own server or a number of other places. Have fun with it!</p>
 </div>
-<div id="resources" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Resources<a href="shiny-apps.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="resources" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Resources<a href="shiny-apps.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Shiny is a very popular package and has lots of resources on the web. Here’s a compiled list of a few recommended resources which are all fairly easy to read and understand.</p>
 <ul>
 <li><a href="https://shiny.rstudio.com">Shiny official website</a></li>

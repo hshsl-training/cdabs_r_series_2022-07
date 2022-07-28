@@ -23,7 +23,7 @@
 <meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
 
 
-<meta name="date" content="2022-07-21" />
+<meta name="date" content="2022-07-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -255,7 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#what-is-real"><i class="fa fa-check"></i><b>5.1.1</b> What is Real?</a></li>
 <li class="chapter" data-level="5.1.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#where-does-your-analysis-live"><i class="fa fa-check"></i><b>5.1.2</b> Where does your analysis live?</a></li>
-<li class="chapter" data-level="5.1.3" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#createRproj"><i class="fa fa-check"></i><b>5.1.3</b> Creating an RStudio project</a></li>
+<li class="chapter" data-level="5.1.3" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#creating-an-rstudio-cloud-project"><i class="fa fa-check"></i><b>5.1.3</b> Creating an RStudio Cloud project</a></li>
+<li class="chapter" data-level="5.1.4" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#createRproj"><i class="fa fa-check"></i><b>5.1.4</b> Creating an RStudio project</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#version-control-and-rstudio"><i class="fa fa-check"></i><b>5.2</b> Version Control and RStudio</a>
 <ul>
@@ -297,14 +298,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="shiny-apps.html"><a href="shiny-apps.html"><i class="fa fa-check"></i><b>7</b> Shiny Apps</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="shiny-apps.html"><a href="shiny-apps.html#shiny-tutorial-2"><i class="fa fa-check"></i><b>7.1</b> Shiny app basics</a></li>
-<li class="chapter" data-level="7.2" data-path="shiny-apps.html"><a href="shiny-apps.html#create-an-empty-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Create an empty Shiny app</a>
+<li class="chapter" data-level="7.2" data-path="shiny-apps.html"><a href="shiny-apps.html#create-a-basic-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Create a basic Shiny app</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="shiny-apps.html"><a href="shiny-apps.html#alternate-way-to-create-a-shiny-app-separate-ui-and-server-files"><i class="fa fa-check"></i><b>7.2.1</b> Alternate way to create a Shiny app: separate UI and server files</a></li>
-<li class="chapter" data-level="7.2.2" data-path="shiny-apps.html"><a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you"><i class="fa fa-check"></i><b>7.2.2</b> Let RStudio fill out a Shiny app template for you</a></li>
+<li class="chapter" data-level="7.2.1" data-path="shiny-apps.html"><a href="shiny-apps.html#basic-shiny-app-r-script"><i class="fa fa-check"></i><b>7.2.1</b> Basic Shiny app R script</a></li>
+<li class="chapter" data-level="7.2.2" data-path="shiny-apps.html"><a href="shiny-apps.html#run-the-basic-shiny-app"><i class="fa fa-check"></i><b>7.2.2</b> Run the basic Shiny app</a></li>
+<li class="chapter" data-level="7.2.3" data-path="shiny-apps.html"><a href="shiny-apps.html#challenge-7"><i class="fa fa-check"></i><b>7.2.3</b> Challenge</a></li>
+<li class="chapter" data-level="7.2.4" data-path="shiny-apps.html"><a href="shiny-apps.html#create-a-shiny-app-using-separate-ui-and-server-files"><i class="fa fa-check"></i><b>7.2.4</b> Create a Shiny app using separate UI and server files</a></li>
+<li class="chapter" data-level="7.2.5" data-path="shiny-apps.html"><a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you"><i class="fa fa-check"></i><b>7.2.5</b> Let RStudio fill out a Shiny app template for you</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="shiny-apps.html"><a href="shiny-apps.html#an-example-shiny-app"><i class="fa fa-check"></i><b>7.3</b> An example Shiny App</a></li>
-<li class="chapter" data-level="7.4" data-path="shiny-apps.html"><a href="shiny-apps.html#host-your-shiny-app"><i class="fa fa-check"></i><b>7.4</b> Host your Shiny App</a></li>
-<li class="chapter" data-level="7.5" data-path="shiny-apps.html"><a href="shiny-apps.html#resources"><i class="fa fa-check"></i><b>7.5</b> Resources</a></li>
+<li class="chapter" data-level="7.3" data-path="shiny-apps.html"><a href="shiny-apps.html#create-the-shiny-app-layout"><i class="fa fa-check"></i><b>7.3</b> Create the Shiny App layout</a></li>
+<li class="chapter" data-level="7.4" data-path="shiny-apps.html"><a href="shiny-apps.html#create-inputoutputlogic-of-the-shiny-app"><i class="fa fa-check"></i><b>7.4</b> Create input/output/logic of the Shiny app</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="shiny-apps.html"><a href="shiny-apps.html#code-to-build-the-app-including-inputsoutputslogic"><i class="fa fa-check"></i><b>7.4.1</b> Code to build the app including inputs/outputs/logic</a></li>
+<li class="chapter" data-level="7.4.2" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-ui-inputs-for-app"><i class="fa fa-check"></i><b>7.4.2</b> Defining UI inputs for app</a></li>
+<li class="chapter" data-level="7.4.3" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-ui-outputs-for-app."><i class="fa fa-check"></i><b>7.4.3</b> Defining UI outputs for app.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-the-server-logic"><i class="fa fa-check"></i><b>7.4.4</b> Defining the server logic</a></li>
+<li class="chapter" data-level="7.4.5" data-path="shiny-apps.html"><a href="shiny-apps.html#run-the-interactive-web-application"><i class="fa fa-check"></i><b>7.4.5</b> Run the interactive web application</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="shiny-apps.html"><a href="shiny-apps.html#host-your-shiny-app"><i class="fa fa-check"></i><b>7.5</b> Host your Shiny App</a></li>
+<li class="chapter" data-level="7.6" data-path="shiny-apps.html"><a href="shiny-apps.html#resources"><i class="fa fa-check"></i><b>7.6</b> Resources</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="further-resources.html"><a href="further-resources.html"><i class="fa fa-check"></i><b>A</b> Further Resources</a>
@@ -372,7 +384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="images/session3/create_rmd.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>You can stick with the default (HTML output), but give it a title.</p>
 <p>As a result RStudio generates this:</p>
-<p><img src="images/session3/rmd_template.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="images/rmd_template.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="r-markdown-basic-components" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> R Markdown Basic Components<a href="reproducible-reports-with-r-markdown.html#r-markdown-basic-components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -386,9 +398,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">6.3.2.1</span> YAML Header<a href="reproducible-reports-with-r-markdown.html#yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it what type of output you want to produce. In this case, we’re creating an html document. The syntax for the metadata is YAML (YAML Ain’t Markup Language, (<a href="https://en.wikipedia.org/wiki/YAML" class="uri">https://en.wikipedia.org/wiki/YAML</a>)), so sometimes it is also called the YAML metadata or the YAML frontmatter. Before it bites you hard, we want to warn you in advance that indentation matters in YAML, so do not forget to indent the sub-fields of a top field properly.</p>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="reproducible-reports-with-r-markdown.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb285-2"><a href="reproducible-reports-with-r-markdown.html#cb285-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;T32-Rmd-Practice&quot;</span></span>
-<span id="cb285-3"><a href="reproducible-reports-with-r-markdown.html#cb285-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;JP Courneya&quot;</span></span>
-<span id="cb285-4"><a href="reproducible-reports-with-r-markdown.html#cb285-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;7/21/2021&quot;</span></span>
+<span id="cb285-2"><a href="reproducible-reports-with-r-markdown.html#cb285-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;R Markdown Practice&quot;</span></span>
+<span id="cb285-3"><a href="reproducible-reports-with-r-markdown.html#cb285-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;J-P Courneya&quot;</span></span>
+<span id="cb285-4"><a href="reproducible-reports-with-r-markdown.html#cb285-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;2022-07-27&quot;</span></span>
 <span id="cb285-5"><a href="reproducible-reports-with-r-markdown.html#cb285-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
 <span id="cb285-6"><a href="reproducible-reports-with-r-markdown.html#cb285-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 </div>
@@ -397,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The body of the document follows the metadata. The syntax for text (also known as prose or narratives) is Markdown, a lightweight set of conventions for formatting plain text files. Markdown is designed to be easy to read and easy to write. There are also two types of computer code, code chunks and inline R code. We will look at each of these in more detail in subsequent sections.</p>
 <p>You will notice in the <code>.Rmd</code> interface the code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code:</p>
 <p><img src="images/session3/run_code_chunk.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>To generate a report from the file, run the <code>render</code> command:</p>
+<p>To generate a report from the file, use the <img src="images/session3/knit_button.png" width="62" /> button in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K).You will notice your first time “knitting” the document you are prompted to save the file, save it with a meaningful name, like <code>Rmarkdown-practice.Rmd</code>.</p>
+<p><img src="images/rmd_render.PNG" width="100%" style="display: block; margin: auto;" /></p>
+<p>Or, in the console, run the <code>render</code> command:</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="reproducible-reports-with-r-markdown.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
-<span id="cb286-2"><a href="reproducible-reports-with-r-markdown.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render</span>(<span class="st">&quot;T32-rmd-practice.Rmd&quot;</span>)</span></code></pre></div>
-<p>Better still, use the <img src="images/session3/knit_button.png" width="62" /> button in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K). You will notice your first time “knitting” the document you are prompted to save the file, save it with a meaningful name.</p>
-<p><img src="images/session3/rmd_render.png" width="100%" style="display: block; margin: auto;" /></p>
+<span id="cb286-2"><a href="reproducible-reports-with-r-markdown.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render</span>(<span class="st">&quot;Rmarkdown-practice.Rmd&quot;</span>)</span></code></pre></div>
 <p>R Markdown generates a new file that contains selected text, code, and results from the .Rmd file.</p>
 </div>
 <div id="how-things-get-compiled" class="section level4 hasAnchor" number="6.3.2.3">
@@ -509,7 +521,7 @@ gapminder &lt;- read.csv(file = &quot;data/gapminder_data.csv&quot;, stringsAsFa
 plot(lifeExp ~ year, data = gapminder)
 ```</code></pre>
 </div>
-<p>As a courtesy the code to copy and place in chunks:</p>
+<p>As a courtesy, here is the code to copy and place in chunks:</p>
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="reproducible-reports-with-r-markdown.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="at">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span>
 <span id="cb293-2"><a href="reproducible-reports-with-r-markdown.html#cb293-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb293-3"><a href="reproducible-reports-with-r-markdown.html#cb293-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
