@@ -201,17 +201,70 @@ shinyApp(ui, server)
 ```
 
 ### Defining UI inputs for app
+
+```{r definingUIInput, eval=FALSE}
+# Sidebar panel for inputs ----
+                  sidebarPanel(
+                    # Input: Select a dataset ----
+                    selectInput(
+                      inputId = "dataset",
+                      label = "Choose Dataset",
+                      choices = ls("package:datasets")
+                    ),
+                    # Include clarifying text ----
+                    helpText(
+                      "Note: to View the entirety of the dataset selected",
+                      "you may need to scroll."
+                    )
+                  ),
+```
+
 Shiny provides many UI inputs, Shiny functions which correspond to user interface elements that prompt the user for input values or interaction with an app. UI input functions follow the naming convention, `{typeOfInput}Input()` You can see options available on the Shiny reference page (https://shiny.rstudio.com/reference/shiny/1.7.0/) in the section UI Inputs.  
 
 The app we are developing allows the user to investigate a dataset from the `datasets` package. We therefore need an input that provides a list of selections for the user to select one. To create this we use the `selectInput()` function, make sure to call the function inside `sidebarPanel()`. As arguments to `selectInput()` we have to provide an inputID `"dataset"` - the input slot that will be used to access the value(we will use this in the server function), a label `"Choose Dataset"` - a label that will display in the selector (control) in the `UI`, and the choices the user is provided. The choices are generated from a call to `ls()` with the argument `package:datasets` (try that out in your console for fun!). You will also see we have added some text for the user with `helpText()` that informs them of what is going on in the output when they select a dataset.
 
 ### Defining UI outputs for app.
+
+```{r definingUIOutput, eval=FALSE}
+# Main panel for displaying outputs ----
+                  mainPanel(
+                    # Output: Header + summary of the dataset selected ----
+                    h4("Summary"),
+                    verbatimTextOutput(outputId = "summary"),
+                    
+                    # Output: Header + table of the dataset selected ----
+                    h4("Observations"),
+                    tableOutput(outputId = "table")
+                  )
+                  ))
+```
 Shiny also provides many UI outputs, Shiny functions for creating user interface elements that, in conjunction with rendering functions (discussed in the server logic section next), display different kinds of output from your app. UI output functions follow the naming convention, `{typeOfOutput}Output()`. You can see options available on the Shiny reference page (https://shiny.rstudio.com/reference/shiny/1.7.0/) in the section UI Outputs
 
 In our app we will define the outputs we want in the `mainPanel()` section of the app `UI`. The first output we want is a header for naming the output + summary of the dataset selected. The header is defined with a call to `h4()` with the argument `"Summary"`. The first UI output we encounter is `verbatimTextOutput()` with its argument `outputId = "summary"`. You might be wondering where `outputID` comes from(great question!), that is defined using a render function and we will discuss it in the next section!  Our second output in the app is a header + table of the dataset selected. The header is defined with a call to `h4()` with the argument `"Observations"` and table output is defined with... a call to  `tableOutput()` with its argument `outputId = "table"`. Thats it! You have defined your inputs and outputs, spend some time poking around to see how each of these functions operate under the hood. Oh! and remember to close all parentheses, this has been a major pain-point for many Shiny app developers (especially the author).
 
 ### Defining the server logic
 
+```{r definingServerLogic, eval=FALSE}
+# Server code for running the app ----
+server <- function(input, output, session) {
+  # Generate a summary of the dataset ----
+  output$summary <- renderPrint({
+    selectedDataset <- get(input$dataset, "package:datasets")
+    summary(selectedDataset)
+  })
+  
+  # Generate a table of the selected dataset ----
+  output$table <- renderTable({
+    selectedDataset <- get(input$dataset, "package:datasets")
+    print(selectedDataset)
+  })
+}
+##################################
+
+# Create the Shiny app ----
+shinyApp(ui, server)
+###########################
+```
 Defining the server function is like putting a brain in the app. Now it can receive inputs and tell the app what to do. Rendering functions are functions that you use in your application’s server side code, assigning them to outputs that appear in your user interface. Each `render{Type}` function is designed to produce a particular type of output (e.g. text, tables, and plots), and is often paired with a `{type}Output function`. For example, in this app, `renderPrint()` is paired with `verbatimTextOutput()` to display a statistical summary with fixed-width (verbatim) text, and `renderTable()` is paired with `tableOutput()` to output the data in a table.
 
 Lets talk about **inputID's** and **outputID's**. When we defined our UI input with `selectInput()` we provided the argument `inputId = "dataset"` this gives the word `"dataset"` special status in the app making it the "input slot" that will be used to access the value. In this app you will see `input$dataset` put to work in the render functions. Before getting to that, lets talk about outputID's. In the UI outputs you see the arguments `outputId = "summary"` and `outputId = "table"`. These outputID's are defined when a a render function is assigned to them, they will appear in the server side code of the app we're building as `output$summary` and `output$table`. However when you use them in the UI output arguments you only use the keyword (`Id`) `"summary"` and `"table"`. Keep in mind the word you choose is up to you but keeping it consistent with what output it is used with is helpful in readability of your code. Lets walk through writing the server side code. 
