@@ -81,7 +81,7 @@ Let’s practice creating a project. Click File > New Project, then:
 knitr::include_graphics("images/session3/Screen Shot 2021-07-19 at 1.38.26 PM.png")
 knitr::include_graphics("images/session3/Screen Shot 2021-07-19 at 1.39.34 PM.png")
 knitr::include_graphics("images/session3/Screen Shot 2021-07-19 at 1.40.00 PM.png")
-knitr::include_graphics("images/session3/Screen Shot 2021-07-19 at 1.41.15 PM.png")
+knitr::include_graphics("images/session3/Screen Shot 2022-07-28 at 12.09.31 AM.png")
 ```
 
 Call your project `Reproducible Project Example` and think carefully about which subdirectory you put the project in. If you don’t store it somewhere sensible, it will be hard to find it in the future!
@@ -239,7 +239,7 @@ Picking up were we left off when [Setting up a remote repository](#settingupremo
 
 In RStudio, start a new Project [review here](#createRproj):
 
-* File > New Project > Version Control > Git. In “Repository URL”, paste the URL of your new GitHub repository. It will be something like this `https://github.com/j-p-courneya/T32_Session3_Practice.git`.
+* File > New Project > Version Control > Git. In “Repository URL”, paste the URL of your new GitHub repository. It will be something like this `https://github.com/j-p-courneya/cdabsR_Session4_Practice.git`.
 
   + Do you NOT see an option to get the Project from Version Control? Restart RStudio and try again. Still no luck? Go to [gitwithr chapter 13](https://happygitwithr.com/rstudio-see-git.html) for tips on how to help RStudio find Git.
 
