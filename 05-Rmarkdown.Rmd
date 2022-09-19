@@ -60,7 +60,7 @@ You can stick with the default (HTML output), but give it a title.
 As a result RStudio generates this:
 
 ```{r echo=F, out.width = '80%', fig.align="center"}
-knitr::include_graphics("images/rmd_template.png")
+knitr::include_graphics("images/session3/rmd_template.png")
 ```
 
 ### R Markdown Basic Components
@@ -77,9 +77,9 @@ The initial chunk of text (header) contains instructions for R to specify what k
 
 ```{r eval=FALSE}
 ---
-title: "R Markdown Practice"
-author: "J-P Courneya"
-date: "2022-07-27"
+title: "T32-Rmd-Practice"
+author: "JP Courneya"
+date: "7/21/2021"
 output: html_document
 ---
 ```
@@ -94,19 +94,18 @@ You will notice in the `.Rmd` interface the code and output are interleaved. You
 knitr::include_graphics("images/session3/run_code_chunk.png")
 ```
 
-To generate a report from the file, use the ![](images/session3/knit_button.png){width="62"} button in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K).You will notice your first time "knitting" the document you are prompted to save the file, save it with a meaningful name, like `Rmarkdown-practice.Rmd`.
-
-```{r echo=F, out.width = '100%', fig.align="center"}
-knitr::include_graphics("images/rmd_render.png")
-```
-
-Or, in the console, run the `render` command:
+To generate a report from the file, run the `render` command:
 
 ```{r eval=FALSE}
 library(rmarkdown)
-render("Rmarkdown-practice.Rmd")
+render("T32-rmd-practice.Rmd")
 ```
 
+Better still, use the ![](images/session3/knit_button.png){width="62"} button in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K). You will notice your first time "knitting" the document you are prompted to save the file, save it with a meaningful name.
+
+```{r echo=F, out.width = '100%', fig.align="center"}
+knitr::include_graphics("images/session3/rmd_render.png")
+```
 
 R Markdown generates a new file that contains selected text, code, and results from the .Rmd file.
 
@@ -253,7 +252,7 @@ plot(lifeExp ~ year, data = gapminder)
 ````
 :::
 
-As a courtesy, here is the code to copy and place in chunks: 
+As a courtesy the code to copy and place in chunks: 
 ```{r eval=FALSE}
 download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 
