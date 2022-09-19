@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Plotting with ggplot2 | CDABS R Workshop Series</title>
+  <meta name="description" content="This is material to accompany a 4 part introduction to R workshop series." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Plotting with ggplot2 | CDABS R Workshop Series" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is material to accompany a 4 part introduction to R workshop series." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Plotting with ggplot2 | CDABS R Workshop Series" />
+  
+  <meta name="twitter:description" content="This is material to accompany a 4 part introduction to R workshop series." />
+  
+
+<meta name="author" content="Jean-Paul Courneya and Amy Yarnell" />
+
+
+<meta name="date" content="2022-07-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="welcome-to-the-tidyverse.html"/>
+<link rel="next" href="reproducible-project-management.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CDABS R Series</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.2</b> License</a></li>
+</ul></li>
+<li class="part"><span><b>Session I</b></span></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#learning-objectives"><i class="fa fa-check"></i><b>2.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#why-learn-r"><i class="fa fa-check"></i><b>2.2</b> Why learn R?</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#starting-out-in-r"><i class="fa fa-check"></i><b>2.3</b> Starting out in R</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#downloading-installing-and-running-r"><i class="fa fa-check"></i><b>2.3.1</b> Downloading, Installing and Running R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#rstudio"><i class="fa fa-check"></i><b>2.3.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#rstudio-cloud"><i class="fa fa-check"></i><b>2.3.3</b> RStudio Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-this-book"><i class="fa fa-check"></i><b>2.4</b> Using this book</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#working-in-the-console"><i class="fa fa-check"></i><b>2.5</b> Working in the Console</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#objects"><i class="fa fa-check"></i><b>2.6</b> Objects</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#creating-objects"><i class="fa fa-check"></i><b>2.6.1</b> Creating Objects</a></li>
+<li class="chapter" data-level="2.6.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#working-with-objects"><i class="fa fa-check"></i><b>2.6.2</b> Working with Objects</a></li>
+<li class="chapter" data-level="2.6.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#naming-objects"><i class="fa fa-check"></i><b>2.6.3</b> Naming Objects</a></li>
+<li class="chapter" data-level="2.6.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#challenge"><i class="fa fa-check"></i><b>2.6.4</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#saving-code-in-an-r-script"><i class="fa fa-check"></i><b>2.7</b> Saving code in an R script</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#setting-your-working-directory"><i class="fa fa-check"></i><b>2.8</b> Setting your Working Directory</a></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>2.9</b> Functions and their arguments</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>2.9.1</b> Getting Help</a></li>
+<li class="chapter" data-level="2.9.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#challenge-using-functions"><i class="fa fa-check"></i><b>2.9.2</b> Challenge: using functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>2.10</b> Packages</a></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectors"><i class="fa fa-check"></i><b>2.11</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-a-vector"><i class="fa fa-check"></i><b>2.11.1</b> What is a Vector?</a></li>
+<li class="chapter" data-level="2.11.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#working-with-vectors"><i class="fa fa-check"></i><b>2.11.2</b> Working with Vectors</a></li>
+<li class="chapter" data-level="2.11.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#missing-data"><i class="fa fa-check"></i><b>2.11.3</b> Missing Data</a></li>
+<li class="chapter" data-level="2.11.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mixing-data-types"><i class="fa fa-check"></i><b>2.11.4</b> Mixing Data Types</a></li>
+<li class="chapter" data-level="2.11.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.11.5</b> Indexing and Subsetting vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-frames-tibbles-and-exploring-data"><i class="fa fa-check"></i><b>2.12</b> Data frames, Tibbles, and Exploring Data</a>
+<ul>
+<li class="chapter" data-level="2.12.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#creating-data-frames"><i class="fa fa-check"></i><b>2.12.1</b> Creating data frames</a></li>
+<li class="chapter" data-level="2.12.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exploring-data-frames"><i class="fa fa-check"></i><b>2.12.2</b> Exploring data frames</a></li>
+<li class="chapter" data-level="2.12.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#quickly-exploring-data-with-plots"><i class="fa fa-check"></i><b>2.12.3</b> Quickly exploring data with plots</a></li>
+</ul></li>
+<li class="chapter" data-level="2.13" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>2.13</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>Session II</b></span></li>
+<li class="chapter" data-level="3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Welcome to the Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#what-is-tidy-data"><i class="fa fa-check"></i><b>3.1</b> What is Tidy Data?</a></li>
+<li class="chapter" data-level="3.2" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#getting-set-up"><i class="fa fa-check"></i><b>3.2</b> Getting set up</a></li>
+<li class="chapter" data-level="3.3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#install"><i class="fa fa-check"></i><b>3.3</b> Install</a></li>
+<li class="chapter" data-level="3.4" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#the-data"><i class="fa fa-check"></i><b>3.4</b> The Data</a></li>
+<li class="chapter" data-level="3.5" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#importing-data"><i class="fa fa-check"></i><b>3.5</b> Importing data</a></li>
+<li class="chapter" data-level="3.6" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#exploring-data"><i class="fa fa-check"></i><b>3.6</b> Exploring Data</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-1"><i class="fa fa-check"></i><b>3.6.1</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#wrangling-data-with-dplyr"><i class="fa fa-check"></i><b>3.7</b> Wrangling data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.8" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-data"><i class="fa fa-check"></i><b>3.8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-columns-with-select"><i class="fa fa-check"></i><b>3.8.1</b> Subsetting Columns with <code>Select()</code></a></li>
+<li class="chapter" data-level="3.8.2" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#renaming-columns"><i class="fa fa-check"></i><b>3.8.2</b> Renaming columns</a></li>
+<li class="chapter" data-level="3.8.3" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#subsetting-rows-with-filter"><i class="fa fa-check"></i><b>3.8.3</b> Subsetting rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="3.8.4" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-2"><i class="fa fa-check"></i><b>3.8.4</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#working-with-dates"><i class="fa fa-check"></i><b>3.9</b> Working with Dates</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#date-intervals-durations-and-periods"><i class="fa fa-check"></i><b>3.9.1</b> Date intervals, durations, and periods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#creating-new-columns-with-mutate"><i class="fa fa-check"></i><b>3.10</b> Creating new columns with <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.11" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#grouping-and-summarizing-data"><i class="fa fa-check"></i><b>3.11</b> Grouping and Summarizing data</a></li>
+<li class="chapter" data-level="3.12" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#sorting-datasets-with-arrange"><i class="fa fa-check"></i><b>3.12</b> Sorting datasets with <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.13" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#joining-datasets"><i class="fa fa-check"></i><b>3.13</b> Joining Datasets</a>
+<ul>
+<li class="chapter" data-level="3.13.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#long-vs-wide-formats"><i class="fa fa-check"></i><b>3.13.1</b> Long vs Wide formats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#writing-data"><i class="fa fa-check"></i><b>3.14</b> Writing Data</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#challenge-3"><i class="fa fa-check"></i><b>3.14.1</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="3.15" data-path="welcome-to-the-tidyverse.html"><a href="welcome-to-the-tidyverse.html#exercises-1"><i class="fa fa-check"></i><b>3.15</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>Session III</b></span></li>
+<li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#getting-set-up-1"><i class="fa fa-check"></i><b>4.1</b> Getting set up</a></li>
+<li class="chapter" data-level="4.2" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#why-data-visualization"><i class="fa fa-check"></i><b>4.2</b> Why Data Visualization?</a></li>
+<li class="chapter" data-level="4.3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#about-the-data"><i class="fa fa-check"></i><b>4.3</b> About the data</a></li>
+<li class="chapter" data-level="4.4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#about-ggplot2"><i class="fa fa-check"></i><b>4.4</b> About <strong><code>ggplot2</code></strong></a></li>
+<li class="chapter" data-level="4.5" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#univariate-plots"><i class="fa fa-check"></i><b>4.5</b> Univariate plots</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#histograms"><i class="fa fa-check"></i><b>4.5.1</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#bivariate-plots"><i class="fa fa-check"></i><b>4.6</b> Bivariate Plots</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#line-graphs"><i class="fa fa-check"></i><b>4.6.1</b> Line graphs</a></li>
+<li class="chapter" data-level="4.6.2" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#bar-charts"><i class="fa fa-check"></i><b>4.6.2</b> Bar charts</a></li>
+<li class="chapter" data-level="4.6.3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#challenge-4"><i class="fa fa-check"></i><b>4.6.3</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#maps"><i class="fa fa-check"></i><b>4.7</b> Maps</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#challenge-5"><i class="fa fa-check"></i><b>4.7.1</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#grouping-and-faceting"><i class="fa fa-check"></i><b>4.8</b> Grouping and Faceting</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#challenge-6"><i class="fa fa-check"></i><b>4.8.1</b> Challenge</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Session IV</b></span></li>
+<li class="chapter" data-level="5" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html"><i class="fa fa-check"></i><b>5</b> Reproducible Project Management</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#rstudio-projects"><i class="fa fa-check"></i><b>5.1</b> RStudio Projects</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#what-is-real"><i class="fa fa-check"></i><b>5.1.1</b> What is Real?</a></li>
+<li class="chapter" data-level="5.1.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#where-does-your-analysis-live"><i class="fa fa-check"></i><b>5.1.2</b> Where does your analysis live?</a></li>
+<li class="chapter" data-level="5.1.3" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#createRprojCloud"><i class="fa fa-check"></i><b>5.1.3</b> Creating an RStudio Cloud project</a></li>
+<li class="chapter" data-level="5.1.4" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#createRproj"><i class="fa fa-check"></i><b>5.1.4</b> Creating an RStudio project</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#version-control-and-rstudio"><i class="fa fa-check"></i><b>5.2</b> Version Control and RStudio</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#why-git"><i class="fa fa-check"></i><b>5.2.1</b> Why Git?</a></li>
+<li class="chapter" data-level="5.2.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#whats-github"><i class="fa fa-check"></i><b>5.2.2</b> What’s GitHub?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#settingupremote"><i class="fa fa-check"></i><b>5.3</b> Setting up a remote repository on Github</a></li>
+<li class="chapter" data-level="5.4" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#connecting-rstudio-cloud-to-github"><i class="fa fa-check"></i><b>5.4</b> Connecting Rstudio Cloud to Github</a></li>
+<li class="chapter" data-level="5.5" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#checking-out-a-project-from-a-version-control-remote-repository"><i class="fa fa-check"></i><b>5.5</b> Checking out a project from a version control remote repository</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#clone-the-new-github-repository-to-your-computer-via-rstudio"><i class="fa fa-check"></i><b>5.5.1</b> Clone the new GitHub repository to your computer via RStudio</a></li>
+<li class="chapter" data-level="5.5.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#introduce-yourself-to-git"><i class="fa fa-check"></i><b>5.5.2</b> Introduce yourself to Git</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#get-a-personal-access-token-pat"><i class="fa fa-check"></i><b>5.6</b> Get a personal access token (PAT)</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#create-the-pat"><i class="fa fa-check"></i><b>5.6.1</b> Create the PAT</a></li>
+<li class="chapter" data-level="5.6.2" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#put-your-pat-into-the-git-credential-store"><i class="fa fa-check"></i><b>5.6.2</b> Put your PAT into the Git credential store</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#making-some-changes-save-commit."><i class="fa fa-check"></i><b>5.7</b> Making some changes, save, commit.</a></li>
+<li class="chapter" data-level="5.8" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#push-your-local-changes-online-to-github"><i class="fa fa-check"></i><b>5.8</b> Push your local changes online to GitHub</a></li>
+<li class="chapter" data-level="5.9" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#confirm-the-local-change-propagated-to-the-github-remote"><i class="fa fa-check"></i><b>5.9</b> Confirm the local change propagated to the GitHub remote</a></li>
+<li class="chapter" data-level="5.10" data-path="reproducible-project-management.html"><a href="reproducible-project-management.html#clean-up"><i class="fa fa-check"></i><b>5.10</b> Clean up</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reproducible Reports with R Markdown</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#what-is-r-markdown"><i class="fa fa-check"></i><b>6.1</b> What is R Markdown</a></li>
+<li class="chapter" data-level="6.2" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#r-markdown-related-packages"><i class="fa fa-check"></i><b>6.2</b> R Markdown Related Packages</a></li>
+<li class="chapter" data-level="6.3" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#how-does-r-markdown-work"><i class="fa fa-check"></i><b>6.3</b> How does R Markdown work</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>6.3.1</b> Creating an R Markdown file</a></li>
+<li class="chapter" data-level="6.3.2" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#r-markdown-basic-components"><i class="fa fa-check"></i><b>6.3.2</b> R Markdown Basic Components</a></li>
+<li class="chapter" data-level="6.3.3" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#markdown"><i class="fa fa-check"></i><b>6.3.3</b> Markdown</a></li>
+<li class="chapter" data-level="6.3.4" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#r-code-chunks"><i class="fa fa-check"></i><b>6.3.4</b> R code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="reproducible-reports-with-r-markdown.html"><a href="reproducible-reports-with-r-markdown.html#resources-for-r-markdown"><i class="fa fa-check"></i><b>6.4</b> Resources for R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="shiny-apps.html"><a href="shiny-apps.html"><i class="fa fa-check"></i><b>7</b> Shiny Apps</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="shiny-apps.html"><a href="shiny-apps.html#shiny-tutorial-2"><i class="fa fa-check"></i><b>7.1</b> Shiny app basics</a></li>
+<li class="chapter" data-level="7.2" data-path="shiny-apps.html"><a href="shiny-apps.html#create-a-basic-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Create a basic Shiny app</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="shiny-apps.html"><a href="shiny-apps.html#basic-shiny-app-r-script"><i class="fa fa-check"></i><b>7.2.1</b> Basic Shiny app R script</a></li>
+<li class="chapter" data-level="7.2.2" data-path="shiny-apps.html"><a href="shiny-apps.html#run-the-basic-shiny-app"><i class="fa fa-check"></i><b>7.2.2</b> Run the basic Shiny app</a></li>
+<li class="chapter" data-level="7.2.3" data-path="shiny-apps.html"><a href="shiny-apps.html#challenge-7"><i class="fa fa-check"></i><b>7.2.3</b> Challenge</a></li>
+<li class="chapter" data-level="7.2.4" data-path="shiny-apps.html"><a href="shiny-apps.html#create-a-shiny-app-using-separate-ui-and-server-files"><i class="fa fa-check"></i><b>7.2.4</b> Create a Shiny app using separate UI and server files</a></li>
+<li class="chapter" data-level="7.2.5" data-path="shiny-apps.html"><a href="shiny-apps.html#let-rstudio-fill-out-a-shiny-app-template-for-you"><i class="fa fa-check"></i><b>7.2.5</b> Let RStudio fill out a Shiny app template for you</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="shiny-apps.html"><a href="shiny-apps.html#create-the-shiny-app-layout"><i class="fa fa-check"></i><b>7.3</b> Create the Shiny App layout</a></li>
+<li class="chapter" data-level="7.4" data-path="shiny-apps.html"><a href="shiny-apps.html#create-inputoutputlogic-of-the-shiny-app"><i class="fa fa-check"></i><b>7.4</b> Create input/output/logic of the Shiny app</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="shiny-apps.html"><a href="shiny-apps.html#code-to-build-the-app-including-inputsoutputslogic"><i class="fa fa-check"></i><b>7.4.1</b> Code to build the app including inputs/outputs/logic</a></li>
+<li class="chapter" data-level="7.4.2" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-ui-inputs-for-app"><i class="fa fa-check"></i><b>7.4.2</b> Defining UI inputs for app</a></li>
+<li class="chapter" data-level="7.4.3" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-ui-outputs-for-app."><i class="fa fa-check"></i><b>7.4.3</b> Defining UI outputs for app.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="shiny-apps.html"><a href="shiny-apps.html#defining-the-server-logic"><i class="fa fa-check"></i><b>7.4.4</b> Defining the server logic</a></li>
+<li class="chapter" data-level="7.4.5" data-path="shiny-apps.html"><a href="shiny-apps.html#run-the-interactive-web-application"><i class="fa fa-check"></i><b>7.4.5</b> Run the interactive web application</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="shiny-apps.html"><a href="shiny-apps.html#host-your-shiny-app"><i class="fa fa-check"></i><b>7.5</b> Host your Shiny App</a></li>
+<li class="chapter" data-level="7.6" data-path="shiny-apps.html"><a href="shiny-apps.html#resources"><i class="fa fa-check"></i><b>7.6</b> Resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="further-resources.html"><a href="further-resources.html"><i class="fa fa-check"></i><b>A</b> Further Resources</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="further-resources.html"><a href="further-resources.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>A.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="A.2" data-path="further-resources.html"><a href="further-resources.html#using-rstudio"><i class="fa fa-check"></i><b>A.2</b> Using RStudio</a></li>
+<li class="chapter" data-level="A.3" data-path="further-resources.html"><a href="further-resources.html#the-tidyverse"><i class="fa fa-check"></i><b>A.3</b> The Tidyverse</a></li>
+<li class="chapter" data-level="A.4" data-path="further-resources.html"><a href="further-resources.html#graphing-in-r"><i class="fa fa-check"></i><b>A.4</b> Graphing in R</a></li>
+<li class="chapter" data-level="A.5" data-path="further-resources.html"><a href="further-resources.html#r-based-technologies"><i class="fa fa-check"></i><b>A.5</b> R Based Technologies</a></li>
+<li class="chapter" data-level="A.6" data-path="further-resources.html"><a href="further-resources.html#git-github"><i class="fa fa-check"></i><b>A.6</b> Git &amp; Github</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="selected-glossary-of-r-terminology.html"><a href="selected-glossary-of-r-terminology.html"><i class="fa fa-check"></i><b>B</b> Selected Glossary of R Terminology</a></li>
+<li class="chapter" data-level="C" data-path="packages-and-functions-used.html"><a href="packages-and-functions-used.html"><i class="fa fa-check"></i><b>C</b> Packages and Functions Used</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CDABS R Workshop Series</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="plotting-with-ggplot2" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Plotting with ggplot2<a href="plotting-with-ggplot2.html#plotting-with-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="getting-set-up-1" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Getting set up<a href="plotting-with-ggplot2.html#getting-set-up-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Sign in to RStudio Cloud (Or, if you haven’t already, sign up for a free account at RStudio Cloud <a href="https://rstudio.cloud/plans/free" class="uri">https://rstudio.cloud/plans/free</a>)</li>
+<li>Go to the RStudio Cloud class project for this session <a href="https://rstudio.cloud/content/4282445" class="uri">https://rstudio.cloud/content/4282445</a></li>
+<li>Note the text that marks this as a Temporary Copy. Select the <code>Save a Permanent Copy</code> button to begin working!</li>
+<li>Create a new script called <code>measles_viz_script.R</code></li>
+<li>Load the object in your <code>data</code> folder called <code>yearly_rates_ext</code></li>
+</ol>
+<div class="shaded tip">
+<p><strong>Reminder:</strong> You can open a new R script in the following ways:</p>
+<ol style="list-style-type: decimal">
+<li>Go to the menu bar <code>File &gt; New File &gt; R Script</code></li>
+<li>In the toolbar below the menu bar, select the new blank file icon, and then R Script from the menu bar.</li>
+<li>In the Files pane, select the New Blank File Icon, and then R Script</li>
+<li>Use the keyboard shortcut <code>Ctrl+Shift+N</code> (PC) or <code>Shift+Command+N</code>(Mac)</li>
+</ol>
+</div>
+</div>
+<div id="why-data-visualization" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Why Data Visualization?<a href="plotting-with-ggplot2.html#why-data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Visualization is an important process which can help us explore, understand, analyze, and communicate about data. Visualizations, including many kinds of graphs, charts, maps, animations, and infographics, can be far more effective at quickly communicating important points than raw numbers alone. But visualizations also have the power to mislead. And so throughout this class, we’ll be covering some good data visualization practices. Slides accompanying this section can be found here: <a href="https://osf.io/yk5bx" class="uri">https://osf.io/yk5bx</a>^[Slides created by the [Visualizing the Future project] (<a href="https://visualizingthefuture.github.io/" class="uri">https://visualizingthefuture.github.io/</a>), made possible in part by the Institute of Museum and Library Services, RE-73-18-0059-18.</p>
+</div>
+<div id="about-the-data" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> About the data<a href="plotting-with-ggplot2.html#about-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll be visualizing the same dataset from the previous chapter of historical measles case counts in the US. We’ve made some additional tweaks, like adding <code>state.region</code> and <code>state.division</code> columns. This data frame has been provided to you in your RStudio Cloud project, but if you want to create it in your own environment, you can find the script to create it here: <a href="https://osf.io/5acbd" class="uri">https://osf.io/5acbd</a>.</p>
+</div>
+<div id="about-ggplot2" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> About <strong><code>ggplot2</code></strong><a href="plotting-with-ggplot2.html#about-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong><code>ggplot2</code></strong> is a plotting package that makes it simple to create complex plots from data stored in a data frame. It provides a programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.</p>
+<p>First, let’s load the <strong><code>tidyverse</code></strong>, which contains the <strong><code>ggplot2</code></strong> package. You can also load <strong><code>ggplot2</code></strong> by itself</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="plotting-with-ggplot2.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#library(ggplot2) would also work</span></span></code></pre></div>
+<p><strong><code>ggplot2</code></strong> functions work best with data in the ‘long’ format, i.e., a column for every dimension, and a row for every observation. Well-structured data will save you lots of time when making figures with <strong><code>ggplot2</code></strong></p>
+<p><strong><code>ggplot2</code></strong> graphics are built step by step by adding new elements. Adding layers in this fashion allows for extensive flexibility and customization of plots.</p>
+<p>Each chart built with <strong><code>ggplot2</code></strong> must include the following</p>
+<ul>
+<li><p>Data<br />
+</p></li>
+<li><p>Aesthetic mapping (aes)</p>
+<ul>
+<li>Describes how variables are mapped onto graphical attributes<br />
+</li>
+<li>Visual attribute of data including x-y axes, color, fill, shape, and alpha<br />
+</li>
+</ul></li>
+<li><p>Geometric objects (geom)</p>
+<ul>
+<li>Determines how values are rendered graphically, as bars (geom_bar), scatterplot (geom_point), line (geom_line), etc.</li>
+</ul></li>
+</ul>
+<p>Thus, the template for graphic in ggplot2 is:</p>
+<pre><code>&lt;DATA&gt; %&gt;%
+    ggplot(aes(&lt;MAPPINGS&gt;)) +
+    &lt;GEOM_FUNCTION&gt;()</code></pre>
+<p>Remember from the last lesson that the pipe operator <code>%&gt;%</code> places the result of the previous line(s) into the first argument of the function. <code>ggplot()</code> is a function that expects a data frame to be the first argument. This allows for us to change from specifying the <code>data =</code> argument within the <code>ggplot</code> function and instead pipe the data into the function.</p>
+<ul>
+<li>use the <code>ggplot()</code> function and bind the plot to a specific data frame.</li>
+</ul>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="plotting-with-ggplot2.html#cb234-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>()</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-92-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Is the same as</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="plotting-with-ggplot2.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>yearly_rates_ext)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-93-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="univariate-plots" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Univariate plots<a href="plotting-with-ggplot2.html#univariate-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="histograms" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Histograms<a href="plotting-with-ggplot2.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One of the simplest graphs we can make is a histogram. We use histograms to see the distribution of a single continuous variable. Let’s build a histogram to look at the distribution for our <code>rate</code> variable.</p>
+<p>First, we define a mapping (using the aesthetic (<code>aes</code>) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc. Here we will say that the x axis should contain the rate variable. Note how the x-axis populates with some numbers and tick marks.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="plotting-with-ggplot2.html#cb236-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span></span>
+<span id="cb236-2"><a href="plotting-with-ggplot2.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rate))</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-94-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>This can also be written more concisely:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="plotting-with-ggplot2.html#cb237-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span></span>
+<span id="cb237-2"><a href="plotting-with-ggplot2.html#cb237-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rate))</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-95-1.png" width="576" style="display: block; margin: auto;" />
+Next we need to add ‘geoms’ – graphical representations of the data in the plot (points, lines, bars). <strong><code>ggplot2</code></strong> offers many different geoms for common graph types. To add a geom to the plot use the <code>+</code> operator. Note to that you can save plots as objects.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="plotting-with-ggplot2.html#cb238-1" aria-hidden="true" tabindex="-1"></a>rate_hist <span class="ot">&lt;-</span></span>
+<span id="cb238-2"><a href="plotting-with-ggplot2.html#cb238-2" aria-hidden="true" tabindex="-1"></a>  yearly_rates_ext <span class="sc">%&gt;%</span></span>
+<span id="cb238-3"><a href="plotting-with-ggplot2.html#cb238-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rate)) <span class="sc">+</span></span>
+<span id="cb238-4"><a href="plotting-with-ggplot2.html#cb238-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb238-5"><a href="plotting-with-ggplot2.html#cb238-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb238-6"><a href="plotting-with-ggplot2.html#cb238-6" aria-hidden="true" tabindex="-1"></a>rate_hist</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 100 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-96-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>One of the characteristics of a histogram is the bins into which the data falls. We can manipulate these bins with the <code>binwidth</code> argument.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="plotting-with-ggplot2.html#cb241-1" aria-hidden="true" tabindex="-1"></a>rate_hist <span class="ot">&lt;-</span></span>
+<span id="cb241-2"><a href="plotting-with-ggplot2.html#cb241-2" aria-hidden="true" tabindex="-1"></a>  yearly_rates_ext <span class="sc">%&gt;%</span></span>
+<span id="cb241-3"><a href="plotting-with-ggplot2.html#cb241-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rate)) <span class="sc">+</span></span>
+<span id="cb241-4"><a href="plotting-with-ggplot2.html#cb241-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>)</span>
+<span id="cb241-5"><a href="plotting-with-ggplot2.html#cb241-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb241-6"><a href="plotting-with-ggplot2.html#cb241-6" aria-hidden="true" tabindex="-1"></a>rate_hist</span></code></pre></div>
+<pre><code>## Warning: Removed 100 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-97-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="bivariate-plots" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Bivariate Plots<a href="plotting-with-ggplot2.html#bivariate-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="line-graphs" class="section level3 hasAnchor" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Line graphs<a href="plotting-with-ggplot2.html#line-graphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another basic graph type is a line graph. Line graphs are useful for looking at evolution in a variable over time. We can build a line graph to see how measles case counts fluctuated over the 20th century. To do this, we will have to group our data so that there is one row per year. Luckily, since <strong><code>ggplot2</code></strong> is part of the <strong><code>tidyverse</code></strong>, we can easily link together data transformation and graphing in one step.</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="plotting-with-ggplot2.html#cb243-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb243-2"><a href="plotting-with-ggplot2.html#cb243-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb243-3"><a href="plotting-with-ggplot2.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount))</span></code></pre></div>
+<pre><code>## # A tibble: 107 × 2
+##     Year TotalCount
+##    &lt;dbl&gt;      &lt;dbl&gt;
+##  1  1900          0
+##  2  1901          0
+##  3  1902          0
+##  4  1903          0
+##  5  1904          0
+##  6  1905          0
+##  7  1906       2345
+##  8  1907      40199
+##  9  1908      54471
+## 10  1909      49802
+## # … with 97 more rows
+## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+<p>We pipe to <code>ggplot()</code> and assign <code>Year</code> to the x-axis and <code>TotalCount</code> to the y-axis with the <code>aes()</code> function. The canvas and axes are ready.</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="plotting-with-ggplot2.html#cb245-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb245-2"><a href="plotting-with-ggplot2.html#cb245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb245-3"><a href="plotting-with-ggplot2.html#cb245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb245-4"><a href="plotting-with-ggplot2.html#cb245-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>TotalCount))</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-99-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Now we can add a <code>geom</code> layer to add our line. Let’s also be sure to save our work to an object.</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="plotting-with-ggplot2.html#cb246-1" aria-hidden="true" tabindex="-1"></a>year_total_line <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb246-2"><a href="plotting-with-ggplot2.html#cb246-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb246-3"><a href="plotting-with-ggplot2.html#cb246-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb246-4"><a href="plotting-with-ggplot2.html#cb246-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>TotalCount)) <span class="sc">+</span> </span>
+<span id="cb246-5"><a href="plotting-with-ggplot2.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb246-6"><a href="plotting-with-ggplot2.html#cb246-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb246-7"><a href="plotting-with-ggplot2.html#cb246-7" aria-hidden="true" tabindex="-1"></a>year_total_line</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-100-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>It might be nice to see where each data point falls on the line. To do this we can add another geometry layer.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="plotting-with-ggplot2.html#cb247-1" aria-hidden="true" tabindex="-1"></a>year_total_line <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb247-2"><a href="plotting-with-ggplot2.html#cb247-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb247-3"><a href="plotting-with-ggplot2.html#cb247-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb247-4"><a href="plotting-with-ggplot2.html#cb247-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>TotalCount)) <span class="sc">+</span> </span>
+<span id="cb247-5"><a href="plotting-with-ggplot2.html#cb247-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb247-6"><a href="plotting-with-ggplot2.html#cb247-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb247-7"><a href="plotting-with-ggplot2.html#cb247-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-8"><a href="plotting-with-ggplot2.html#cb247-8" aria-hidden="true" tabindex="-1"></a>year_total_line</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-101-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="shaded tip">
+<p>The <code>+</code> in the <strong><code>ggplot2</code></strong> package is particularly useful because it allows you to modify existing <code>ggplot</code> objects. This means you can easily set up plot templates and conveniently explore different types of plots, so the above plot can also be generated with code like this:</p>
+<p><code>year_total_line &lt;- year_total_line + geom_point()</code></p>
+</div>
+<p>There are many ways to customize your plot, like changing the color or line type, adding labels and annotations. One thing that would make our graph easier to read is tick marks at each decade on the x-axis. There are a number of functions in <strong><code>ggplot2</code></strong> for altering the scale. We want to alter the x-axis scale, which holds continuous data, so we can use the <code>scale_x_continuous()</code> function. Note that when you start to write the name of the function, RStudio will supply you with other similarly named functions.</p>
+<p><code>scale_x_continuous()</code> has an argument called <code>breaks</code> which allows you to alter where the axis tick marks occur. We can use that together with <code>seq()</code> to say put a tick mark every 10 places between 1900 and 2000.</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="plotting-with-ggplot2.html#cb248-1" aria-hidden="true" tabindex="-1"></a>year_total_line <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb248-2"><a href="plotting-with-ggplot2.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb248-3"><a href="plotting-with-ggplot2.html#cb248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb248-4"><a href="plotting-with-ggplot2.html#cb248-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>TotalCount)) <span class="sc">+</span> </span>
+<span id="cb248-5"><a href="plotting-with-ggplot2.html#cb248-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb248-6"><a href="plotting-with-ggplot2.html#cb248-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb248-7"><a href="plotting-with-ggplot2.html#cb248-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1900</span>, <span class="at">to=</span><span class="dv">2000</span>, <span class="at">by=</span><span class="dv">10</span>))</span>
+<span id="cb248-8"><a href="plotting-with-ggplot2.html#cb248-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-9"><a href="plotting-with-ggplot2.html#cb248-9" aria-hidden="true" tabindex="-1"></a>year_total_line</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-102-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Now we can move beyond basic exploration and start to use our graph to analyze and tell stories about our data. One important trend we might notice, is the sharp decrease in cases in the 1960s. The measles vaccine was introduced in 1963. We can use our visualization to tell the story of the vaccine’s impact.</p>
+<p>Let’s drop a reference line at 1963 to clearly indicate on the graph when the vaccine was introduced. To do this we add a <code>geom_vline()</code> and the <code>annotate()</code> function. There are multiple ways of adding lines and text to a plot, but these will serve us well for this case. Note that you can change features of lines such as color, type, and size. We can supply coordinates to <code>annotate()</code> to position the annotation where we want.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="plotting-with-ggplot2.html#cb249-1" aria-hidden="true" tabindex="-1"></a>year_total_line <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb249-2"><a href="plotting-with-ggplot2.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb249-3"><a href="plotting-with-ggplot2.html#cb249-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb249-4"><a href="plotting-with-ggplot2.html#cb249-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>TotalCount)) <span class="sc">+</span> </span>
+<span id="cb249-5"><a href="plotting-with-ggplot2.html#cb249-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb249-6"><a href="plotting-with-ggplot2.html#cb249-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb249-7"><a href="plotting-with-ggplot2.html#cb249-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1900</span>, <span class="at">to=</span><span class="dv">2000</span>, <span class="at">by=</span><span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb249-8"><a href="plotting-with-ggplot2.html#cb249-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">linetype=</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb249-9"><a href="plotting-with-ggplot2.html#cb249-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;label&quot;</span>, <span class="at">x=</span><span class="dv">1963</span>, <span class="at">y=</span><span class="dv">800000</span>, <span class="at">label=</span><span class="st">&quot;1963: vaccine introduced&quot;</span>)</span>
+<span id="cb249-10"><a href="plotting-with-ggplot2.html#cb249-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb249-11"><a href="plotting-with-ggplot2.html#cb249-11" aria-hidden="true" tabindex="-1"></a>year_total_line</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-103-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="shaded tip">
+<p><strong>Color names in R</strong>
+How did I know R would understand the word “red” for the line color? R has 657 built-in color names. You can call the function <code>colors()</code> to see all of them. Also check out <a href="https://r-charts.com/colors/">this neat chart</a> of the R colors, names, and equivalent hex codes.</p>
+</div>
+<p>Finally, let’s add a title and axis labels to our plot with the <code>labs()</code> function. Note that axis labels will automatically be supplied from the column names, but you can use this function to override those defaults.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="plotting-with-ggplot2.html#cb250-1" aria-hidden="true" tabindex="-1"></a>year_total_line <span class="ot">&lt;-</span> </span>
+<span id="cb250-2"><a href="plotting-with-ggplot2.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb250-3"><a href="plotting-with-ggplot2.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb250-4"><a href="plotting-with-ggplot2.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">TotalCount =</span> <span class="fu">sum</span>(TotalCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb250-5"><a href="plotting-with-ggplot2.html#cb250-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>TotalCount)) <span class="sc">+</span> </span>
+<span id="cb250-6"><a href="plotting-with-ggplot2.html#cb250-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb250-7"><a href="plotting-with-ggplot2.html#cb250-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb250-8"><a href="plotting-with-ggplot2.html#cb250-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1900</span>, <span class="at">to=</span><span class="dv">2000</span>, <span class="at">by=</span><span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb250-9"><a href="plotting-with-ggplot2.html#cb250-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">linetype=</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb250-10"><a href="plotting-with-ggplot2.html#cb250-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;label&quot;</span>, <span class="at">x=</span><span class="dv">1963</span>, <span class="at">y=</span><span class="dv">800000</span>, <span class="at">label=</span><span class="st">&quot;1963: vaccine introduced&quot;</span>) <span class="sc">+</span></span>
+<span id="cb250-11"><a href="plotting-with-ggplot2.html#cb250-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Measles Cases Decrease After Vaccine Introduced&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Total Measles Case Count&quot;</span>)</span>
+<span id="cb250-12"><a href="plotting-with-ggplot2.html#cb250-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-13"><a href="plotting-with-ggplot2.html#cb250-13" aria-hidden="true" tabindex="-1"></a>year_total_line</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-104-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Now, we have a pretty nice looking graph. Finally, let’s save our plot to a png file, so we can share it or put it in reports. To do this we use the function called <code>ggsave()</code>.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="plotting-with-ggplot2.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figures/yearly_measles_count.png&quot;</span>, <span class="at">plot =</span> year_total_line)</span></code></pre></div>
+</div>
+<div id="bar-charts" class="section level3 hasAnchor" number="4.6.2">
+<h3><span class="header-section-number">4.6.2</span> Bar charts<a href="plotting-with-ggplot2.html#bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s zoom in now and take a closer look at our data for 1963, and compare the measles incidence rate per 1000 persons in each state. To compare a categorical variable (<code>state</code>) and a numeric variable(<code>rate</code>) a bar chart is a good choice.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="plotting-with-ggplot2.html#cb252-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span>  </span>
+<span id="cb252-2"><a href="plotting-with-ggplot2.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb252-3"><a href="plotting-with-ggplot2.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb252-4"><a href="plotting-with-ggplot2.html#cb252-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-105-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Right away we notice a big flaw in our visualization. We have so many bars it is impossible to see the axis labels! There are a couple of ways we can fix this, which we will come back to in a moment.</p>
+<p>Additionally, it can be more visually impacting to have our bars sorted in order. Let’s take care of that first, and then come back to the label issue. We will do this with the <code>reorder()</code> function. This function takes two arguments: the variable to reorder, and the variable which contains the values to reorder by. A negative sign <code>-</code> before the name of the second variable will sort in decreasing order.</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="plotting-with-ggplot2.html#cb253-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span>  </span>
+<span id="cb253-2"><a href="plotting-with-ggplot2.html#cb253-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb253-3"><a href="plotting-with-ggplot2.html#cb253-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(state, <span class="sc">-</span>rate), <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb253-4"><a href="plotting-with-ggplot2.html#cb253-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-106-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Now, let’s make it easier to read the names of the states. First we can change the angle of the axis text with the <code>theme()</code> function, and the <code>axis.text.x</code> argument.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="plotting-with-ggplot2.html#cb254-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span>  </span>
+<span id="cb254-2"><a href="plotting-with-ggplot2.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb254-3"><a href="plotting-with-ggplot2.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(state, <span class="sc">-</span>rate), <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb254-4"><a href="plotting-with-ggplot2.html#cb254-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb254-5"><a href="plotting-with-ggplot2.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>))</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-107-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>You can play around with adjusting the angle of the text too. Instead of 90, try 45. Or how about, -45!</p>
+<p>Now, we can see the name of each state, but it really is much easier to read horizontal than vertical text. So, another solution is to flip the whole graph so we have horizontal text and bars, instead of vertical. For this</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="plotting-with-ggplot2.html#cb255-1" aria-hidden="true" tabindex="-1"></a>yearly_rates_ext <span class="sc">%&gt;%</span>  </span>
+<span id="cb255-2"><a href="plotting-with-ggplot2.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb255-3"><a href="plotting-with-ggplot2.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(state, rate), <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb255-4"><a href="plotting-with-ggplot2.html#cb255-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb255-5"><a href="plotting-with-ggplot2.html#cb255-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-108-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>The text is still a little hard to read because it is so close together and almost overlapping. We can fine-tune this a little more by changing the text size. We can also reduce some of the noise from the grid lines by choosing a different theme. If you haven’t already, be sure to save your plot to an object.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="plotting-with-ggplot2.html#cb256-1" aria-hidden="true" tabindex="-1"></a>bar_rate_1963 <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span>  </span>
+<span id="cb256-2"><a href="plotting-with-ggplot2.html#cb256-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb256-3"><a href="plotting-with-ggplot2.html#cb256-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(state, rate), <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb256-4"><a href="plotting-with-ggplot2.html#cb256-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb256-5"><a href="plotting-with-ggplot2.html#cb256-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb256-6"><a href="plotting-with-ggplot2.html#cb256-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb256-7"><a href="plotting-with-ggplot2.html#cb256-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>))</span>
+<span id="cb256-8"><a href="plotting-with-ggplot2.html#cb256-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-9"><a href="plotting-with-ggplot2.html#cb256-9" aria-hidden="true" tabindex="-1"></a>bar_rate_1963</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-109-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>We could add a reference line to this as well to show which states are below and above average. In the previous example, we hard coded our reference line to a particular number. But we can set it to a calculation instead - in this case, the mean rate of measles.</p>
+<p>Note that even though the line is vertical, we have to use <code>geom_hline()</code>, because we flipped the coordinates of our graph. Remember that lines have attributes size, shape, and linetype that can all be adjusted.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="plotting-with-ggplot2.html#cb257-1" aria-hidden="true" tabindex="-1"></a>bar_rate_1963 <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span>  </span>
+<span id="cb257-2"><a href="plotting-with-ggplot2.html#cb257-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb257-3"><a href="plotting-with-ggplot2.html#cb257-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(state, rate), <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb257-4"><a href="plotting-with-ggplot2.html#cb257-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb257-5"><a href="plotting-with-ggplot2.html#cb257-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(yearly_rates_ext<span class="sc">$</span>rate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb257-6"><a href="plotting-with-ggplot2.html#cb257-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb257-7"><a href="plotting-with-ggplot2.html#cb257-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb257-8"><a href="plotting-with-ggplot2.html#cb257-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>)) <span class="sc">+</span> <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="at">y=</span><span class="dv">3</span>, <span class="at">x=</span><span class="dv">20</span>, <span class="at">label=</span><span class="st">&quot;mean rate&quot;</span>)</span>
+<span id="cb257-9"><a href="plotting-with-ggplot2.html#cb257-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb257-10"><a href="plotting-with-ggplot2.html#cb257-10" aria-hidden="true" tabindex="-1"></a>bar_rate_1963</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-110-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="challenge-4" class="section level3 hasAnchor" number="4.6.3">
+<h3><span class="header-section-number">4.6.3</span> Challenge<a href="plotting-with-ggplot2.html#challenge-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded question">
+<ol style="list-style-type: decimal">
+<li>Using what you learned from making line graphs, add a title and axis labels to your bar chart.</li>
+<li>Save your bar chart as a .png file in your <code>figures</code> folder.</li>
+<li>Try making a bar chart using the <code>state.division</code> or <code>state.region</code> variable instead of <code>state</code>. Use a year of your choice.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="maps" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Maps<a href="plotting-with-ggplot2.html#maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While we were successful at creating a bar chart to compare measles rates in each state, it is often more helpful to use a map to visualize geographic data. There are multiple types of map-based visualizations in R and tools for creating them. While it is possible to make interactive and animated maps in R, in this lesson, we will only cover static maps.</p>
+<p>In this lesson, we will focus on creating <strong>choropleths</strong>. Despite the funny name, this is a visualization you have likely seen many many times. A choropleth is a map that links geographic areas or boundaries to some numeric variable.</p>
+<p><strong><code>ggplot2</code></strong> needs a little help to make map visualizations. Depending on the geographies you want to map, you may need to find geoJSON or shapefiles. There are also several packages in R that come pre-loaded with background maps of common geographies. We’ll be using one in this lesson called <strong><code>usmap</code></strong>. There are several advantages to this package:</p>
+<ol style="list-style-type: decimal">
+<li>It contains maps of the US with both state and county boundaries.</li>
+<li>You can create maps based on census regions and divisions. 3. Alaska and Hawaii are included, while many map packages only have a map of the continental US.</li>
+<li>It creates the map as a <strong><code>ggplot2</code></strong> object, so you can customize the visualization with <strong><code>ggplot2</code></strong> functions (i.e. the things you’ve been learning in this lesson!)</li>
+</ol>
+<p>We’ve installed <strong><code>usmap</code></strong> in your RStudio Cloud project, so now let’s load it into our session.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="plotting-with-ggplot2.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usmap)</span></code></pre></div>
+<p>The main function in this package is <code>plot_usmap</code>. When you call it without any arguments, you get the background map of the US.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="plotting-with-ggplot2.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>()</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-112-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>By default it shows state boundaries, but we could also ask it to show county boundaries</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="plotting-with-ggplot2.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">regions=</span><span class="st">&quot;counties&quot;</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-113-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Since we do not have that level of data in our dataset, we’ll use the default option. There are two required arguments to <code>plot_usmap()</code>.</p>
+<ol style="list-style-type: decimal">
+<li>The first is a data frame specified with the <code>data</code> argument. This data frame must have a column called <code>state</code> or <code>fips</code> which contains state names or FIPS (Federal Information Processing) codes. FIPS codes must be used for county level data. This data frame must also have a column of values for each state or FIPS.</li>
+<li>The second argument is the name of the column that contains the values, specified by the <code>value</code> argument.</li>
+</ol>
+<p>Let’s first create a data frame with just our 1963 data.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="plotting-with-ggplot2.html#cb261-1" aria-hidden="true" tabindex="-1"></a>measles1963df <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb261-2"><a href="plotting-with-ggplot2.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">1963</span>)</span></code></pre></div>
+<p>Now let’s plot our data with <code>plot_usmap()</code>. Remember it’s important to use rate here rather than our raw count numbers since we are dealing with areas of vastly different populations.</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="plotting-with-ggplot2.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data=</span>measles1963df, <span class="at">values =</span> <span class="st">&quot;rate&quot;</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-115-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>We are provided with a default color scheme, but we can adjust this. Before we do though, it’s worth talking a little about some considerations for using color in visualizations. Color can make a huge difference to the effectiveness of your visualization, and it’s important to think carefully about your choices. For example, in our default color palette, many of the shades are pretty dark, and it is hard to visually distinguish among them. When choosing a palette, you want to be sure shades can be easily distinguished from one another. Also, choose palettes that are color-blind friendly and would hold up well if you visualization was printed in greyscale.</p>
+<p>R has many, many color palettes available from a variety of packages<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>, including palettes inspired by everything from scientific journals<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> to Wes Anderson movies<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> to Beyonce<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>! If that’s not enough, it’s also possible to build your own palettes with hex codes or R’s built-in color names.</p>
+<p>One popular palette package is the <strong><code>viridis</code></strong><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> package. <strong><code>viridis</code></strong> palettes are often used for their attractiveness, ease of perception by those with different forms of color blindness, and ability to be viewed in grey scale. Let’s try adding the <strong><code>viridis</code></strong> palette to our map.</p>
+<p>We’ve installed <strong><code>viridis</code></strong> in your Rstudio Cloud project. Let’s load it into our session.</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="plotting-with-ggplot2.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code></pre></div>
+<pre><code>## Loading required package: viridisLite</code></pre>
+<p><strong><code>viridis</code></strong> is integrated with <strong><code>ggplot2</code></strong>, and our map is a <code>ggplot</code> object, we can call the function <code>scale_fill_viridis</code> and add it to our plot.</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="plotting-with-ggplot2.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data=</span>measles1963df, <span class="at">values =</span> <span class="st">&quot;rate&quot;</span>) <span class="sc">+</span></span>
+<span id="cb265-2"><a href="plotting-with-ggplot2.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>()</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-117-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Note how the brighter areas seem to highlight the areas of greater concern.</p>
+<p>If you prefer the darker colors to represent higher rates, and lighter to represent lower, we can switch the direction of the palette with the <code>direction</code> argument.</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="plotting-with-ggplot2.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data=</span>measles1963df, <span class="at">values =</span> <span class="st">&quot;rate&quot;</span>) <span class="sc">+</span></span>
+<span id="cb266-2"><a href="plotting-with-ggplot2.html#cb266-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-118-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Let’s try another of the <strong><code>viridis</code></strong> palettes.</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="plotting-with-ggplot2.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data=</span>measles1963df, <span class="at">values =</span> <span class="st">&quot;rate&quot;</span>) <span class="sc">+</span></span>
+<span id="cb267-2"><a href="plotting-with-ggplot2.html#cb267-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">option =</span> <span class="st">&quot;rocket&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) </span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-119-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Let’s add a title, assign to an object, and save to a png file.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="plotting-with-ggplot2.html#cb268-1" aria-hidden="true" tabindex="-1"></a>map_1963 <span class="ot">&lt;-</span> <span class="fu">plot_usmap</span>(<span class="at">data=</span>measles1963df, <span class="at">values =</span> <span class="st">&quot;rate&quot;</span>) <span class="sc">+</span></span>
+<span id="cb268-2"><a href="plotting-with-ggplot2.html#cb268-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">option =</span> <span class="st">&quot;rocket&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb268-3"><a href="plotting-with-ggplot2.html#cb268-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Incidence Rate of Measles per 1000 people in 1963&quot;</span>)</span>
+<span id="cb268-4"><a href="plotting-with-ggplot2.html#cb268-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-5"><a href="plotting-with-ggplot2.html#cb268-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;figures/map_1963.png&quot;</span>, <span class="at">plot =</span> map_1963, <span class="at">bg =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div id="challenge-5" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Challenge<a href="plotting-with-ggplot2.html#challenge-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded question">
+<p>Try out some of the other <strong><code>viridis</code></strong> palettes. You can also try to create your own with R color names and the function <code>scale_fill_continuous</code>. Try different combinations of years, palettes. Try reordering the palettes.</p>
+</div>
+</div>
+</div>
+<div id="grouping-and-faceting" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Grouping and Faceting<a href="plotting-with-ggplot2.html#grouping-and-faceting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far we’ve looked at visualizations with one or two variables. But sometimes, we want to include a third variable, or compare different groups or levels of a variable. For example, the bar chart and map we made allow us to compare all states, but for only one year. The line graph lets us see all years, but just one national total and not individual states? How can we easily compare data for multiple states in multiple years? This is where <strong><code>ggplot2</code></strong> facetting abilities come in handy.</p>
+<p>Facets let you split your graph into multiple smaller graphs arranged in a grid layout. This sort of visualization is often called “small multiples”, and is often a useful way of reducing visual clutter. Let’s use faceting to make small maps that let us compare measles rates in the five years prior to the vaccine being introduced.</p>
+<p>First, it will be helpful to create a data frame of just the years we are interested in.</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="plotting-with-ggplot2.html#cb269-1" aria-hidden="true" tabindex="-1"></a>measles_pre_vacc <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> </span>
+<span id="cb269-2"><a href="plotting-with-ggplot2.html#cb269-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(Year, <span class="dv">1958</span>, <span class="dv">1963</span>))</span></code></pre></div>
+<p>Now let’s map this data frame the way we did in the Maps section, but we’ll add a layer with the <code>facet_wrap()</code> function.</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="plotting-with-ggplot2.html#cb270-1" aria-hidden="true" tabindex="-1"></a>pre_vacc_maps <span class="ot">&lt;-</span> <span class="fu">plot_usmap</span>(<span class="at">data =</span> measles_pre_vacc, <span class="at">values =</span> <span class="st">&quot;rate&quot;</span>) <span class="sc">+</span></span>
+<span id="cb270-2"><a href="plotting-with-ggplot2.html#cb270-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Year) <span class="sc">+</span></span>
+<span id="cb270-3"><a href="plotting-with-ggplot2.html#cb270-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">option =</span> <span class="st">&quot;rocket&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb270-4"><a href="plotting-with-ggplot2.html#cb270-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-5"><a href="plotting-with-ggplot2.html#cb270-5" aria-hidden="true" tabindex="-1"></a>pre_vacc_maps</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-122-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>We could also use highlighting to do away with noise in a line graph. First create a new data frame.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="plotting-with-ggplot2.html#cb271-1" aria-hidden="true" tabindex="-1"></a>regional_rates <span class="ot">&lt;-</span> yearly_rates_ext <span class="sc">%&gt;%</span> <span class="fu">filter</span>(state.division<span class="sc">==</span><span class="st">&quot;South Atlantic&quot;</span> <span class="sc">&amp;</span> <span class="fu">between</span>(Year, <span class="dv">1950</span>, <span class="dv">1980</span>))</span></code></pre></div>
+<p>Then we can create two <code>geom_line</code> layers and highlight just the one in the facet.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="plotting-with-ggplot2.html#cb272-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> regional_rates <span class="sc">%&gt;%</span></span>
+<span id="cb272-2"><a href="plotting-with-ggplot2.html#cb272-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state2=</span>state)</span>
+<span id="cb272-3"><a href="plotting-with-ggplot2.html#cb272-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-4"><a href="plotting-with-ggplot2.html#cb272-4" aria-hidden="true" tabindex="-1"></a>tmp <span class="sc">%&gt;%</span></span>
+<span id="cb272-5"><a href="plotting-with-ggplot2.html#cb272-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Year, <span class="at">y=</span>rate)) <span class="sc">+</span></span>
+<span id="cb272-6"><a href="plotting-with-ggplot2.html#cb272-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>tmp <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>state), <span class="fu">aes</span>(<span class="at">group=</span>state2), <span class="at">color=</span><span class="st">&quot;grey&quot;</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb272-7"><a href="plotting-with-ggplot2.html#cb272-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color=</span>state), <span class="at">color=</span><span class="st">&quot;#69b3a2&quot;</span>, <span class="at">size=</span><span class="fl">1.2</span> ) <span class="sc">+</span></span>
+<span id="cb272-8"><a href="plotting-with-ggplot2.html#cb272-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1950</span>, <span class="at">to=</span><span class="dv">1980</span>, <span class="at">by=</span><span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb272-9"><a href="plotting-with-ggplot2.html#cb272-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis</span>() <span class="sc">+</span></span>
+<span id="cb272-10"><a href="plotting-with-ggplot2.html#cb272-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb272-11"><a href="plotting-with-ggplot2.html#cb272-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb272-12"><a href="plotting-with-ggplot2.html#cb272-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>,</span>
+<span id="cb272-13"><a href="plotting-with-ggplot2.html#cb272-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb272-14"><a href="plotting-with-ggplot2.html#cb272-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb272-15"><a href="plotting-with-ggplot2.html#cb272-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb272-16"><a href="plotting-with-ggplot2.html#cb272-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;A comparison of measles cases in the South Atlantic Region&quot;</span>) <span class="sc">+</span></span>
+<span id="cb272-17"><a href="plotting-with-ggplot2.html#cb272-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>state, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="CDABS-R-Series_files/figure-html/unnamed-chunk-124-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="challenge-6" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> Challenge<a href="plotting-with-ggplot2.html#challenge-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="shaded question">
+<p>Now try the same for the years 1963-1968 to view measles rates in the immediate years after the vaccine was introduced.</p>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>The <code>paletteer</code> package attempts to keep track of as many as possible: <a href="https://github.com/EmilHvitfeldt/paletteer#included-packages" class="uri">https://github.com/EmilHvitfeldt/paletteer#included-packages</a><a href="plotting-with-ggplot2.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://nanx.me/ggsci/" class="uri">https://nanx.me/ggsci/</a><a href="plotting-with-ggplot2.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://github.com/karthik/wesanderson#readme" class="uri">https://github.com/karthik/wesanderson#readme</a><a href="plotting-with-ggplot2.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://github.com/dill/beyonce#readme" class="uri">https://github.com/dill/beyonce#readme</a><a href="plotting-with-ggplot2.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html" class="uri">https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html</a><a href="plotting-with-ggplot2.html#fnref14" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="welcome-to-the-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reproducible-project-management.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CDABS-R-Series.pdf", "CDABS-R-Series.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

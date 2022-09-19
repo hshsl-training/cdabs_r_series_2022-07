@@ -1,5 +1,29 @@
 # Packages and Functions Used
 
+**`base`**
+
+- `c()`: combine values into a vector or list
+- `round()`: rounding of numbers
+- `mean()`: arithmetic mean
+- `length()`: length of an object
+- `class()`: object classes
+- `[]`: extract or replace parts of an object
+- `data.frame()`: creates data frames
+- `summary()`: object summaries
+- `colnames()`: retrieve or set the row or column names
+- `nrow()`: return the number of rows present in x
+- `ncol()`: return the number of columns present in x
+- `head() | tail()`: return the first or last parts of an object
+- `sum()`: sum of vector elements
+- `typeof()`: returns the type of an object
+- `sort()`: sort (or order) a vector into ascending or descending order
+- `table()`: cross tabulation and table creation
+- `factor()`: encode a vector as a factor
+- `str()`: compactly display the structure of an arbitrary R object
+- `plot()`: generic x-y plotting
+- `names()`: functions to get or set the names of an object
+- `hist()`: computes a histogram of the given data values
+
 **`readr`**
 
 - `read_csv()`: import data from csv files
